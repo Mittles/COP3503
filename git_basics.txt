@@ -1,0 +1,42 @@
+BASIC GIT USAGE FOR PROJECT 1
+These instructions are for the console version of git. GUI versions exist if you need one, however I don't use them and the console version is more than sufficient. You should really learn to use this piece of software, as it is by far the most popular version control system and I can guarantee you will see it again.
+
+INSTALLATION:
+The lab machines do have git installed already if you want to use them.
+
+If you're running Ubuntu it might be installed already, if not simply run 
+	sudo apt-get install git
+
+Other *nix variants will have packages for Git, ask if you need help.
+
+For Windows I recommend using Cygwin to install both g++ and git. However, Github maintains a client at https://windows.github.com and there are also plugins for most IDEs such as Visual Studio. I can help with Cygwin, but you're on your own for others. Microsoft does officially support Git with VS 2012 and up, with a client included in 2013 and up.
+
+OSX has packages for git in both Homebrew and MacPorts. Github also maintains a client at https://mac.github.com.
+
+ACCOUNT:
+While other git services exist, Github is easily the most recognizable and best suited for this project. Make an account at https://github.com/join. If you're staying in the software world, this is an account you're going to want to keep, although it can be deleted at any time if you like. You will not be able to submit changes to the project without an account.
+
+USAGE:
+Now that you've installed git, it's time to sync to the repository for the first time.
+	git clone https://github.com/Mittles/COP3503.git
+
+Enter the project directory.
+	cd ./COP3503
+
+To make a change, use your editor of choice, then run:
+	git commit -a
+
+To add a file, or as an alternative to edit individual files, use:
+	git add FILENAME && git commit
+
+Once you are done making changes to the source, you can push them to Github, it should ask you to login for this.
+	git push
+
+To get updates from other members of the project:
+	git pull
+
+If you mess up on a file, it depends. I like the answer here: https://stackoverflow.com/questions/1817766/revert-to-origins-master-branchs-version-of-file.
+
+Git can do a whole lot more, but for now this should do. Feel free to email or text me any questions.
+
+
