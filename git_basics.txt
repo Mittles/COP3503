@@ -2,7 +2,8 @@ BASIC GIT USAGE FOR PROJECT 1
 These instructions are for the console version of git. GUI versions exist if you need one, however I don't use them and the console version is more than sufficient. You should really learn to use this piece of software, as it is by far the most popular version control system and I can guarantee you will see it again.
 
 INSTALLATION:
-The lab machines do have git installed already if you want to use them.
+The lab machines do have git installed already if you want to use them. They however have an archaic editor set as default (no vim is not archaic). To correct this, we must set the EDITOR environment variable. 
+	echo "setenv EDITOR /usr/bin/nano" >> ~/.cshrc
 
 If you're running Ubuntu it might be installed already, if not simply run 
 	sudo apt-get install git
@@ -34,9 +35,7 @@ Once you are done making changes to the source, you can push them to Github, it 
 
 To get updates from other members of the project:
 	git pull
-Be sure to ask first.
+
 If you mess up on a file, it depends. I like the answer here: https://stackoverflow.com/questions/1817766/revert-to-origins-master-branchs-version-of-file.
 
 Git can do a whole lot more, but for now this should do. Feel free to email or text me any questions.
-
-HELLO
