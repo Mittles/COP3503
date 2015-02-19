@@ -34,7 +34,7 @@ Once you are done making changes to the source, you can push them to Github, it 
 
 To get updates from other members of the project:
 	git pull
-
+Be sure to ask first.
 If you mess up on a file, it depends. I like the answer here: https://stackoverflow.com/questions/1817766/revert-to-origins-master-branchs-version-of-file.
 
 Git can do a whole lot more, but for now this should do. Feel free to email or text me any questions.
