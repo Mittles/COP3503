@@ -6,18 +6,15 @@ http://www.centralconnector.com/games/risk.htm
 https://wiki.libsdl.org/Tutorials
 http://www.wbrameld4.name/camera/things/risk_board_8_sep_2006.jpg
 
-Tip for development:
-If you ever happen to want to link against installed libraries
-in a given directory, LIBDIR, you must either use libtool, and
-specify the full pathname of the library, or use the `-LLIBDIR'
-flag during linking and do at least one of the following:
-- add LIBDIR to the `LD_LIBRARY_PATH' environment variable during execution
-- add LIBDIR to the `LD_RUN_PATH' environment variable during linking
-- use the `-Wl,-rpath -Wl,LIBDIR' linker flag
-- have your system administrator add LIBDIR to `/etc/ld.so.conf'
+Windows Devs:
+I still recommend using Github's client for Windows.
+Clone or pull the repo, run setup-dev-win32.bat as your user. Make sure you've no other version of Code-Blocks installed first. The win32_lib.zip file may be removed at a later date.
 
+Linux Devs:
+Wait I'm the only one. If you're not in our group, you can either build SDL like the setup-dev-linux.sh script or install libsdl-dev for your distro.
 
-
+OSX Devs:
+Install a Code::Blocks build from http://sourceforge.net/projects/codeblocks/files/Binaries/13.12/MacOS/CodeBlocks-13.12-mac.zip/download The setup-dev-linux.sh script should work for you for the rest of it - I'll finish sorting this out by the end of the week. Don't forget to set it up to use GCC 4.8.
 
 
 Risk is the property of Parker Brothers, a division of Hasbro.

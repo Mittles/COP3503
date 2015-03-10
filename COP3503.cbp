@@ -30,11 +30,11 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="SDL2" />
+			<Add directory="lib/SDL2" />
 		</Compiler>
 		<Linker>
 			<Add option="-lmingw32 -lSDL2main -lSDL2" />
-			<Add directory="SDL2/lib" />
+			<Add directory="lib/SDL2/lib" />
 		</Linker>
 		<Extensions>
 			<code_completion />
