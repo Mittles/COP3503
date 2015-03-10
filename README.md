@@ -9,6 +9,7 @@ http://www.wbrameld4.name/camera/things/risk_board_8_sep_2006.jpg
 Windows Devs:
 I still recommend using Github's client for Windows.
 Clone or pull the repo, run setup-dev-win32.bat as your user. Make sure you've no other version of Code-Blocks installed first. It will prompt you to install once downloaded, be patient as the IDE is rather large.
+
 The win32_lib.zip file may be removed at a later date, it contains a patch from upstream to fix usage on Code::Blocks. See: stackover/winapifamily-h-no-such-file-or-directory-when-compiling-sdl-in-codeblocks
 
 Linux Devs:
