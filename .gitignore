@@ -23,7 +23,7 @@ Thumbs.db
 
 # Project Stuff #
 #################
-bin/
-lib/
-obj/
+bin
+lib
+obj
 COP3503.depend
