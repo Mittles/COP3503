@@ -1,0 +1,7 @@
+March 31 - GUI and visual map set up
+
+April 7 - World class and player class completed
+
+April 14 - Remaining funtions such as attackong, moving, etc. completed
+
+April 14-17 - Debugging

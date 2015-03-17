@@ -1,0 +1,38 @@
+
+Deck object- 
+	holds an array of card objects
+	shuffles the deck at beginning
+
+Card object-
+	int player number
+	int troops in territory
+	string name
+	string[] adjacent territories
+
+world object-
+	array of territory objects
+	multidimensional array containing six arrays of territories in each continent
+
+Player object-
+	int armies
+	int total numbers of stars in possesion
+
+Rolling dice function- generates a random number 1-6, will be called many times
+
+Map update function-
+	will perform changes to territory ownerships, troop numbers, etc on the map
+
+Attack function-
+	checks to see the number of troops in attacking and defending territories, uses these numbers to decide how many dice rolls each player gets
+	calls dice roll that many times for attacker and defender
+	calls map update at end
+
+Move Function-
+	checks if a territory is owned or not 
+	if unowned, moves n number of troops from attacking territory to open territory
+	if owned, calls attack function
+	calls map update at end
+
+turn change function-
+	
+	
