@@ -1,0 +1,107 @@
+rules of risk taken from: http://www.hasbro.com/common/instruct/risk.pdf (pages 1 - 11)
+http://www.centralconnector.com/games/risk.htm
+
+good risk map: http://upload.wikimedia.org/wikipedia/commons/a/aa/Risk_game_map_fixed.png
+
+considerations:
+
+- how many players? assuming completely multiplayer (non-network, same-pc, turn-based) game
+
+	- for 2 player games, make sure that there is a "neutral" faction, and that it has its own armies
+	  and provinces but CANNOT be controlled by human players
+
+		- make sure the "neutral" faction is only present in 2-player games
+
+		- neutral faction basically gets the "leftovers" in terms of province cards and army cards
+
+		- should make it so neutral faction doesn't effect win state of one player
+			- ex: if player 1 is defeated and neutral faction still exists, then player 2 wins even if
+			  neutral faction still exists
+
+	- for 3+ player games, no neutral faction, everything is human-controlled
+
+- player state 
+
+	- how to define who owns what territores, how many armies a person has, what is their army 
+          composition, making sure that they have a proper army size/composition, what cards they have
+
+	- player wins when all other human players are defeated
+
+	- define army placement at beginning of game -> see manual
+
+	- roll a die for each player -> highest die roll gets to pick territory first
+		- could also just skip this and have player 1 go first, player 2 go 2nd, player 3 go 3rd... etc.
+		- have to check if players have same die rolls, if so, just choose first player in list
+		- after first player picks, just rotate for every other player until all territories claimed
+
+- a turn consists of
+
+	- getting/placing armies
+
+	- attacking other armies or moving your armies to other territories
+
+
+- game board
+
+	- 6 continents, 42 territories, each continent has 4-12 territories
+
+	- detect whose armies are on which province, detect when 2 clashing armies meet on the field, detect if
+	  multiple armies belonging to same player are on the same province
+	
+	- how to design province system? i.e. how can players choose where to move armies? mouse? console?
+
+	  - mouse would be more intuitive and probably less of a pain to code, but is probably slightly 
+	    harder to code
+
+	  - console commands would be probably easier to code but more of a pain to code
+
+	  - how can one detect if an army is able to move to one province to another (e.g. cant go from china to
+	    USA directly)
+
+	 - must design the game board, must have all indications of the game board in easy to see places
+		
+		- such as:
+
+			- full map with indications of who owns what
+
+			- army positions in provinces and a way to tell what pieces are in each army easily
+				- all players should be able to see this at all times
+
+			- easily distinguishable attacking and defending dice and what rolls they get
+
+			- a way to see who's turn it is
+
+			- a way for each player to see what their hand of cards is
+
+- cards
+	- 42 marked w. territory and a unit picture, 2 "wild" cards marked with all 3 pictures but no territory
+	
+	- how to detect when a player has enough of the correct type of cards to turn them in for troops?
+		
+		- should be a voluntary, not automatic action
+
+- dice
+	- 2 white dice, 3 red dice
+	
+	- must design a completely random dice rolling method, must also detect how many die a person is rolling
+
+- armies
+	- 6 complete army sets, all diff colors
+
+	- must factor in how many armies a person can have per turn based on how many territories they have
+	
+	- must have a way to split armies or determine how many armies go to a province (e.g. you have 5 units in 
+	  province A and want to split this army into two armies of 2 and 3 so one army can go to province B)
+
+- attacking
+	
+	- must detect if player has enough armies (2) to attack a region
+
+	- attacker must choose how many die they will roll, 1 die = 1 army, same for defender 
+	  (red die = attack, white = defend)
+
+	- compare die rolls, higher number = winner of battle, loser looses one or more armies
+
+	- tie = defender wins
+
+	- if attacker wins, must detect the change in territory from one player to another and give attacker 1 card
