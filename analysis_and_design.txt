@@ -1,4 +1,27 @@
+<------------Analysis------------>
 
+Inputs:
+Number of players, several GUI buttons to control the game via a mouse, number input for armies to move/attack with.
+
+Output:
+Display the map, territory data, and player data (including cards/stars earned).
+
+Contraints:
+3 Players are expected, as this is how the game rule is laid out without a more complex AI structure.
+
+Assumptions: 
+Run on a machine with a graphical front for which SDL will build for (OSX, Windows, GNU/Linux with X11).
+
+<------------Design-------------->
+
+Control/UI:
+Main-
+	Initializes gui, map and control display, and asks for number of players, calling the first turn
+
+Turn change function-
+	prompts user and based off that input and current game data decides other functions to call
+	
+Data:
 Deck object- 
 	holds an array of card objects
 	shuffles the deck at beginning
@@ -9,7 +32,7 @@ Card object-
 	string name
 	string[] adjacent territories
 
-world object-
+World object-
 	array of territory objects
 	multidimensional array containing six arrays of territories in each continent
 
@@ -17,6 +40,7 @@ Player object-
 	int armies
 	int total numbers of stars in possesion
 
+Algorithms:
 Rolling dice function- generates a random number 1-6, will be called many times
 
 Map update function-
@@ -27,12 +51,10 @@ Attack function-
 	calls dice roll that many times for attacker and defender
 	calls map update at end
 
-Move Function-
+Move function-
 	checks if a territory is owned or not 
 	if unowned, moves n number of troops from attacking territory to open territory
 	if owned, calls attack function
 	calls map update at end
 
-turn change function-
-	
-	
+
