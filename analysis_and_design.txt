@@ -1,16 +1,24 @@
+We're making a clone of sorts of the popular board game Risk by Hasbro.
+
 <------------Analysis------------>
 
 Inputs:
 Number of players, several GUI buttons to control the game via a mouse, number input for armies to move/attack with.
 
 Output:
-Display the map, territory data, and player data (including cards/stars earned).
+Display the map, territory data, and player data (including cards/stars earned), with prompts as turns rotate.
 
 Contraints:
-3 Players are expected, as this is how the game rule is laid out without a more complex AI structure.
+3 Players are expected, as this is how the game rule is laid out without a more complex AI structure. It will have a maximum of 6 players as per the rules.
 
 Assumptions: 
-Run on a machine with a graphical front for which SDL will build for (OSX, Windows, GNU/Linux with X11).
+Run on a machine with a graphical front for which SDL will build for (OSX, Windows, GNU/Linux with X11). At least 3 players will exist.
+
+Modifications:
+Player state and map modifications will be called via methods, as are army size.
+
+Relationships/Effects:
+Methods define rules for actions in the game, such as a minimum of one die used per each attack/defense session in the Attack function. The modification methods will contain limitations to prevent the system declared objects' data feilds from going out of range.
 
 <------------Design-------------->
 
@@ -41,7 +49,8 @@ Player object-
 	int total numbers of stars in possesion
 
 Algorithms:
-Rolling dice function- generates a random number 1-6, will be called many times
+Rolling dice function-
+	generates a random number 1-6, will be called many times
 
 Map update function-
 	will perform changes to territory ownerships, troop numbers, etc on the map
@@ -57,4 +66,31 @@ Move function-
 	if owned, calls attack function
 	calls map update at end
 
+<----------Execution-Plan------->
 
+Coding will be divided by interest and distributed over GitHub.
+
+GUI team- Kevin and Chris
+
+World class and Player class team- Doug and Rosemond
+
+Move, Attack, Dice Roll, Card Management Team- Garrett and James
+
+
+Deadlines:
+
+March 31 - GUI and visual map set up
+
+April 7 - World class and player class completed
+
+April 14 - Remaining funtions such as attackong, moving, etc. completed
+
+April 14-17 - Debugging
+
+
+Makefile:
+
+The makefile will build each .cpp file with headers, linking against the headers in the SDL directories and against their libraries.
+Most of the commands will follow this structure: 
+	gcc -o main main.cpp -lSDL2main -lSDL2 -L lib/SDL2/include/SDL2
+Refer to COP3503.cbp for more in-depth directions for the make-file, as it will be generated using Code::Blocks.
