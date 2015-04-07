@@ -53,7 +53,7 @@ bool init()
 		}
 
 		// Create window
-		mainWindow = SDL_CreateWindow("Risk: The Game of Global Domination", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		mainWindow = SDL_CreateWindow("The Conquest of the World", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 
 		if(mainWindow == NULL) // if main window cannot be created for some reason, return an error
 		{
