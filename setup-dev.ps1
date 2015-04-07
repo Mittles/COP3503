@@ -5,5 +5,5 @@ $zip_file = $shell_app.namespace((Get-Location).Path + "\$filename")
 $destination = $shell_app.namespace((Get-Location).Path)
 $destination.Copyhere($zip_file.items())
 ##unrelated
-$client = new-object System.Net.WebClient
-$client.DownloadFile("http://iweb.dl.sourceforge.net/project/codeblocks/Binaries/13.12/Windows/codeblocks-13.12mingw-setup-TDM-GCC-481.exe","codeblocks.exe")
+##$client = new-object System.Net.WebClient
+##$client.DownloadFile("http://iweb.dl.sourceforge.net/project/codeblocks/##Binaries/13.12/Windows/codeblocks-13.12mingw-setup-TDM-##GCC-481.exe","codeblocks.exe")
