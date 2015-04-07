@@ -8,6 +8,7 @@
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/COP3503" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../COP3503" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -31,12 +32,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add directory="lib/SDL2/include/SDL2" />
+			<Add directory="migw_libs/include/SDL2" />
 		</Compiler>
 		<Linker>
-			<Add option="-lmingw32 -lSDL2main -lSDL2" />
+			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_image" />
 			<Add directory="lib/SDL2/lib" />
+			<Add directory="migw_libs/lib" />
 		</Linker>
-		<Unit filename="src/01_hello_SDL.cpp" />
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
