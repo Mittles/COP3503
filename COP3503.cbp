@@ -39,8 +39,7 @@
 			<Add directory="lib/SDL2/lib" />
 			<Add directory="migw_libs/lib" />
 		</Linker>
-		<Unit filename="Territory.cpp" />
-		<Unit filename="Territory.h" />
+		<Unit filename="src/Territory.cpp" />
 		<Unit filename="src/World.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
