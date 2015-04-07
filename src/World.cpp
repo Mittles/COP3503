@@ -1,11 +1,11 @@
-//#include "World.h"
+/*#include "World.h"
 
-//World::World()
-//{
+World::World()
+{
     //ctor
-//}
+}
 
-//World::~World()
-//{
+World::~World()
+{
     //dtor
-//}
+}*/

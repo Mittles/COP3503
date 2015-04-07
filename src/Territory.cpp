@@ -1,11 +1,11 @@
-//#include "Territory.h"
+/*#include "Territory.h"
 
-//Territory::Territory()
-//{
+Territory::Territory()
+{
     //ctor
-//}
+}
 
-//Territory::~Territory()
-//{
+Territory::~Territory()
+{
     //dtor
-//}
+}*/
