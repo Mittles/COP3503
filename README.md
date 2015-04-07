@@ -18,6 +18,7 @@ Wait I'm the only one. If you're not in our group, you can either build SDL like
 OSX Devs:
 Install a Code::Blocks build from http://sourceforge.net/projects/codeblocks/files/Binaries/13.12/MacOS/CodeBlocks-13.12-mac.zip/download The setup-dev-linux.sh script should work for you for the rest of it - I'll finish sorting this out by the end of the week. Don't forget to set it up to use GCC 4.8.
 
+Map credit to the Wikimedia Foundation.
 
 Risk is the property of Parker Brothers, a division of Hasbro.
 This project is in no way associated with Hasbro.
