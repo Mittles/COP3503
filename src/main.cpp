@@ -211,7 +211,7 @@ int main(int argc, char* args[])
 				topViewport.x = 0;
 				topViewport.y = 0;
 				topViewport.w = SCREEN_WIDTH;
-				topViewport.h = SCREEN_HEIGHT / 3;
+				topViewport.h = 120; //SCREEN_HEIGHT / 3;
 				SDL_RenderSetViewport(windowRenderer, &topViewport);
 
 				// Render texture to screen
@@ -219,21 +219,21 @@ int main(int argc, char* args[])
 
 				// right side viewport
 				SDL_Rect rightSideViewport;
-				rightSideViewport.x = SCREEN_WIDTH / 1.5;
-				rightSideViewport.y = SCREEN_HEIGHT / 3;
-				rightSideViewport.w = SCREEN_WIDTH / 3;
-				rightSideViewport.h = SCREEN_HEIGHT / 1.5;
+				rightSideViewport.x = 1175; //SCREEN_WIDTH / 1.5;
+				rightSideViewport.y = 120;  //SCREEN_HEIGHT / 3;
+				rightSideViewport.w = 105;  //SCREEN_WIDTH / 3;
+				rightSideViewport.h = 600;  //SCREEN_HEIGHT / 1.5;
 				SDL_RenderSetViewport(windowRenderer, &rightSideViewport);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, sideTexture, NULL, NULL);
 
-				// Map viewport
+				// Map viewport, map is 1175x600
 				SDL_Rect mapViewport;
 				mapViewport.x = 0;
-				mapViewport.y = SCREEN_HEIGHT / 3;
-				mapViewport.w = SCREEN_WIDTH / 1.5;
-				mapViewport.h = SCREEN_HEIGHT - (SCREEN_HEIGHT / 3);
+				mapViewport.y = 120;    //SCREEN_HEIGHT / 3;
+				mapViewport.w = 1175;   //SCREEN_WIDTH / 1.5;
+				mapViewport.h = 600;    //SCREEN_HEIGHT - (SCREEN_HEIGHT / 3);
 				SDL_RenderSetViewport(windowRenderer, &mapViewport);
 
 				// Render texture to screen
