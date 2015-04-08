@@ -14,6 +14,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -39,6 +40,8 @@
 			<Add directory="lib/SDL2/lib" />
 			<Add directory="migw_libs/lib" />
 		</Linker>
+		<Unit filename="include/Territory.h" />
+		<Unit filename="include/World.h" />
 		<Unit filename="src/Territory.cpp" />
 		<Unit filename="src/World.cpp" />
 		<Unit filename="src/main.cpp" />
