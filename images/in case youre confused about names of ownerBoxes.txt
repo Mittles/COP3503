@@ -1,0 +1,6 @@
+MO - mouse over
+B - blue
+R - red
+G - green
+Y - yellow
+N - neutral(white)
