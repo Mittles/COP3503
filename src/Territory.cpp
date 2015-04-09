@@ -9,5 +9,8 @@ Territory::Territory(int num, string name, int borderNum, string borders_array[]
 	}
 }
 
+Territory::Territory() {
+}
+
 Territory::~Territory() {
 }
