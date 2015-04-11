@@ -1,3 +1,4 @@
+MO - mouse over
 B - blue
 R - red
 G - green
