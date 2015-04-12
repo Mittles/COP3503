@@ -5,6 +5,7 @@
 #include <iostream>
 #include "World.h"
 #include "Territory.h"
+#include "Player.h"
 
 // Screen dimension -- stays as constants
 const int SCREEN_WIDTH = 1440;

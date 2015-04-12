@@ -40,8 +40,12 @@
 			<Add directory="lib/SDL2/lib" />
 			<Add directory="migw_libs/lib" />
 		</Linker>
+		<Unit filename="include/Game.h" />
+		<Unit filename="include/Player.h" />
 		<Unit filename="include/Territory.h" />
 		<Unit filename="include/World.h" />
+		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Territory.cpp" />
 		<Unit filename="src/World.cpp" />
 		<Unit filename="src/main.cpp" />
