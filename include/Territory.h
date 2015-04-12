@@ -14,6 +14,7 @@ class Territory
     protected:
     private:
         int num;
+        int owner;
         string name;
         vector<string> borders;
 };
