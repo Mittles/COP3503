@@ -1008,7 +1008,7 @@ int main(int argc, char* args[])
     //Initialize Australia array
     Territory australia_vec[4] = {*western_Australia_4, *new_Guinea_3, *indonesia_2, *eastern_Australia};
 
-    //Asia
+    //ASIA
     string aF_borders[5] = {"Middle East", "India", "China", "Ural", "Ukraine"};
     Territory *afghanistan_1 = new Territory(1, "Afghanistan", 5, aF_borders);
 
@@ -1046,6 +1046,31 @@ int main(int argc, char* args[])
     Territory *yakutsk_12 = new Territory(12, "Yakutsk", 3, yA_borders);
     //Initialize Asia array
     Territory asia[12] = {*afghanistan_1, *china_2, *india_3, *irkutsk_4, *japan_5, *kamchatka_6, *middle_East_7, *mongolia_8, *siam_9, *siberia_10, *ural_11, *yakutsk_12};
+
+    //EUROPE
+    string gB_borders[4] = {"Iceland", "Western Europe", "Northern Europe", "Scandinavia"};
+    Territory* great_Britain_1 = new Territory(1, "Great Britain", 4, gB_borders);
+
+    string iC_borders[3] = {"Greenland", "Great Britain", "Scandinavia"};
+    Territory* iceland_2 = new Territory(2, "Iceland", 3, iC_borders);
+
+    string nE_borders[5] = {"Great Britain", "Western Europe", "Southern Europe", "Ukraine", "Scandinavia"};
+    Territory* northern_Europe_3 = new Territory(3, "Northern Europe", 5, nE_borders);
+
+    string sC_borders[4] = {"Iceland", "Great Britain", "Northern Europe", "Ukraine"};
+    Territory* scandinavia_4 = new Territory(4, "Scandinavia", 4, sC_borders);
+
+    string sE_borders[6] = {"North Africa", "Egypt", "Middle East", "Ukraine", "Northern Europe", "Western Europe"};
+    Territory* southern_Europe_5 = new Territory(5, "Southern Europe", 6, sE_borders);
+
+    string uK_borders[6] = {"Afghanistan", "Middle East", "Ural", "Scandinavia", "Northern Europe", "Southern Europe"};
+    Territory* ukraine_6 = new Territory(6, "Ukraine", 6, uK_borders);
+
+    string wE_borders[4] = {"North Africa", "Southern Europe", "Northern Europe", "Great Britain"};
+    Territory* western_Europe_7 = new Territory(7, "Western Europe", 4, wE_borders);
+    //Initialize Europe Array
+    Territory europe[7] = {*great_Britain_1, *iceland_2, *northern_Europe_3, *scandinavia_4, *southern_Europe_5, *ukraine_6, *western_Australia_4};
+
 	// Free resources and close SDL
 	close();
 
