@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
+#include "World.h"
+#include "Territory.h"
 
 // Screen dimension -- stays as constants
 const int SCREEN_WIDTH = 1440;
@@ -986,6 +988,64 @@ int main(int argc, char* args[])
 		}
 	}
 
+	/*
+        INITIALIZING TERRITORIES
+        Allocated by pointers to make it easier to access subfields of each Territory
+    */
+
+    //AUSTRALIA
+    string wA_borders[3] = {"New Guinea", "Indonesia", "Eastern Australia"};
+    Territory *western_Australia_4 = new Territory(4, "Western Australia", 3, wA_borders);
+
+    string nG_borders[3] = {"Eastern Australia", "Indonesia", "Western Australia"};
+    Territory *new_Guinea_3 = new Territory(3, "New Guinea", 3, nG_borders);
+
+    string i_borders[2] = {"New Guinea", "Siam"};
+    Territory *indonesia_2 = new Territory(2, "Indonesia", 2, i_borders);
+
+    string eA_borders[2] = {"New Guinea", "Western Australia"};
+    Territory *eastern_Australia = new Territory(1, "Eastern Australia", 2, eA_borders);
+    //Initialize Australia array
+    Territory australia_vec[4] = {*western_Australia_4, *new_Guinea_3, *indonesia_2, *eastern_Australia};
+
+    //Asia
+    string aF_borders[5] = {"Middle East", "India", "China", "Ural", "Ukraine"};
+    Territory *afghanistan_1 = new Territory(1, "Afghanistan", 5, aF_borders);
+
+    string cH_borders[6] = {"Siam", "India", "Afghanistan", "Ural", "Siberia", "Mongolia"};
+    Territory *china_2 = new Territory(2, "China", 6, cH_borders);
+
+    string iN_borders[4] = {"Siam", "China", "Afghanistan", "Middle East"};
+    Territory *india_3 = new Territory(3, "India", 4, iN_borders);
+
+    string iR_borders[4] = {"Siberia", "Mongolia", "Kamchatka", "Yakutsk"};
+    Territory *irkutsk_4 = new Territory(4, "Irkutsk", 4, iR_borders);
+
+    string jA_borders[2] = {"Mongolia", "Kamchatka"};
+    Territory *japan_5 = new Territory(5, "Japan", 2, jA_borders);
+
+    string kA_borders[5] = {"Yakutsk", "Irkutsk" ,"Mongolia", "Japan", "Alaska"};
+    Territory *kamchatka_6 = new Territory(6, "Kamchatka", 5, kA_borders);
+
+    string mE_borders[6] = {"Southern Europe", "Egypt", "East Africa", "India", "Afghanistan", "Ukraine"};
+    Territory *middle_East_7 = new Territory(7, "Middle East", 6, mE_borders);
+
+    string mO_borders[5] = {"Japan", "Kamchatka", "Irkutsk", "Siberia", "Ural"};
+    Territory *mongolia_8 = new Territory(8, "Mongolia", 5, mO_borders);
+
+    string sI_borders[3] = {"India", "China", "Indonesia"};
+    Territory *siam_9 = new Territory(9, "Siam", 3, sI_borders);
+
+    string sIB_borders[5] = {"Ural", "Yakutsk", "Irkutsk", "Mongolia", "China"};
+    Territory *siberia_10 = new Territory(10, "Siberia", 5, sIB_borders);
+
+    string uR_borders[4] = {"Ukraine", "Afghanistan" , "China", "Siberia"};
+    Territory *ural_11 = new Territory(11, "Ural", 4, uR_borders);
+
+    string yA_borders[3] = {"Siberia", "Irkutsk", "Kamchatka"};
+    Territory *yakutsk_12 = new Territory(12, "Yakutsk", 3, yA_borders);
+    //Initialize Asia array
+    Territory asia[12] = {*afghanistan_1, *china_2, *india_3, *irkutsk_4, *japan_5, *kamchatka_6, *middle_East_7, *mongolia_8, *siam_9, *siberia_10, *ural_11, *yakutsk_12};
 	// Free resources and close SDL
 	close();
 
