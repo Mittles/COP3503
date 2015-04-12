@@ -10,7 +10,6 @@ class Territory
 {
     public:
         Territory(int num, string name, int borderNum, string borders[]);
-        Territory();
         virtual ~Territory();
     protected:
     private:
