@@ -437,9 +437,13 @@ int main(int argc, char* args[])
 			// Event handler
 			SDL_Event e;
 
+            int x, y; // mouse pointer position x and y
+
 			// While application is running
 			while(!quit)
 			{
+			    SDL_GetMouseState(&x, &y); // get position of mouse at each frame the program is running
+
 				// Handle events on queue
 				while(SDL_PollEvent(&e) != 0)
 				{
@@ -498,8 +502,15 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
 
-				// Render texture to screen
-				SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
+				if((x >= 83 && x <= 83 + 22) && (y >= 353 && y <= 353 + 16)) // if mouse is inside NaBox1, increase the size of NaBox1 to indicate selection
+                {
+                        NaBox1ViewPort.w = 33;
+                        NaBox1ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
+                }
 
                 // NaBox2
 				SDL_Rect NaBox2ViewPort;
@@ -512,6 +523,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
 
+                if((x >= 150 && x <= 150 + 22) && (y >= 400 && y <= 400 + 16))
+                {
+                        NaBox2ViewPort.w = 33;
+                        NaBox2ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
+                }
+
                 // NaBox3
 				SDL_Rect NaBox3ViewPort;
 				NaBox3ViewPort.x = 130;
@@ -522,6 +543,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox3, NULL, NULL);
+
+                if((x >= 130 && x <= 130 + 22) && (y >= 555 && y <= 555 + 16))
+                {
+                        NaBox3ViewPort.w = 33;
+                        NaBox3ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox3ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox3, NULL, NULL);
+                }
 
                 // NaBox4
 				SDL_Rect NaBox4ViewPort;
@@ -534,6 +565,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox4, NULL, NULL);
 
+                if((x >= 190 && x <= 190 + 22) && (y >= 490 && y <= 490 + 16))
+                {
+                        NaBox4ViewPort.w = 33;
+                        NaBox4ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox4ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox4, NULL, NULL);
+                }
+
                 // NaBox5
 				SDL_Rect NaBox5ViewPort;
 				NaBox5ViewPort.x = 420;
@@ -544,6 +585,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox5, NULL, NULL);
+
+                if((x >= 420 && x <= 420 + 22) && (y >= 340 && y <= 340 + 16))
+                {
+                        NaBox5ViewPort.w = 33;
+                        NaBox5ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox5ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox5, NULL, NULL);
+                }
 
                 // NaBox6
 				SDL_Rect NaBox6ViewPort;
@@ -556,6 +607,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox6, NULL, NULL);
 
+                if((x >= 163 && x <= 163 + 22) && (y >= 368 && y <= 368 + 16))
+                {
+                        NaBox6ViewPort.w = 33;
+                        NaBox6ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox6ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox6, NULL, NULL);
+                }
+
                 // NaBox7
 				SDL_Rect NaBox7ViewPort;
 				NaBox7ViewPort.x = 230;
@@ -566,6 +627,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox7, NULL, NULL);
+
+                if((x >= 230 && x <= 230 + 22) && (y >= 405 && y <= 405 + 16))
+                {
+                        NaBox7ViewPort.w = 33;
+                        NaBox7ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox7ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox7, NULL, NULL);
+                }
 
                 // NaBox8
 				SDL_Rect NaBox8ViewPort;
@@ -578,6 +649,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox8, NULL, NULL);
 
+                if((x >= 310 && x <= 310 + 22) && (y >= 405 && y <= 405 + 16))
+                {
+                        NaBox8ViewPort.w = 33;
+                        NaBox8ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox8ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox8, NULL, NULL);
+                }
+
                 // NaBox9
 				SDL_Rect NaBox9ViewPort;
 				NaBox9ViewPort.x = 130;
@@ -588,6 +669,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox9, NULL, NULL);
+
+                if((x >= 130 && x <= 130 + 22) && (y >= 455 && y <= 455 + 16))
+                {
+                        NaBox9ViewPort.w = 33;
+                        NaBox9ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox9ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox9, NULL, NULL);
+                }
 
                 // SaBox1
 				SDL_Rect SaBox1ViewPort;
@@ -600,6 +691,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox1, NULL, NULL);
 
+                if((x >= 295 && x <= 295 + 22) && (y >= 790 && y <= 790 + 16))
+                {
+                        SaBox1ViewPort.w = 33;
+                        SaBox1ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &SaBox1ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, SaBox1, NULL, NULL);
+                }
+
                 // SaBox2
 				SDL_Rect SaBox2ViewPort;
 				SaBox2ViewPort.x = 345;
@@ -610,6 +711,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox2, NULL, NULL);
+
+                if((x >= 345 && x <= 345 + 22) && (y >= 695 && y <= 695 + 16))
+                {
+                        SaBox2ViewPort.w = 33;
+                        SaBox2ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &SaBox2ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, SaBox2, NULL, NULL);
+                }
 
                 // SaBox3
 				SDL_Rect SaBox3ViewPort;
@@ -622,6 +733,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox3, NULL, NULL);
 
+                if((x >= 285 && x <= 285 + 22) && (y >= 725 && y <= 725 + 16))
+                {
+                        SaBox3ViewPort.w = 33;
+                        SaBox3ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &SaBox3ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, SaBox3, NULL, NULL);
+                }
+
                 // SaBox4
 				SDL_Rect SaBox4ViewPort;
 				SaBox4ViewPort.x = 275;
@@ -632,6 +753,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox4, NULL, NULL);
+
+                if((x >= 275 && x <= 275 + 22) && (y >= 615 && y <= 615 + 16))
+                {
+                        SaBox4ViewPort.w = 33;
+                        SaBox4ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &SaBox4ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, SaBox4, NULL, NULL);
+                }
 
                 // EuBox1
 				SDL_Rect EuBox1ViewPort;
@@ -644,6 +775,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox1, NULL, NULL);
 
+                if((x >= 500 && x <= 500 + 22) && (y >= 420 && y <= 420 + 16))
+                {
+                        EuBox1ViewPort.w = 33;
+                        EuBox1ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &EuBox1ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, EuBox1, NULL, NULL);
+                }
+
                 // EuBox2
 				SDL_Rect EuBox2ViewPort;
                 EuBox2ViewPort.x = 480;
@@ -654,6 +795,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox2, NULL, NULL);
+
+                if((x >= 480 && x <= 480 + 22) && (y >= 385 && y <= 385 + 16))
+                {
+                        EuBox2ViewPort.w = 33;
+                        EuBox2ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &EuBox2ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, EuBox2, NULL, NULL);
+                }
 
                 // EuBox3
 				SDL_Rect EuBox3ViewPort;
@@ -666,6 +817,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox3, NULL, NULL);
 
+                if((x >= 610 && x <= 610 + 22) && (y >= 415 && y <= 415 + 16))
+                {
+                        EuBox3ViewPort.w = 33;
+                        EuBox3ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &EuBox3ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, EuBox3, NULL, NULL);
+                }
+
                 // EuBox4
 				SDL_Rect EuBox4ViewPort;
 				EuBox4ViewPort.x = 595;
@@ -676,6 +837,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox4, NULL, NULL);
+
+                if((x >= 595 && x <= 595 + 22) && (y >= 385 && y <= 385 + 16))
+                {
+                        EuBox4ViewPort.w = 33;
+                        EuBox4ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &EuBox4ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, EuBox4, NULL, NULL);
+                }
 
                 // EuBox5
 				SDL_Rect EuBox5ViewPort;
@@ -688,6 +859,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox5, NULL, NULL);
 
+                if((x >= 640 && x <= 640 + 22) && (y >= 450 && y <= 450 + 16))
+                {
+                        EuBox5ViewPort.w = 33;
+                        EuBox5ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &EuBox5ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, EuBox5, NULL, NULL);
+                }
+
                 // EuBox6
 				SDL_Rect EuBox6ViewPort;
 				EuBox6ViewPort.x = 690;
@@ -698,6 +879,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox6, NULL, NULL);
+
+                if((x >= 690 && x <= 690 + 22) && (y >= 400 && y <= 400 + 16))
+                {
+                        EuBox6ViewPort.w = 33;
+                        EuBox6ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &EuBox6ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, EuBox6, NULL, NULL);
+                }
 
 				// EuBox7
 				SDL_Rect EuBox7ViewPort;
@@ -710,6 +901,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox7, NULL, NULL);
 
+                if((x >= 525 && x <= 525 + 22) && (y >= 465 && y <= 465 + 16))
+                {
+                        EuBox7ViewPort.w = 33;
+                        EuBox7ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &EuBox7ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, EuBox7, NULL, NULL);
+                }
+
 				// AfBox1
 				SDL_Rect AfBox1ViewPort;
 				AfBox1ViewPort.x = 645;
@@ -720,6 +921,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox1, NULL, NULL);
+
+                if((x >= 645 && x <= 645 + 22) && (y >= 645 && y <= 645 + 16))
+                {
+                        AfBox1ViewPort.w = 33;
+                        AfBox1ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AfBox1ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AfBox1, NULL, NULL);
+                }
 
 				// AfBox2
 				SDL_Rect AfBox2ViewPort;
@@ -732,6 +943,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox2, NULL, NULL);
 
+                if((x >= 675 && x <= 675 + 22) && (y >= 610 && y <= 610 + 16))
+                {
+                        AfBox2ViewPort.w = 33;
+                        AfBox2ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AfBox2ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AfBox2, NULL, NULL);
+                }
+
 				// AfBox3
 				SDL_Rect AfBox3ViewPort;
 				AfBox3ViewPort.x = 650;
@@ -742,6 +963,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox3, NULL, NULL);
+
+                if((x >= 650 && x <= 650 + 22) && (y >= 525 && y <= 525 + 16))
+                {
+                        AfBox3ViewPort.w = 33;
+                        AfBox3ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AfBox3ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AfBox3, NULL, NULL);
+                }
 
 				// AfBox4
 				SDL_Rect AfBox4ViewPort;
@@ -754,6 +985,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox4, NULL, NULL);
 
+                if((x >= 730 && x <= 730 + 22) && (y >= 755 && y <= 755 + 16))
+                {
+                        AfBox4ViewPort.w = 33;
+                        AfBox4ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AfBox4ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AfBox4, NULL, NULL);
+                }
+
 				// AfBox5
 				SDL_Rect AfBox5ViewPort;
 				AfBox5ViewPort.x = 555;
@@ -764,6 +1005,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox5, NULL, NULL);
+
+                if((x >= 555 && x <= 555 + 22) && (y >= 565 && y <= 565 + 16))
+                {
+                        AfBox5ViewPort.w = 33;
+                        AfBox5ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AfBox5ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AfBox5, NULL, NULL);
+                }
 
                 // AfBox6
 				SDL_Rect AfBox6ViewPort;
@@ -776,6 +1027,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox6, NULL, NULL);
 
+                if((x >= 650 && x <= 650 + 22) && (y >= 735 && y <= 735 + 16))
+                {
+                        AfBox6ViewPort.w = 33;
+                        AfBox6ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AfBox6ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AfBox6, NULL, NULL);
+                }
+
                 // AsBox1
 				SDL_Rect AsBox1ViewPort;
 				AsBox1ViewPort.x = 800;
@@ -786,6 +1047,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox1, NULL, NULL);
+
+                if((x >= 800 && x <= 800 + 22) && (y >= 443 && y <= 443 + 16))
+                {
+                        AsBox1ViewPort.w = 33;
+                        AsBox1ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox1ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox1, NULL, NULL);
+                }
 
 				// AsBox2
 				SDL_Rect AsBox2ViewPort;
@@ -798,6 +1069,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox2, NULL, NULL);
 
+                if((x >= 955 && x <= 955 + 22) && (y >= 495 && y <= 495 + 16))
+                {
+                        AsBox2ViewPort.w = 33;
+                        AsBox2ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox2ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox2, NULL, NULL);
+                }
+
 				// AsBox3
 				SDL_Rect AsBox3ViewPort;
 				AsBox3ViewPort.x = 875;
@@ -808,6 +1089,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox3, NULL, NULL);
+
+                if((x >= 875 && x <= 875 + 22) && (y >= 540 && y <= 540 + 16))
+                {
+                        AsBox3ViewPort.w = 33;
+                        AsBox3ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox3ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox3, NULL, NULL);
+                }
 
 				// AsBox4
 				SDL_Rect AsBox4ViewPort;
@@ -820,6 +1111,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox4, NULL, NULL);
 
+                if((x >= 915 && x <= 915 + 22) && (y >= 400 && y <= 400 + 16))
+                {
+                        AsBox4ViewPort.w = 33;
+                        AsBox4ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox4ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox4, NULL, NULL);
+                }
+
 				// AsBox5
 				SDL_Rect AsBox5ViewPort;
 				AsBox5ViewPort.x = 1090;
@@ -830,6 +1131,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox5, NULL, NULL);
+
+                if((x >= 1090 && x <= 1090 + 22) && (y >= 500 && y <= 500 + 16))
+                {
+                        AsBox5ViewPort.w = 33;
+                        AsBox5ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox5ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox5, NULL, NULL);
+                }
 
 				// AsBox6
 				SDL_Rect AsBox6ViewPort;
@@ -842,6 +1153,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox6, NULL, NULL);
 
+                if((x >= 1075 && x <= 1075 + 22) && (y >= 360 && y <= 360 + 16))
+                {
+                        AsBox6ViewPort.w = 33;
+                        AsBox6ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox6ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox6, NULL, NULL);
+                }
+
 				// AsBox7
 				SDL_Rect AsBox7ViewPort;
 				AsBox7ViewPort.x = 725;
@@ -852,6 +1173,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox7, NULL, NULL);
+
+                if((x >= 725 && x <= 725 + 22) && (y >= 495 && y <= 495 + 16))
+                {
+                        AsBox7ViewPort.w = 33;
+                        AsBox7ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox7ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox7, NULL, NULL);
+                }
 
 				// AsBox8
 				SDL_Rect AsBox8ViewPort;
@@ -864,6 +1195,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox8, NULL, NULL);
 
+                if((x >= 965 && x <= 965 + 22) && (y >= 440 && y <= 440 + 16))
+                {
+                        AsBox8ViewPort.w = 33;
+                        AsBox8ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox8ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox8, NULL, NULL);
+                }
+
 				// AsBox9
 				SDL_Rect AsBox9ViewPort;
 				AsBox9ViewPort.x = 940;
@@ -874,6 +1215,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox9, NULL, NULL);
+
+                if((x >= 940 && x <= 940 + 22) && (y >= 560 && y <= 560 + 16))
+                {
+                        AsBox9ViewPort.w = 33;
+                        AsBox9ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox9ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox9, NULL, NULL);
+                }
 
 				// AsBox10
 				SDL_Rect AsBox10ViewPort;
@@ -886,6 +1237,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox10, NULL, NULL);
 
+                if((x >= 870 && x <= 870 + 22) && (y >= 360 && y <= 360 + 16))
+                {
+                        AsBox10ViewPort.w = 33;
+                        AsBox10ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox10ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox10, NULL, NULL);
+                }
+
 				// AsBox11
 				SDL_Rect AsBox11ViewPort;
 				AsBox11ViewPort.x = 800;
@@ -896,6 +1257,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox11, NULL, NULL);
+
+                if((x >= 800 && x <= 800 + 22) && (y >= 380 && y <= 380 + 16))
+                {
+                        AsBox11ViewPort.w = 33;
+                        AsBox11ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox11ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox11, NULL, NULL);
+                }
 
 				// AsBox12
 				SDL_Rect AsBox12ViewPort;
@@ -908,6 +1279,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox12, NULL, NULL);
 
+                if((x >= 970 && x <= 970 + 22) && (y >= 358 && y <= 358 + 16))
+                {
+                        AsBox12ViewPort.w = 33;
+                        AsBox12ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &AsBox12ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, AsBox12, NULL, NULL);
+                }
+
 				// OcBox1
 				SDL_Rect OcBox1ViewPort;
 				OcBox1ViewPort.x = 1125;
@@ -918,6 +1299,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox1, NULL, NULL);
+
+                if((x >= 1125 && x <= 1125 + 22) && (y >= 780 && y <= 780 + 16))
+                {
+                        OcBox1ViewPort.w = 33;
+                        OcBox1ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &OcBox1ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, OcBox1, NULL, NULL);
+                }
 
 				// OcBox2
 				SDL_Rect OcBox2ViewPort;
@@ -930,6 +1321,16 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox2, NULL, NULL);
 
+                if((x >= 1005 && x <= 1005 + 22) && (y >= 665 && y <= 665 + 16))
+                {
+                        OcBox2ViewPort.w = 33;
+                        OcBox2ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &OcBox2ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, OcBox2, NULL, NULL);
+                }
+
                 // OcBox3
 				SDL_Rect OcBox3ViewPort;
 				OcBox3ViewPort.x = 1145;
@@ -940,6 +1341,16 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox3, NULL, NULL);
+
+                if((x >= 1145 && x <= 1145 + 22) && (y >= 675 && y <= 675 + 16))
+                {
+                        OcBox3ViewPort.w = 33;
+                        OcBox3ViewPort.h = 24;
+
+                        SDL_RenderSetViewport(windowRenderer, &OcBox3ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, OcBox3, NULL, NULL);
+                }
 
 				// OcBox4
 				SDL_Rect OcBox4ViewPort;
@@ -952,37 +1363,28 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox4, NULL, NULL);
 
+                if((x >= 1045 && x <= 1045 + 22) && (y >= 775 && y <= 775 + 16))
+                {
+                        OcBox4ViewPort.w = 33;
+                        OcBox4ViewPort.h = 24;
 
-                // testing changing box color/viewport size
+                        SDL_RenderSetViewport(windowRenderer, &OcBox4ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, OcBox4, NULL, NULL);
+                }
 /*
+                // testing changing box color
+
 				int num = 3;
 
-				if(num == 4) // just changes a box color
+                if(num == 3) // changes box colors
                 {
-                        NaBox1 = loadTexture("images/ownerBoxR.bmp");
+                        AfBox1 = loadTexture("images/ownerBoxG.bmp");
+
+                        SaBox4 = loadTexture("images/ownerBoxY.bmp");
+
                 }
-
-                if(num == 3) // changes box colors and viewport size
-                {
-                        NaBox1 = loadTexture("images/ownerBoxG.bmp");
-
-                        NaBox1ViewPort.w = 33;
-                        NaBox1ViewPort.h = 24;
-
-                        SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
-
-                        SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
-
-                        NaBox5 = loadTexture("images/ownerBoxY.bmp");
-
-                        NaBox5ViewPort.w = 33;
-                        NaBox5ViewPort.h = 24;
-
-                        SDL_RenderSetViewport(windowRenderer, &NaBox5ViewPort);
-
-                        SDL_RenderCopy(windowRenderer, NaBox5, NULL, NULL);
-                }*/
-
+*/
 				// Update screen
 				SDL_RenderPresent(windowRenderer);
 			}
@@ -1137,8 +1539,6 @@ int main(int argc, char* args[])
     Territory* alaska_1 = new Territory(1, "Alaska", 3, alaska_borders);
     //Initialize North America Array
     Territory north_america[9] = {*western_united_states_9, *quebec_8, *ontario_7, *northwest_territory_6, *greenland_5, *eastern_united_states_4, *central_america_3, *alberta_2, *alaska_1};
-
-
 
 	// Free resources and close SDL
 	close();
