@@ -11,6 +11,7 @@ class Territory
     public:
         Territory(int num, string name, int borderNum, string borders[]);
         virtual ~Territory();
+        int troops;
     protected:
     private:
         int num;
