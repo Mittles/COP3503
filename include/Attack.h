@@ -1,6 +1,12 @@
 #ifndef ATTACK_H
 #define ATTACK_H
-
+#include <string>
+#include <vector>
+#include <algorithm>
+#include "Territory.h"
+#include "World.h"
+#include "Game.h"
+#include "DiceRoll.h"
 
 class Attack
 {
@@ -18,12 +24,12 @@ class Attack
             that the attacker has the proper number of troops to attack
         returns true if the attack is a valid attack to perform
         */
-        bool validAttack(Territory origin, Territory destination, int aTroops, int dTroops);
+        bool validAttack(Territory* origin, Territory* destination, int aTroops, int dTroops);
 
         /*performs the attacking by calling the diceRoll function in DiceRoll class and
         resolves the winner of each battle
         */
-        void attack(Territory origin, Territory destination, int aTroops, int dTroops);
+        void attack(Territory* origin, Territory* destination, int aTroops, int dTroops);
 
         virtual ~Attack();
     protected:
