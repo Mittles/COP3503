@@ -11,10 +11,8 @@ make $JOPTS && make install-lib && make install-hdrs && make install-bin
 
 cd ../../
 
-echo HEY THERE (pwd)
-
-tar -xzf ./SDL2_image.tar.gz
-tar -xzf ./SDL2_ttf.tar.gz
+##tar -xzf ./SDL2_image.tar.gz
+##tar -xzf ./SDL2_ttf.tar.gz
 
 cd ./SDL2_image
 ./configure --prefix=$BDIR/SDL2
