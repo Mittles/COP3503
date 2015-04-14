@@ -1,7 +1,7 @@
 #ifndef MOVETROOPS_H
 #define MOVETROOPS_H
 
-#include "Territoty.h"
+#include "Territory.h"
 #include "World.h"
 class MoveTroops
 {
@@ -13,10 +13,11 @@ class MoveTroops
         territory owned by that player, and if the number of troops being moved leaves the origin territory with
         at least one troop left over.
         */
-        bool validMove();
+        bool validMove(Territory origin, Territory destination, int troopNum);
 
         //performs the troop movement only if the validMove function returns true`
-        void moveTroops();
+        void moveTroops(Territory origin, Territory destination, int troopNum);
+
         virtual ~MoveTroops();
     protected:
     private:
