@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 #include "Territory.h"
+#include "Deck.h"
+#include "Card.h"
 
 using namespace std;
 class Player
@@ -19,7 +21,7 @@ class Player
         string name;
         int ID;
         vector<Territory*> controlled_territories;
-        //vector<Card> hand;
+        vector<Card> hand;
 };
 
 #endif // PLAYER_H
