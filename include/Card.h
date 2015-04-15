@@ -10,19 +10,16 @@ class Card
     public:
         //constructor automatically sets cardOwner and cardValue both to 0 to be changed later in the Deck class
         Card();
-        void setOwner(int o);
-        int getOwner();
-        void setValue(int v);
-        int getValue();
-        ~Card();
 
-    protected:
-    private:
         //indicates which player owns the card
         int cardOwner;
 
         //indicates how many stars and therefore troops the card is worth
         int cardValue;
+        ~Card();
+
+    protected:
+    private:
 };
 
 #endif // CARD_H
