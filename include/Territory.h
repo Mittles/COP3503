@@ -13,6 +13,7 @@ class Territory
         virtual ~Territory();
         int getTroops();
         int getNum();
+        void setOwner(int o);
         int getOwner();
         string getName();
         vector<string> getBorders();

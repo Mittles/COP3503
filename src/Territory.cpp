@@ -27,5 +27,9 @@ vector<string> Territory::getBorders() {
     return this->borders;
 }
 
+void Territory::setOwner(int o) {
+    this->owner = o;
+}
+
 Territory::~Territory() {
 }
