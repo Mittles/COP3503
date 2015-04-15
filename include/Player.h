@@ -13,6 +13,7 @@ class Player
         virtual ~Player();
         string getName();
         int getID();
+        bool equals(Player p);
         vector<Territory*> getControlledTerritories();
     private:
         string name;

@@ -14,6 +14,14 @@ int Player::getID() {
     return this->ID;
 }
 
+bool Player::equals(Player p) {
+    if (this->ID == p.getID()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 vector<Territory*> Player::getControlledTerritories() {
     return this->controlled_territories;
 }
