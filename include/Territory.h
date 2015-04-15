@@ -11,10 +11,6 @@ class Territory
     public:
         Territory(int num, string name, int borderNum, string borders[]);
         virtual ~Territory();
-        int getNum();
-        int getOwner();
-        string getName();
-        vector<string> getBorders();
         int troops;
     protected:
     private:
