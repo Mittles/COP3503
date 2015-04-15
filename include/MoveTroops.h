@@ -3,6 +3,9 @@
 
 #include "Territory.h"
 #include "World.h"
+#include <string>
+#include <vector>
+#include "Game.h"
 class MoveTroops
 {
     public:
