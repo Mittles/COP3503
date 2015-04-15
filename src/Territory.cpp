@@ -11,5 +11,22 @@ Territory::Territory(int num, string name, int borderNum, string borders_array[]
 	}
 }
 
+int Territory::getNum() {
+    return this->num;
+}
+
+int Territory::getOwner() {
+    return this->owner;
+}
+
+string Territory::getName() {
+    return this->name;
+}
+
+vector<string> Territory::getBorders() {
+    return this->borders;
+}
+
 Territory::~Territory() {
 }
+

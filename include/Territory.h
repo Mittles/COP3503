@@ -11,14 +11,17 @@ class Territory
     public:
         Territory(int num, string name, int borderNum, string borders[]);
         virtual ~Territory();
+        int getNum();
+        int getOwner();
+        string getName();
+        vector<string> getBorders();
         int troops;
-        vector<string> borders;
-        string name;
-        int owner;
     protected:
     private:
         int num;
-
+        int owner;
+        string name;
+        vector<string> borders;
 };
 
 #endif // TERRITORY_H
