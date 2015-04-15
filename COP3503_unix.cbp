@@ -38,11 +38,21 @@
 			<Add option="-lSDL2main -lSDL2 -lSDL2_image" />
 			<Add directory="lib/SDL2/lib" />
 		</Linker>
+		<Unit filename="include/Attack.h" />
+		<Unit filename="include/Card.h" />
+		<Unit filename="include/Deck.h" />
+		<Unit filename="include/DiceRoll.h" />
 		<Unit filename="include/Game.h" />
+		<Unit filename="include/MoveTroops.h" />
 		<Unit filename="include/Player.h" />
 		<Unit filename="include/Territory.h" />
 		<Unit filename="include/World.h" />
+		<Unit filename="src/Attack.cpp" />
+		<Unit filename="src/Card.cpp" />
+		<Unit filename="src/Deck.cpp" />
+		<Unit filename="src/DiceRoll.cpp" />
 		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/MoveTroops.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/Territory.cpp" />
 		<Unit filename="src/World.cpp" />
