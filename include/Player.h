@@ -11,10 +11,12 @@ class Player
     public:
         Player(string name, int ID);
         virtual ~Player();
+        string getName();
+        int getID();
+        vector<Territory*> getControlledTerritories();
     private:
         string name;
         int ID;
-        int score;
         vector<Territory*> controlled_territories;
         //vector<Card> hand;
 };
