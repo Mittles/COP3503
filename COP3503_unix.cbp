@@ -35,7 +35,7 @@
 			<Add directory="lib/SDL2/include/SDL2" />
 		</Compiler>
 		<Linker>
-			<Add option="-lSDL2main -lSDL2 -lSDL2_image" />
+			<Add option="-lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf" />
 			<Add directory="lib/SDL2/lib" />
 		</Linker>
 		<Unit filename="include/Attack.h" />

@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include <stdio.h>
 #include <string>
 #include <iostream>
@@ -93,6 +94,47 @@ SDL_Texture* OcBox1 = NULL;
 SDL_Texture* OcBox2 = NULL;
 SDL_Texture* OcBox3 = NULL;
 SDL_Texture* OcBox4 = NULL;
+
+// Here we begin the menu boxes
+
+// PLAYER 1 BOXES
+SDL_Texture* P1_Name = NULL;
+SDL_Texture* P1_TerritoryCount = NULL;
+SDL_Texture* P1_UnitsPerTurn = NULL;
+SDL_Texture* P1_StarCount = NULL;
+SDL_Texture* P1_ActiveIndicator = NULL;
+SDL_Texture* P1_InstructBox = NULL;
+
+// PLAYER 2 BOXES
+SDL_Texture* P2_Name = NULL;
+SDL_Texture* P2_TerritoryCount = NULL;
+SDL_Texture* P2_UnitsPerTurn = NULL;
+SDL_Texture* P2_StarCount = NULL;
+SDL_Texture* P2_ActiveIndicator = NULL;
+SDL_Texture* P2_InstructBox = NULL;
+
+// PLAYER 3 BOXES
+SDL_Texture* P3_Name = NULL;
+SDL_Texture* P3_TerritoryCount = NULL;
+SDL_Texture* P3_UnitsPerTurn = NULL;
+SDL_Texture* P3_StarCount = NULL;
+SDL_Texture* P3_ActiveIndicator = NULL;
+SDL_Texture* P3_InstructBox = NULL;
+
+// PLAYER 4 BOXES
+SDL_Texture* P4_Name = NULL;
+SDL_Texture* P4_TerritoryCount = NULL;
+SDL_Texture* P4_UnitsPerTurn = NULL;
+SDL_Texture* P4_StarCount = NULL;
+SDL_Texture* P4_ActiveIndicator = NULL;
+SDL_Texture* P4_InstructBox = NULL;
+
+// DICE BOXES
+SDL_Texture* A_Die1 = NULL;
+SDL_Texture* A_Die2 = NULL;
+SDL_Texture* A_Die3 = NULL;
+SDL_Texture* D_Die1 = NULL;
+SDL_Texture* D_Die2 = NULL;
 
 bool init()
 {
@@ -371,6 +413,93 @@ void close()
 
 	SDL_DestroyTexture(OcBox4);
 	OcBox4 = NULL;
+
+    SDL_DestroyTexture(P1_Name);
+    P1_Name = NULL;
+
+    SDL_DestroyTexture(P1_TerritoryCount);
+    P1_TerritoryCount = NULL;
+
+    SDL_DestroyTexture(P1_UnitsPerTurn);
+    P1_UnitsPerTurn = NULL;
+
+    SDL_DestroyTexture(P1_StarCount);
+    P1_StarCount = NULL;
+
+    SDL_DestroyTexture(P1_ActiveIndicator);
+    P1_ActiveIndicator = NULL;
+
+    SDL_DestroyTexture(P1_InstructBox);
+    P1_InstructBox = NULL;
+
+    SDL_DestroyTexture(P2_Name);
+    P2_Name = NULL;
+
+    SDL_DestroyTexture(P2_TerritoryCount);
+    P2_TerritoryCount = NULL;
+
+    SDL_DestroyTexture(P2_UnitsPerTurn);
+    P2_UnitsPerTurn = NULL;
+
+    SDL_DestroyTexture(P2_StarCount);
+    P2_StarCount = NULL;
+
+    SDL_DestroyTexture(P2_ActiveIndicator);
+    P2_ActiveIndicator = NULL;
+
+    SDL_DestroyTexture(P2_InstructBox);
+    P2_InstructBox = NULL;
+
+    SDL_DestroyTexture(P3_Name);
+    P3_Name = NULL;
+
+    SDL_DestroyTexture(P3_TerritoryCount);
+    P3_TerritoryCount = NULL;
+
+    SDL_DestroyTexture(P3_UnitsPerTurn);
+    P3_UnitsPerTurn = NULL;
+
+    SDL_DestroyTexture(P3_StarCount);
+    P3_StarCount = NULL;
+
+    SDL_DestroyTexture(P3_ActiveIndicator);
+    P3_ActiveIndicator = NULL;
+
+    SDL_DestroyTexture(P3_InstructBox);
+    P3_InstructBox = NULL;
+
+    SDL_DestroyTexture(P4_Name);
+    P4_Name = NULL;
+
+    SDL_DestroyTexture(P4_TerritoryCount);
+    P4_TerritoryCount = NULL;
+
+    SDL_DestroyTexture(P4_UnitsPerTurn);
+    P4_UnitsPerTurn = NULL;
+
+    SDL_DestroyTexture(P4_StarCount);
+    P4_StarCount = NULL;
+
+    SDL_DestroyTexture(P4_ActiveIndicator);
+    P4_ActiveIndicator = NULL;
+
+    SDL_DestroyTexture(P4_InstructBox);
+    P4_InstructBox = NULL;
+
+    SDL_DestroyTexture(A_Die1);
+    A_Die1 = NULL;
+
+    SDL_DestroyTexture(A_Die2);
+    A_Die2 = NULL;
+
+    SDL_DestroyTexture(A_Die3);
+    A_Die3 = NULL;
+
+    SDL_DestroyTexture(D_Die1);
+    D_Die1 = NULL;
+
+    SDL_DestroyTexture(D_Die2);
+    D_Die2 = NULL;
 
 	// Destroy window
 	SDL_DestroyRenderer(windowRenderer);
