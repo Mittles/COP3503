@@ -12,6 +12,11 @@
 const int SCREEN_WIDTH = 1440;
 const int SCREEN_HEIGHT = 900;
 
+std::string player1Name = "Player 1";
+std::string player2Name = "Player 2";
+std::string player3Name = "Player 3";
+std::string player4Name = "Player 4";
+
 // Starts up SDL and creates a window "mainWindow"
 bool init();
 
@@ -23,6 +28,9 @@ void close();
 
 // Loads image as texture
 SDL_Texture* loadTexture(std::string path);
+
+// Loads text as a texture, size if font size
+SDL_Texture* loadText(std::string text, int size);
 
 // The window that will have textures rendered on it
 SDL_Window* mainWindow = NULL;
@@ -189,6 +197,13 @@ bool init()
 					std::cout << "SDL_image could not initialize. SDL_image Error: " << IMG_GetError() << std::endl;
 					success = false;
 				}
+
+				// Initialize TTF library
+                if( TTF_Init() == -1 )
+                {
+                    printf( "SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError() );
+                    success = false;
+                }
 			}
 		}
 	}
@@ -265,6 +280,35 @@ bool loadMedia()
     OcBox2 = loadTexture("images/ownerBoxN.bmp");
     OcBox3 = loadTexture("images/ownerBoxN.bmp");
     OcBox4 = loadTexture("images/ownerBoxN.bmp");
+
+    // TOP MENU BOXES
+    P1_ActiveIndicator = loadTexture("images/nullAct.bmp");
+    P1_InstructBox = loadText("Ready " + player1Name, 16 );
+    P1_Name = loadText(player1Name, 18);
+    P1_StarCount = loadText("0", 12);
+    P1_TerritoryCount = loadText("0", 12);
+    P1_UnitsPerTurn = loadText("0", 12);
+
+    P2_ActiveIndicator = loadTexture("images/nullAct.bmp");
+    P2_InstructBox = loadText("Ready " + player1Name, 16 );
+    P2_Name = loadText(player1Name, 18);
+    P2_StarCount = loadText("0", 12);
+    P2_TerritoryCount = loadText("0", 12);
+    P2_UnitsPerTurn = loadText("0", 12);
+
+    P3_ActiveIndicator = loadTexture("images/nullAct.bmp");
+    P3_InstructBox = loadText("Ready " + player1Name, 16 );
+    P3_Name = loadText(player1Name, 18);
+    P3_StarCount = loadText("0", 12);
+    P3_TerritoryCount = loadText("0", 12);
+    P3_UnitsPerTurn = loadText("0", 12);
+
+    P4_ActiveIndicator = loadTexture("images/nullAct.bmp");
+    P4_InstructBox = loadText("Ready " + player1Name, 16 );
+    P4_Name = loadText(player1Name, 18);
+    P4_StarCount = loadText("0", 12);
+    P4_TerritoryCount = loadText("0", 12);
+    P4_UnitsPerTurn = loadText("0", 12);
 
 	if(topTexture == NULL) // checks to make sure correct folder is being used for images
 	{
@@ -540,6 +584,43 @@ SDL_Texture* loadTexture(std::string path)
 	}
 
 	return newTexture;
+}
+
+SDL_Texture* loadText(std::string text, int size)
+{
+    // The final texture
+    SDL_Texture* newTexture = NULL;
+    SDL_Color color = { 0, 0, 0 };
+
+    // Generate some text
+    SDL_Surface* textSurface = TTF_RenderText_Solid(  TTF_OpenFont( "DejaVuSerif.ttf", size), text.c_str(), color);
+
+    if(textSurface == NULL)
+        {
+            printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
+        }
+    else
+    {
+        //Create texture from surface pixels
+        newTexture = SDL_CreateTextureFromSurface( windowRenderer, textSurface );
+
+        if(newTexture == NULL)
+        {
+            printf( "Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError() );
+        }
+/*        else
+        {
+            //Get image dimensions
+            width = textSurface->w;
+            height = textSurface->h;
+        }
+*/
+        //Get rid of old surface
+        SDL_FreeSurface(textSurface);
+    }
+
+    //Return success
+    return newTexture;
 }
 
 int main(int argc, char* args[])
@@ -1501,6 +1582,18 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, OcBox4, NULL, NULL);
                 }
+
+/*                // BEGIN MENU BOXES
+				SDL_Rect P1_Active_VPort;
+				P1_Active_VPort.x = 83;
+				P1_Active_VPort.y = 0;
+				P1_Active_VPort.w = 20;
+				P1_Active_VPort.h = 20;
+				SDL_RenderSetViewport(windowRenderer, &P1_Active_VPort);
+
+				// Render texture to screen
+				SDL_RenderCopy(windowRenderer, P1_Active_VPort, NULL, NULL);
+*/
 /*
                 // testing changing box color
 
