@@ -25,13 +25,13 @@ vector<Card> Deck::createDeck(){
     for (int i = 0; i < 42; i++){
         Card currentCard;
         if (i==6 || i==7 || i==12 || i==13 || i==19 || i==20){
-            currentCard.cardValue = 2;
+            currentCard.setValue(2);
             cardArray.push_back(currentCard);
         } else if (i==21 || i==29 || i==30 || i==36 || i==37 || i==38){
-            currentCard.cardValue =2;
+            currentCard.setValue(2);
             cardArray.push_back(currentCard);
         } else {
-            currentCard.cardValue = 1;
+            currentCard.setValue(1);
             cardArray.push_back(currentCard);
         }
     }

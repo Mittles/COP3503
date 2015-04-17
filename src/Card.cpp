@@ -8,6 +8,21 @@ Card::Card(){
     cardValue = 0;
 }
 
+void Card::setOwner(int o){
+    this->cardOwner = o;
+}
+
+void Card::setValue(int v){
+    this->cardValue = v;
+}
+
+int Card::getOwner(){
+    return this->cardOwner;
+}
+
+int Card::getValue(){
+    return this->cardValue;
+}
 
 Card::~Card(){
 }
