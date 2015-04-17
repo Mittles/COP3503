@@ -310,6 +310,13 @@ bool loadMedia()
     P4_TerritoryCount = loadText("0", 16);
     P4_UnitsPerTurn = loadText("0", 16);
 
+    //Initialize dice with blank image
+    A_Die1 = loadTexture("images/nullDie.bmp");
+    A_Die2 = loadTexture("images/nullDie.bmp");
+    A_Die3 = loadTexture("images/nullDie.bmp");
+    D_Die1 = loadTexture("images/nullDie.bmp");
+    D_Die2 = loadTexture("images/nullDie.bmp");
+
 	if(topTexture == NULL) // checks to make sure correct folder is being used for images
 	{
 		std::cout << "Failed to load texture image." << std::endl;
@@ -1776,8 +1783,46 @@ int main(int argc, char* args[])
 				SDL_RenderSetViewport(windowRenderer, &P4_UnitsPerTurn_VPort);
 				SDL_RenderCopy(windowRenderer, P4_UnitsPerTurn, NULL, NULL);
 
-
                 //BEGIN RIGHT MENU BOX
+                SDL_Rect A_Die1_VPort;
+                A_Die1_VPort.x = 1200;
+				A_Die1_VPort.y = 25;
+				A_Die1_VPort.w = 50;
+				A_Die1_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &A_Die1_VPort);
+				SDL_RenderCopy(windowRenderer, A_Die1, NULL, NULL);
+
+                SDL_Rect A_Die2_VPort;
+                A_Die2_VPort.x = 1275;
+				A_Die2_VPort.y = 25;
+				A_Die2_VPort.w = 50;
+				A_Die2_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &A_Die2_VPort);
+				SDL_RenderCopy(windowRenderer, A_Die2, NULL, NULL);
+
+                SDL_Rect A_Die3_VPort;
+                A_Die3_VPort.x = 1350;
+				A_Die3_VPort.y = 25;
+				A_Die3_VPort.w = 50;
+				A_Die3_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &A_Die3_VPort);
+				SDL_RenderCopy(windowRenderer, A_Die3, NULL, NULL);
+
+                SDL_Rect D_Die1_VPort;
+                D_Die1_VPort.x = 1225;
+				D_Die1_VPort.y = 150;
+				D_Die1_VPort.w = 50;
+				D_Die1_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &D_Die1_VPort);
+				SDL_RenderCopy(windowRenderer, D_Die1, NULL, NULL);
+
+				SDL_Rect D_Die2_VPort;
+                D_Die2_VPort.x = 1300;
+				D_Die2_VPort.y = 150;
+				D_Die2_VPort.w = 50;
+				D_Die2_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &D_Die2_VPort);
+				SDL_RenderCopy(windowRenderer, D_Die2, NULL, NULL);
 /*
                 // testing changing box color
 
