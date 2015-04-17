@@ -11,18 +11,12 @@ using namespace std;
 class World
 {
     public:
-        World(Territory* north_america_array[], Territory* south_america_array[],
-              Territory* europe_array[], Territory* africa_array[], Territory* asia_array[], Territory* australia_array[]);
+        World(Territory* north_america_array[9], Territory* south_america_array[4],
+              Territory* europe_array[7], Territory* africa_array[6], Territory* asia_array[12], Territory* australia_array[4]);
         virtual ~World();
     protected:
     private:
-        vector<Territory*> north_america;
-        vector<Territory*> south_america;
-        vector<Territory*> europe;
-        vector<Territory*> africa;
-        vector<Territory*> asia;
-        vector<Territory*> australia;
-        vector<vector<Territory*> > world;
+        vector<Territory*> world;
 };
 
 #endif // WORLD_H

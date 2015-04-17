@@ -1860,7 +1860,7 @@ int main(int argc, char* args[])
     string eastern_australia_borders[2] = {"New Guinea", "Western Australia"};
     Territory *eastern_australia_1 = new Territory(1, "Eastern Australia", 2, eastern_australia_borders);
     //Initialize Australia array
-    Territory australia_vec[4] = {*western_australia_4, *new_guinea_3, *indonesia_2, *eastern_australia_1};
+    Territory* australia[4] = {western_australia_4, new_guinea_3, indonesia_2, eastern_australia_1};
 
     //ASIA
     string afghanistan_borders[5] = {"Middle East", "India", "China", "Ural", "Ukraine"};
@@ -1899,7 +1899,7 @@ int main(int argc, char* args[])
     string yakutsk_borders[3] = {"Siberia", "Irkutsk", "Kamchatka"};
     Territory *yakutsk_12 = new Territory(12, "Yakutsk", 3, yakutsk_borders);
     //Initialize Asia array
-    Territory asia[12] = {*afghanistan_1, *china_2, *india_3, *irkutsk_4, *japan_5, *kamchatka_6, *middle_east_7, *mongolia_8, *siam_9, *siberia_10, *ural_11, *yakutsk_12};
+    Territory* asia[12] = {afghanistan_1, china_2, india_3, irkutsk_4, japan_5, kamchatka_6, middle_east_7, mongolia_8, siam_9, siberia_10, ural_11, yakutsk_12};
 
     //EUROPE
     string great_britain_borders[4] = {"Iceland", "Western Europe", "Northern Europe", "Scandinavia"};
@@ -1923,7 +1923,7 @@ int main(int argc, char* args[])
     string western_europe_borders[4] = {"North Africa", "Southern Europe", "Northern Europe", "Great Britain"};
     Territory* western_europe_7 = new Territory(7, "Western Europe", 4, western_europe_borders);
     //Initialize Europe Array
-    Territory europe[7] = {*great_britain_1, *iceland_2, *northern_europe_3, *scandinavia_4, *southern_europe_5, *ukraine_6, *western_europe_7};
+    Territory* europe[7] = {great_britain_1, iceland_2, northern_europe_3, scandinavia_4, southern_europe_5, ukraine_6, western_europe_7};
 
     //AFRICA
     string south_africa_borders[3] = {"Madagascar", "East Africa", "Congo"};
@@ -1944,7 +1944,7 @@ int main(int argc, char* args[])
     string congo_bordrs[3] = {"North Africa", "East Africa", "South Africa"};
     Territory* congo_1 = new Territory(1, "Congo", 3, congo_bordrs);
     //Initialize Africa Array
-    Territory africa[6] = {*south_africa_6, *north_africa_5, *madagascar_4, *egypt_3, *east_africa_2, *congo_1};
+    Territory* africa[6] = {south_africa_6, north_africa_5, madagascar_4, egypt_3, east_africa_2, congo_1};
 
     //South America
     string venezuela_borders[3] = {"Central America", "Peru", "Brazil"};
@@ -1959,7 +1959,7 @@ int main(int argc, char* args[])
     string argentina_borders[2] = {"Brazil", "Peru"};
     Territory* argentina_1 = new Territory(1, "Argentina", 2, argentina_borders);
     //Initialize South America Array
-    Territory south_america[4] = {*venezuela_4, *peru_3, *brazil_2, *argentina_1};
+    Territory* south_america[4] = {venezuela_4, peru_3, brazil_2, argentina_1};
 
     //North America
     string western_united_states_borders[4] = {"Central America", "Eastern United States", "Ontario", "Alberta"};
@@ -1989,7 +1989,10 @@ int main(int argc, char* args[])
     string alaska_borders[3] = {"Northwest Territory", "Alberta", "Kamchatka"};
     Territory* alaska_1 = new Territory(1, "Alaska", 3, alaska_borders);
     //Initialize North America Array
-    Territory north_america[9] = {*western_united_states_9, *quebec_8, *ontario_7, *northwest_territory_6, *greenland_5, *eastern_united_states_4, *central_america_3, *alberta_2, *alaska_1};
+   Territory* north_america[9] = {western_united_states_9, quebec_8, ontario_7, northwest_territory_6, greenland_5, eastern_united_states_4, central_america_3, alberta_2, alaska_1};
+
+    World earth = World(north_america, south_america, europe, africa, asia, australia);
+
 
 	// Free resources and close SDL
 	close();
