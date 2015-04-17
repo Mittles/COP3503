@@ -285,30 +285,30 @@ bool loadMedia()
     P1_ActiveIndicator = loadTexture("images/nullAct.bmp");
     P1_InstructBox = loadText("Ready " + player1Name, 16 );
     P1_Name = loadText(player1Name, 18);
-    P1_StarCount = loadText("0", 12);
-    P1_TerritoryCount = loadText("0", 12);
-    P1_UnitsPerTurn = loadText("0", 12);
+    P1_StarCount = loadText("0", 16);
+    P1_TerritoryCount = loadText("0", 16);
+    P1_UnitsPerTurn = loadText("0", 16);
 
     P2_ActiveIndicator = loadTexture("images/nullAct.bmp");
     P2_InstructBox = loadText("Ready " + player2Name, 16 );
     P2_Name = loadText(player2Name, 18);
-    P2_StarCount = loadText("0", 12);
-    P2_TerritoryCount = loadText("0", 12);
-    P2_UnitsPerTurn = loadText("0", 12);
+    P2_StarCount = loadText("0", 16);
+    P2_TerritoryCount = loadText("0", 16);
+    P2_UnitsPerTurn = loadText("0", 16);
 
     P3_ActiveIndicator = loadTexture("images/nullAct.bmp");
     P3_InstructBox = loadText("Ready " + player3Name, 16 );
     P3_Name = loadText(player3Name, 18);
-    P3_StarCount = loadText("0", 12);
-    P3_TerritoryCount = loadText("0", 12);
-    P3_UnitsPerTurn = loadText("0", 12);
+    P3_StarCount = loadText("0", 16);
+    P3_TerritoryCount = loadText("0", 16);
+    P3_UnitsPerTurn = loadText("0", 16);
 
     P4_ActiveIndicator = loadTexture("images/nullAct.bmp");
     P4_InstructBox = loadText("Ready " + player4Name, 16 );
     P4_Name = loadText(player4Name, 18);
-    P4_StarCount = loadText("0", 12);
-    P4_TerritoryCount = loadText("0", 12);
-    P4_UnitsPerTurn = loadText("0", 12);
+    P4_StarCount = loadText("0", 16);
+    P4_TerritoryCount = loadText("0", 16);
+    P4_UnitsPerTurn = loadText("0", 16);
 
 	if(topTexture == NULL) // checks to make sure correct folder is being used for images
 	{
@@ -1648,6 +1648,38 @@ int main(int argc, char* args[])
 				SDL_RenderSetViewport(windowRenderer, &P4_Name_VPort);
 				SDL_RenderCopy(windowRenderer, P4_Name, NULL, NULL);
 
+                SDL_Rect P1_TerritoryCount_VPort;
+                P1_TerritoryCount_VPort.x = 375;
+				P1_TerritoryCount_VPort.y = 0;
+				P1_TerritoryCount_VPort.w = 50;
+				P1_TerritoryCount_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P1_TerritoryCount_VPort);
+				SDL_RenderCopy(windowRenderer, P1_TerritoryCount, NULL, NULL);
+
+                SDL_Rect P2_TerritoryCount_VPort;
+                P2_TerritoryCount_VPort.x = 965;
+				P2_TerritoryCount_VPort.y = 0;
+				P2_TerritoryCount_VPort.w = 50;
+				P2_TerritoryCount_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P2_TerritoryCount_VPort);
+				SDL_RenderCopy(windowRenderer, P2_TerritoryCount, NULL, NULL);
+
+                SDL_Rect P3_TerritoryCount_VPort;
+                P3_TerritoryCount_VPort.x = 375;
+				P3_TerritoryCount_VPort.y = 150;
+				P3_TerritoryCount_VPort.w = 50;
+				P3_TerritoryCount_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P3_TerritoryCount_VPort);
+				SDL_RenderCopy(windowRenderer, P3_TerritoryCount, NULL, NULL);
+
+                SDL_Rect P4_TerritoryCount_VPort;
+                P4_TerritoryCount_VPort.x = 965;
+				P4_TerritoryCount_VPort.y = 150;
+				P4_TerritoryCount_VPort.w = 50;
+				P4_TerritoryCount_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P4_TerritoryCount_VPort);
+				SDL_RenderCopy(windowRenderer, P4_TerritoryCount, NULL, NULL);
+
                 SDL_Rect P1_InstructBox_VPort;
                 P1_InstructBox_VPort.x = 0;
 				P1_InstructBox_VPort.y = 50;
@@ -1656,7 +1688,96 @@ int main(int argc, char* args[])
 				SDL_RenderSetViewport(windowRenderer, &P1_InstructBox_VPort);
 				SDL_RenderCopy(windowRenderer, P1_InstructBox, NULL, NULL);
 
+                SDL_Rect P2_InstructBox_VPort;
+                P2_InstructBox_VPort.x = 587;
+				P2_InstructBox_VPort.y = 50;
+				P2_InstructBox_VPort.w = 300;
+				P2_InstructBox_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P2_InstructBox_VPort);
+				SDL_RenderCopy(windowRenderer, P2_InstructBox, NULL, NULL);
 
+                SDL_Rect P3_InstructBox_VPort;
+                P3_InstructBox_VPort.x = 0;
+				P3_InstructBox_VPort.y = 200;
+				P3_InstructBox_VPort.w = 300;
+				P3_InstructBox_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P3_InstructBox_VPort);
+				SDL_RenderCopy(windowRenderer, P3_InstructBox, NULL, NULL);
+
+                SDL_Rect P4_InstructBox_VPort;
+                P4_InstructBox_VPort.x = 587;
+				P4_InstructBox_VPort.y = 200;
+				P4_InstructBox_VPort.w = 300;
+				P4_InstructBox_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P4_InstructBox_VPort);
+				SDL_RenderCopy(windowRenderer, P4_InstructBox, NULL, NULL);
+
+                SDL_Rect P1_StarCount_VPort;
+                P1_StarCount_VPort.x = 375;
+				P1_StarCount_VPort.y = 50;
+				P1_StarCount_VPort.w = 50;
+				P1_StarCount_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P1_StarCount_VPort);
+				SDL_RenderCopy(windowRenderer, P1_StarCount, NULL, NULL);
+
+                SDL_Rect P2_StarCount_VPort;
+                P2_StarCount_VPort.x = 965;
+				P2_StarCount_VPort.y = 50;
+				P2_StarCount_VPort.w = 50;
+				P2_StarCount_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P2_StarCount_VPort);
+				SDL_RenderCopy(windowRenderer, P2_StarCount, NULL, NULL);
+
+                SDL_Rect P3_StarCount_VPort;
+                P3_StarCount_VPort.x = 375;
+				P3_StarCount_VPort.y = 200;
+				P3_StarCount_VPort.w = 50;
+				P3_StarCount_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P3_StarCount_VPort);
+				SDL_RenderCopy(windowRenderer, P3_StarCount, NULL, NULL);
+
+                SDL_Rect P4_StarCount_VPort;
+                P4_StarCount_VPort.x = 965;
+				P4_StarCount_VPort.y = 200;
+				P4_StarCount_VPort.w = 50;
+				P4_StarCount_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P4_StarCount_VPort);
+				SDL_RenderCopy(windowRenderer, P4_StarCount, NULL, NULL);
+
+                SDL_Rect P1_UnitsPerTurn_VPort;
+                P1_UnitsPerTurn_VPort.x = 375;
+				P1_UnitsPerTurn_VPort.y = 100;
+				P1_UnitsPerTurn_VPort.w = 50;
+				P1_UnitsPerTurn_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P1_UnitsPerTurn_VPort);
+				SDL_RenderCopy(windowRenderer, P1_UnitsPerTurn, NULL, NULL);
+
+                SDL_Rect P2_UnitsPerTurn_VPort;
+                P2_UnitsPerTurn_VPort.x = 965;
+				P2_UnitsPerTurn_VPort.y = 100;
+				P2_UnitsPerTurn_VPort.w = 50;
+				P2_UnitsPerTurn_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P2_UnitsPerTurn_VPort);
+				SDL_RenderCopy(windowRenderer, P2_UnitsPerTurn, NULL, NULL);
+
+                SDL_Rect P3_UnitsPerTurn_VPort;
+                P3_UnitsPerTurn_VPort.x = 375;
+				P3_UnitsPerTurn_VPort.y = 250;
+				P3_UnitsPerTurn_VPort.w = 50;
+				P3_UnitsPerTurn_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P3_UnitsPerTurn_VPort);
+				SDL_RenderCopy(windowRenderer, P3_UnitsPerTurn, NULL, NULL);
+
+                SDL_Rect P4_UnitsPerTurn_VPort;
+                P4_UnitsPerTurn_VPort.x = 965;
+				P4_UnitsPerTurn_VPort.y = 250;
+				P4_UnitsPerTurn_VPort.w = 50;
+				P4_UnitsPerTurn_VPort.h = 50;
+				SDL_RenderSetViewport(windowRenderer, &P4_UnitsPerTurn_VPort);
+				SDL_RenderCopy(windowRenderer, P4_UnitsPerTurn, NULL, NULL);
+
+
+                //BEGIN RIGHT MENU BOX
 /*
                 // testing changing box color
 
