@@ -17,9 +17,9 @@
 //bool validAttack(Territory* origin, Territory* destination, int aTroops, int dTroops){
 //    //check adjacency
 //    bool adjacent = false;
-//    vector<string> borders = origin->getBorders;
-//    for (unsigned int i = 0; i < origin->borders.size(); i ++){
-//                if (borders[i] == destination.getName){
+//    vector<string> borders = origin->getBorders();
+//    for (unsigned int i = 0; i < borders.size(); i ++){
+//                if (borders[i] == destination->getName()){
 //                    adjacent = true;
 //                } else {
 //                    adjacent = false;
@@ -28,9 +28,9 @@
 //
 //    bool validm = false;
 //    //perform other validity checks
-//    if (origin.getOwner == Game.getCurrentPalyer && destination.getOwner != Game.getCurrentPlayer){
+//    if (origin->getOwner() == Game.getCurrentPalyer && destination->getOwner() != Game.getCurrentPlayer){
 //        if  (adjacent){
-//            if (aTroops >=1 && aTroops <= 3 && aTroops <= origin->troops-1){
+//            if (aTroops >=1 && aTroops <= 3 && aTroops <= origin->getTroops()-1){
 //                validm = true;
 //            } else {
 //                validm = false;
@@ -72,9 +72,9 @@
 //        int a = aTroops;
 //        do {
 //            if (aRolls[a-1] > dRolls[d-1]){
-//                destination->troops -= 1;
+//                destination->setTroops(destination->getTroops() - 1);
 //            } else if (dRolls[d-1] >= aRolls[a-1]){
-//                origin.getTroops -= 1;
+//                origin->setTroops(origin->getTroops() - 1);
 //            }
 //            a--;
 //            d--;

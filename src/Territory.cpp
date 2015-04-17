@@ -11,6 +11,10 @@ Territory::Territory(int num, string name, int borderNum, string borders_array[]
 	}
 }
 
+void Territory::setTroops(int t){
+    this->troops = t;
+}
+
 int Territory::getTroops() {
     return this->troops;
 }
