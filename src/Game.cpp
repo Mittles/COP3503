@@ -11,11 +11,12 @@
 //
 //void Game::init_game()
 //{
-//    /*
+//
 //        Initialize the game, i.e assign territories, deal cards, ect
 //
 //
 //    srand(time(0));
+//    //assign territories to players pseudo-randomly
 //    for (int i = 1; i <42; i++){
 //        int cont;
 //        switch(i) {
@@ -41,17 +42,19 @@
 //        for (unsigned int j = 1; j < world[cont].size(); j++){
 //            int pAssign = rand()% players.size()-1;
 //            world[cont][i].setOwner(pAssign);
+//            //statements needed to determine how many troops are initially stationed in territories at start of game
+//            //some territories should start with more than others, but set by us or random?
 //        }
 //
 //    }
 //
-//    */
+//
 //}
 //
 //void Game::nextTurn() //Sets the current turn to the next player, wraps around if necessary
 //{
 //    int index;
-//    for (unsigned int i=0; i<players.size(); i++) { //If something isnt working here check that currenPlayer is derefrencing correctly
+//    for (unsigned int i=0; i<players.size(); i++) { //If something isn't working here check that currentPlayer is dereferencing correctly
 //        if (players[i].equals(*currentPlayer)) {
 //            index = i;
 //        }
