@@ -17,6 +17,7 @@ class Player
         int getID();
         bool equals(Player p);
         vector<Territory*> getControlledTerritories();
+        void addControlledTerritory(Territory* t);
     private:
         string name;
         int ID;

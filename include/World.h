@@ -13,6 +13,8 @@ class World
     public:
         World(Territory* north_america_array[9], Territory* south_america_array[4],
               Territory* europe_array[7], Territory* africa_array[6], Territory* asia_array[12], Territory* australia_array[4]);
+        World();
+        vector<Territory*> getWorld();
         virtual ~World();
     protected:
     private:

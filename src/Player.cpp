@@ -26,6 +26,10 @@ vector<Territory*> Player::getControlledTerritories() {
     return this->controlled_territories;
 }
 
+void Player::addControlledTerritory(Territory* t) {
+    controlled_territories.push_back(t);
+}
+
 Player::~Player()
 {
 

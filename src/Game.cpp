@@ -1,52 +1,41 @@
 #include "Game.h"
 
 
-Game::Game(vector<Player> players, vector<vector<Territory> > world, Deck playDeck)
+Game::Game(vector<Player> players, World earth, Deck playDeck)
 {
     this->players = players;
-    this->world = world;
+    this->earth = earth;
     this->playDeck = playDeck;
     *currentPlayer = players[0];
 }
 
 void Game::init_game()
 {
+    /*
+    Initialize the game, i.e assign territories, deal cards, ect
+    */
 
-        //Initialize the game, i.e assign territories, deal cards, ect
+    int maxTerritories = 42/players.size();
+    int leftover = 42%players.size();
 
+    /*
+        Distribute Territories randomly to each player
+    */
 
     srand(time(0));
-    //assign territories to players pseudo-randomly
-//    for (int i = 1; i <42; i++){
-//        int cont;
-//        switch(i) {
-//        case (i<5):
-//            cont = 1;
-//            break;
-//        case (i<17):
-//            cont = 2;
-//            break;
-//        case (i<24) :
-//            cont = 3;
-//            break;
-//        case (i<30) :
-//            cont = 4;
-//            break;
-//        case (i<34) :
-//            cont = 5;
-//            break;
-//        case (i<43) :
-//            cont = 6;
-//            break;
-//        }
-//        for (unsigned int j = 1; j < world[cont].size(); j++){
-//            int pAssign = rand()% players.size()-1;
-//            world[cont][i].setOwner(pAssign);
-            //statements needed to determine how many troops are initially stationed in territories at start of game
-            //some territories should start with more than others, but set by us or random?
-        //}
+    for (unsigned int i=0; i<players.size(); i++) {
+       for (unsigned int j=0; j<maxTerritories; j++) {
+          int r = rand()%42;
+          if (earth.getWorld()[r]->getOwner() == 0) {
+                earth.getWorld()[r]->setOwner(i);
+          }
+       }
+    }
 
-    //}
+    //Deal leftover Territories
+    for (int i=0;i<42; i++) {
+
+    }
 
 
 }

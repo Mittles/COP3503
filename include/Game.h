@@ -14,7 +14,7 @@
 class Game
 {
     public:
-        Game(vector<Player> players, vector<vector<Territory> > world, Deck playDeck);
+        Game(vector<Player> players, World earth, Deck playDeck);
         void init_game();
         void nextTurn();
         virtual ~Game();
@@ -22,7 +22,7 @@ class Game
     private:
         Player *currentPlayer;
         vector<Player> players;
-        vector<vector<Territory> > world;
+        World earth;
         Deck playDeck;
 };
 

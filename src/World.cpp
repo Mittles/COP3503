@@ -32,6 +32,13 @@ World::World(Territory* north_america_array[9], Territory* south_america_array[4
     }
 }
 
+vector<Territory*> World::getWorld() {
+    return this->world;
+}
+
+World::World() {
+}
+
 World::~World()
 {
 
