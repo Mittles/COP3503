@@ -687,6 +687,8 @@ int main(int argc, char* args[])
 
             bool isClicked = false;
 
+            bool lockButton = false;
+
             /*
                 INITIALIZING TERRITORIES
                 Allocated by pointers to make it easier to access subfields of each Territory
@@ -910,28 +912,32 @@ int main(int argc, char* args[])
                 // mouse over exchange stars
                 if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 198 && y <= 300))
                 {
-                        if(isClicked == true)
+                        if(isClicked == true && lockButton == false)
                         {
 // do method
+                            lockButton == true;
                         }
                 }
                 else
                 {
                     isClicked == false;
+                    lockButton == false
                 }
 
                 // mouse over attack/move
 
                 if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 301 && y <= 500))
                 {
-                        if(isClicked == true)
+                        if(isClicked == true && lockButton == false)
                         {
 // do method
+                            lockButton == true;
                         }
                 }
                 else
                 {
                     isClicked == false;
+                    lockButton == false
                 }
 
 
@@ -939,28 +945,32 @@ int main(int argc, char* args[])
 
                 if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 501 && y <= 700))
                 {
-                        if(isClicked == true)
+                        if(isClicked == true && lockButton == false)
                         {
 // do method
+                            lockButton == true;
                         }
                 }
                 else
                 {
                     isClicked == false;
+                    lockButton == false
                 }
 
                 // mouse over end turn button
 
                 if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 701 && y <= SCREEN_HEIGHT))
                 {
-                        if(isClicked == true)
+                        if(isClicked == true && lockButton == false)
                         {
 // do method
+                            lockButton == true;
                         }
                 }
                 else
                 {
                     isClicked == false;
+                    lockButton == false
                 }
 
 				// Map viewport, map is 1175x600
