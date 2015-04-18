@@ -907,6 +907,62 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, sideTexture, NULL, NULL);
 
+                // mouse over exchange stars
+                if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 198 && y <= 300))
+                {
+                        if(isClicked == true)
+                        {
+// do method
+                        }
+                }
+                else
+                {
+                    isClicked == false;
+                }
+
+                // mouse over attack/move
+
+                if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 301 && y <= 500))
+                {
+                        if(isClicked == true)
+                        {
+// do method
+                        }
+                }
+                else
+                {
+                    isClicked == false;
+                }
+
+
+                // mouse over allocate troops
+
+                if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 501 && y <= 700))
+                {
+                        if(isClicked == true)
+                        {
+// do method
+                        }
+                }
+                else
+                {
+                    isClicked == false;
+                }
+
+                // mouse over end turn button
+
+                if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 701 && y <= SCREEN_HEIGHT))
+                {
+                        if(isClicked == true)
+                        {
+// do method
+                        }
+                }
+                else
+                {
+                    isClicked == false;
+                }
+
 				// Map viewport, map is 1175x600
 				SDL_Rect mapViewport;
 				mapViewport.x = 0;
