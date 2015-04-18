@@ -285,28 +285,28 @@ bool loadMedia()
     OcBox4 = loadTexture("images/ownerBoxN.bmp");
 
     // TOP MENU BOXES
-    P1_ActiveIndicator = loadTexture("images/nullAct.bmp");
+    P1_ActiveIndicator = loadTexture("images/nullAct.png");
     P1_InstructBox = loadText("Ready " + player1Name, 16 );
     P1_Name = loadText(player1Name, 18);
     P1_StarCount = loadText("0", 16);
     P1_TerritoryCount = loadText("0", 16);
     P1_UnitsPerTurn = loadText("0", 16);
 
-    P2_ActiveIndicator = loadTexture("images/nullAct.bmp");
+    P2_ActiveIndicator = loadTexture("images/nullAct.png");
     P2_InstructBox = loadText("Ready " + player2Name, 16 );
     P2_Name = loadText(player2Name, 18);
     P2_StarCount = loadText("0", 16);
     P2_TerritoryCount = loadText("0", 16);
     P2_UnitsPerTurn = loadText("0", 16);
 
-    P3_ActiveIndicator = loadTexture("images/nullAct.bmp");
+    P3_ActiveIndicator = loadTexture("images/nullAct.png");
     P3_InstructBox = loadText("Ready " + player3Name, 16 );
     P3_Name = loadText(player3Name, 18);
     P3_StarCount = loadText("0", 16);
     P3_TerritoryCount = loadText("0", 16);
     P3_UnitsPerTurn = loadText("0", 16);
 
-    P4_ActiveIndicator = loadTexture("images/nullAct.bmp");
+    P4_ActiveIndicator = loadTexture("images/nullAct.png");
     P4_InstructBox = loadText("Ready " + player4Name, 16 );
     P4_Name = loadText(player4Name, 18);
     P4_StarCount = loadText("0", 16);
