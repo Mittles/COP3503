@@ -921,7 +921,7 @@ int main(int argc, char* args[])
                 else
                 {
                     isClicked == false;
-                    lockButton == false
+                    lockButton == false;
                 }
 
                 // mouse over allocate troops
@@ -937,7 +937,7 @@ int main(int argc, char* args[])
                 else
                 {
                     isClicked == false;
-                    lockButton == false
+                    lockButton == false;
                 }
 
 
@@ -954,7 +954,7 @@ int main(int argc, char* args[])
                 else
                 {
                     isClicked == false;
-                    lockButton == false
+                    lockButton == false;
                 }
 
                 // mouse over redeploy troops
@@ -970,7 +970,7 @@ int main(int argc, char* args[])
                 else
                 {
                     isClicked == false;
-                    lockButton == false
+                    lockButton == false;
                 }
 
                 // mouse over end turn button
@@ -986,7 +986,7 @@ int main(int argc, char* args[])
                 else
                 {
                     isClicked == false;
-                    lockButton == false
+                    lockButton == false;
                 }
 
 				// Map viewport, map is 1175x600
