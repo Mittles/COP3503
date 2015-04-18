@@ -850,8 +850,8 @@ int main(int argc, char* args[])
 
             play.init_game();
 
-            std::string terr1 = NULL;
-            std::string terr2 = NULL;
+            std::string terr1 = "";
+            std::string terr2 = "";
 
 			// While application is running
 			while(!quit)
