@@ -947,8 +947,12 @@ int main(int argc, char* args[])
                 {
                         if(isClicked == true && lockButton == false)
                         {
-// do method
+
+
+
+                            play.moveAttack(terr1, terr2);
                             lockButton == true;
+
                         }
                 }
                 else
