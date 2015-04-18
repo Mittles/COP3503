@@ -4,16 +4,19 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
+#include <vector>
 #include "World.h"
 #include "Territory.h"
 #include "Player.h"
+#include "Game.h"
+#include "Deck.h"
 
 // Screen dimension -- stays as constants
 const int SCREEN_WIDTH = 1440;
 const int SCREEN_HEIGHT = 900;
 
-std::string player1Name = "Player 1";
-std::string player2Name = "Player 2";
+std::string player1Name = "Doug";
+std::string player2Name = "Rosemond";
 std::string player3Name = "Player 3";
 std::string player4Name = "Player 4";
 
@@ -655,6 +658,167 @@ int main(int argc, char* args[])
 			SDL_Event e;
 
             int x, y; // mouse pointer position x and y
+
+            /*
+                INITIALIZING TERRITORIES
+                Allocated by pointers to make it easier to access subfields of each Territory
+            */
+
+            //AUSTRALIA
+            string western_australia_borders[3] = {"New Guinea", "Indonesia", "Eastern Australia"};
+            Territory *western_australia_4 = new Territory(4, "Western Australia", 3, western_australia_borders);
+
+            string new_guinea_borders[3] = {"Eastern Australia", "Indonesia", "Western Australia"};
+            Territory *new_guinea_3 = new Territory(3, "New Guinea", 3, new_guinea_borders);
+
+            string indonesia_borders[2] = {"New Guinea", "Siam"};
+            Territory *indonesia_2 = new Territory(2, "Indonesia", 2, indonesia_borders);
+
+            string eastern_australia_borders[2] = {"New Guinea", "Western Australia"};
+            Territory *eastern_australia_1 = new Territory(1, "Eastern Australia", 2, eastern_australia_borders);
+            //Initialize Australia array
+            Territory* australia[4] = {western_australia_4, new_guinea_3, indonesia_2, eastern_australia_1};
+
+            //ASIA
+            string afghanistan_borders[5] = {"Middle East", "India", "China", "Ural", "Ukraine"};
+            Territory *afghanistan_1 = new Territory(1, "Afghanistan", 5, afghanistan_borders);
+
+            string china_borders[6] = {"Siam", "India", "Afghanistan", "Ural", "Siberia", "Mongolia"};
+            Territory *china_2 = new Territory(2, "China", 6, china_borders);
+
+            string india_borders[4] = {"Siam", "China", "Afghanistan", "Middle East"};
+            Territory *india_3 = new Territory(3, "India", 4, india_borders);
+
+            string irkutsk_borders[4] = {"Siberia", "Mongolia", "Kamchatka", "Yakutsk"};
+            Territory *irkutsk_4 = new Territory(4, "Irkutsk", 4, irkutsk_borders);
+
+            string japan_borders[2] = {"Mongolia", "Kamchatka"};
+            Territory *japan_5 = new Territory(5, "Japan", 2, japan_borders);
+
+            string kamchatka_borders[5] = {"Yakutsk", "Irkutsk" ,"Mongolia", "Japan", "Alaska"};
+            Territory *kamchatka_6 = new Territory(6, "Kamchatka", 5, kamchatka_borders);
+
+            string middle_east_borders[6] = {"Southern Europe", "Egypt", "East Africa", "India", "Afghanistan", "Ukraine"};
+            Territory *middle_east_7 = new Territory(7, "Middle East", 6, middle_east_borders);
+
+            string mongolia_borders[5] = {"Japan", "Kamchatka", "Irkutsk", "Siberia", "Ural"};
+            Territory *mongolia_8 = new Territory(8, "Mongolia", 5, mongolia_borders);
+
+            string siam_borders[3] = {"India", "China", "Indonesia"};
+            Territory *siam_9 = new Territory(9, "Siam", 3, siam_borders);
+
+            string siberia_borders[5] = {"Ural", "Yakutsk", "Irkutsk", "Mongolia", "China"};
+            Territory *siberia_10 = new Territory(10, "Siberia", 5, siberia_borders);
+
+            string ural_borders[4] = {"Ukraine", "Afghanistan" , "China", "Siberia"};
+            Territory *ural_11 = new Territory(11, "Ural", 4, ural_borders);
+
+            string yakutsk_borders[3] = {"Siberia", "Irkutsk", "Kamchatka"};
+            Territory *yakutsk_12 = new Territory(12, "Yakutsk", 3, yakutsk_borders);
+            //Initialize Asia array
+            Territory* asia[12] = {afghanistan_1, china_2, india_3, irkutsk_4, japan_5, kamchatka_6, middle_east_7, mongolia_8, siam_9, siberia_10, ural_11, yakutsk_12};
+
+            //EUROPE
+            string great_britain_borders[4] = {"Iceland", "Western Europe", "Northern Europe", "Scandinavia"};
+            Territory* great_britain_1 = new Territory(1, "Great Britain", 4, great_britain_borders);
+
+            string iceland_borders[3] = {"Greenland", "Great Britain", "Scandinavia"};
+            Territory* iceland_2 = new Territory(2, "Iceland", 3, iceland_borders);
+
+            string northern_europe_borders[5] = {"Great Britain", "Western Europe", "Southern Europe", "Ukraine", "Scandinavia"};
+            Territory* northern_europe_3 = new Territory(3, "Northern Europe", 5, northern_europe_borders);
+
+            string scandinavia_borders[4] = {"Iceland", "Great Britain", "Northern Europe", "Ukraine"};
+            Territory* scandinavia_4 = new Territory(4, "Scandinavia", 4, scandinavia_borders);
+
+            string southern_europe_borders[6] = {"North Africa", "Egypt", "Middle East", "Ukraine", "Northern Europe", "Western Europe"};
+            Territory* southern_europe_5 = new Territory(5, "Southern Europe", 6, southern_europe_borders);
+
+            string ukraine_borders[6] = {"Afghanistan", "Middle East", "Ural", "Scandinavia", "Northern Europe", "Southern Europe"};
+            Territory* ukraine_6 = new Territory(6, "Ukraine", 6, ukraine_borders);
+
+            string western_europe_borders[4] = {"North Africa", "Southern Europe", "Northern Europe", "Great Britain"};
+            Territory* western_europe_7 = new Territory(7, "Western Europe", 4, western_europe_borders);
+            //Initialize Europe Array
+            Territory* europe[7] = {great_britain_1, iceland_2, northern_europe_3, scandinavia_4, southern_europe_5, ukraine_6, western_europe_7};
+
+            //AFRICA
+            string south_africa_borders[3] = {"Madagascar", "East Africa", "Congo"};
+            Territory* south_africa_6 = new Territory(6, "South Africa", 3, south_africa_borders);
+
+            string north_africa_borders[6] = {"Brazil", "Congo", "East Africa", "Egypt", "Southern Europe", "Western Europe"};
+            Territory* north_africa_5 = new Territory(5, "North Africa", 6, north_africa_borders);
+
+            string madagascar_borders[2] = {"East Africa", "South Africa"};
+            Territory* madagascar_4 = new Territory(4, "Madagascar", 2, madagascar_borders);
+
+            string egypt_borders[4] = {"North Africa", "East Africa", "Middle East", "Southern Europe"};
+            Territory* egypt_3 = new Territory(3, "Egypt", 4, egypt_borders);
+
+            string east_africa_borders[6] = {"Middle East", "Egypt", "North Africa", "Congo", "Madagascar", "South Africa"};
+            Territory* east_africa_2 = new Territory(2, "East Africa", 6, east_africa_borders);
+
+            string congo_bordrs[3] = {"North Africa", "East Africa", "South Africa"};
+            Territory* congo_1 = new Territory(1, "Congo", 3, congo_bordrs);
+            //Initialize Africa Array
+            Territory* africa[6] = {south_africa_6, north_africa_5, madagascar_4, egypt_3, east_africa_2, congo_1};
+
+            //South America
+            string venezuela_borders[3] = {"Central America", "Peru", "Brazil"};
+            Territory* venezuela_4 = new Territory(4, "Venezuela", 3, venezuela_borders);
+
+            string peru_borders[3] = {"Argentina", "Brazil", "Venezuela"};
+            Territory* peru_3 = new Territory(3, "Peru", 3, peru_borders);
+
+            string brazil_borders[4] = {"North Africa", "Venezuela", "Peru", "Argentina"};
+            Territory* brazil_2 = new Territory(2, "Brazil", 4, brazil_borders);
+
+            string argentina_borders[2] = {"Brazil", "Peru"};
+            Territory* argentina_1 = new Territory(1, "Argentina", 2, argentina_borders);
+            //Initialize South America Array
+            Territory* south_america[4] = {venezuela_4, peru_3, brazil_2, argentina_1};
+
+            //North America
+            string western_united_states_borders[4] = {"Central America", "Eastern United States", "Ontario", "Alberta"};
+            Territory* western_united_states_9 = new Territory(9, "Western United States", 4, western_united_states_borders);
+
+            string quebec_borders[3] = {"Greenland", "Ontario", "Eastern United States"};
+            Territory* quebec_8 = new Territory(8, "Quebec", 3, quebec_borders);
+
+            string ontario_borders[6] = {"Greenland", "Quebec", "Eastern United States", "Western United States", "Alberta", "Northwest Territory"};
+            Territory* ontario_7 = new Territory(7, "Ontario", 6, ontario_borders);
+
+            string northwest_territory_borders[4] = {"Alaska", "Alberta", "Ontario", "Greenland"};
+            Territory* northwest_territory_6 = new Territory(6, "Northwest Territory", 4, northwest_territory_borders);
+
+            string greenland_borders[4] = {"Northwest Territory", "Ontario", "Quebec", "Iceland"};
+            Territory* greenland_5 = new Territory(5, "Greenland", 4, greenland_borders);
+
+            string eastern_united_states_borders[4] = {"Quebec", "Ontario", "Western United States", "Central America"};
+            Territory* eastern_united_states_4 = new Territory(4, "Eastern United States", 4, eastern_united_states_borders);
+
+            string central_america_borders[3] = {"Eastern United States", "Western United States", "Venezuela"};
+            Territory* central_america_3 = new Territory(3, "Central America", 3, central_america_borders);
+
+            string albera_borders[5] = {"Alaska", "Northwest Territory", "Ontario", "Eastern United States", "Western United States"};
+            Territory* alberta_2 = new Territory(2, "Alberta", 5, albera_borders);
+
+            string alaska_borders[3] = {"Northwest Territory", "Alberta", "Kamchatka"};
+            Territory* alaska_1 = new Territory(1, "Alaska", 3, alaska_borders);
+            //Initialize North America Array
+           Territory* north_america[9] = {western_united_states_9, quebec_8, ontario_7, northwest_territory_6, greenland_5, eastern_united_states_4, central_america_3, alberta_2, alaska_1};
+
+            World earth = World(north_america, south_america, europe, africa, asia, australia);
+
+            std::vector<Player> players;
+            Player doug = Player(player1Name, 0);
+            Player rosemond = Player(player2Name, 1);
+            players.push_back(doug);
+            players.push_back(rosemond);
+
+            Deck playDeck = Deck();
+            Game play(players, earth, playDeck);
+            playDeck.printDeck();
 
 			// While application is running
 			while(!quit)
@@ -1843,156 +2007,6 @@ int main(int argc, char* args[])
 		}
 	}
 
-	/*
-        INITIALIZING TERRITORIES
-        Allocated by pointers to make it easier to access subfields of each Territory
-    */
-
-    //AUSTRALIA
-    string western_australia_borders[3] = {"New Guinea", "Indonesia", "Eastern Australia"};
-    Territory *western_australia_4 = new Territory(4, "Western Australia", 3, western_australia_borders);
-
-    string new_guinea_borders[3] = {"Eastern Australia", "Indonesia", "Western Australia"};
-    Territory *new_guinea_3 = new Territory(3, "New Guinea", 3, new_guinea_borders);
-
-    string indonesia_borders[2] = {"New Guinea", "Siam"};
-    Territory *indonesia_2 = new Territory(2, "Indonesia", 2, indonesia_borders);
-
-    string eastern_australia_borders[2] = {"New Guinea", "Western Australia"};
-    Territory *eastern_australia_1 = new Territory(1, "Eastern Australia", 2, eastern_australia_borders);
-    //Initialize Australia array
-    Territory* australia[4] = {western_australia_4, new_guinea_3, indonesia_2, eastern_australia_1};
-
-    //ASIA
-    string afghanistan_borders[5] = {"Middle East", "India", "China", "Ural", "Ukraine"};
-    Territory *afghanistan_1 = new Territory(1, "Afghanistan", 5, afghanistan_borders);
-
-    string china_borders[6] = {"Siam", "India", "Afghanistan", "Ural", "Siberia", "Mongolia"};
-    Territory *china_2 = new Territory(2, "China", 6, china_borders);
-
-    string india_borders[4] = {"Siam", "China", "Afghanistan", "Middle East"};
-    Territory *india_3 = new Territory(3, "India", 4, india_borders);
-
-    string irkutsk_borders[4] = {"Siberia", "Mongolia", "Kamchatka", "Yakutsk"};
-    Territory *irkutsk_4 = new Territory(4, "Irkutsk", 4, irkutsk_borders);
-
-    string japan_borders[2] = {"Mongolia", "Kamchatka"};
-    Territory *japan_5 = new Territory(5, "Japan", 2, japan_borders);
-
-    string kamchatka_borders[5] = {"Yakutsk", "Irkutsk" ,"Mongolia", "Japan", "Alaska"};
-    Territory *kamchatka_6 = new Territory(6, "Kamchatka", 5, kamchatka_borders);
-
-    string middle_east_borders[6] = {"Southern Europe", "Egypt", "East Africa", "India", "Afghanistan", "Ukraine"};
-    Territory *middle_east_7 = new Territory(7, "Middle East", 6, middle_east_borders);
-
-    string mongolia_borders[5] = {"Japan", "Kamchatka", "Irkutsk", "Siberia", "Ural"};
-    Territory *mongolia_8 = new Territory(8, "Mongolia", 5, mongolia_borders);
-
-    string siam_borders[3] = {"India", "China", "Indonesia"};
-    Territory *siam_9 = new Territory(9, "Siam", 3, siam_borders);
-
-    string siberia_borders[5] = {"Ural", "Yakutsk", "Irkutsk", "Mongolia", "China"};
-    Territory *siberia_10 = new Territory(10, "Siberia", 5, siberia_borders);
-
-    string ural_borders[4] = {"Ukraine", "Afghanistan" , "China", "Siberia"};
-    Territory *ural_11 = new Territory(11, "Ural", 4, ural_borders);
-
-    string yakutsk_borders[3] = {"Siberia", "Irkutsk", "Kamchatka"};
-    Territory *yakutsk_12 = new Territory(12, "Yakutsk", 3, yakutsk_borders);
-    //Initialize Asia array
-    Territory* asia[12] = {afghanistan_1, china_2, india_3, irkutsk_4, japan_5, kamchatka_6, middle_east_7, mongolia_8, siam_9, siberia_10, ural_11, yakutsk_12};
-
-    //EUROPE
-    string great_britain_borders[4] = {"Iceland", "Western Europe", "Northern Europe", "Scandinavia"};
-    Territory* great_britain_1 = new Territory(1, "Great Britain", 4, great_britain_borders);
-
-    string iceland_borders[3] = {"Greenland", "Great Britain", "Scandinavia"};
-    Territory* iceland_2 = new Territory(2, "Iceland", 3, iceland_borders);
-
-    string northern_europe_borders[5] = {"Great Britain", "Western Europe", "Southern Europe", "Ukraine", "Scandinavia"};
-    Territory* northern_europe_3 = new Territory(3, "Northern Europe", 5, northern_europe_borders);
-
-    string scandinavia_borders[4] = {"Iceland", "Great Britain", "Northern Europe", "Ukraine"};
-    Territory* scandinavia_4 = new Territory(4, "Scandinavia", 4, scandinavia_borders);
-
-    string southern_europe_borders[6] = {"North Africa", "Egypt", "Middle East", "Ukraine", "Northern Europe", "Western Europe"};
-    Territory* southern_europe_5 = new Territory(5, "Southern Europe", 6, southern_europe_borders);
-
-    string ukraine_borders[6] = {"Afghanistan", "Middle East", "Ural", "Scandinavia", "Northern Europe", "Southern Europe"};
-    Territory* ukraine_6 = new Territory(6, "Ukraine", 6, ukraine_borders);
-
-    string western_europe_borders[4] = {"North Africa", "Southern Europe", "Northern Europe", "Great Britain"};
-    Territory* western_europe_7 = new Territory(7, "Western Europe", 4, western_europe_borders);
-    //Initialize Europe Array
-    Territory* europe[7] = {great_britain_1, iceland_2, northern_europe_3, scandinavia_4, southern_europe_5, ukraine_6, western_europe_7};
-
-    //AFRICA
-    string south_africa_borders[3] = {"Madagascar", "East Africa", "Congo"};
-    Territory* south_africa_6 = new Territory(6, "South Africa", 3, south_africa_borders);
-
-    string north_africa_borders[6] = {"Brazil", "Congo", "East Africa", "Egypt", "Southern Europe", "Western Europe"};
-    Territory* north_africa_5 = new Territory(5, "North Africa", 6, north_africa_borders);
-
-    string madagascar_borders[2] = {"East Africa", "South Africa"};
-    Territory* madagascar_4 = new Territory(4, "Madagascar", 2, madagascar_borders);
-
-    string egypt_borders[4] = {"North Africa", "East Africa", "Middle East", "Southern Europe"};
-    Territory* egypt_3 = new Territory(3, "Egypt", 4, egypt_borders);
-
-    string east_africa_borders[6] = {"Middle East", "Egypt", "North Africa", "Congo", "Madagascar", "South Africa"};
-    Territory* east_africa_2 = new Territory(2, "East Africa", 6, east_africa_borders);
-
-    string congo_bordrs[3] = {"North Africa", "East Africa", "South Africa"};
-    Territory* congo_1 = new Territory(1, "Congo", 3, congo_bordrs);
-    //Initialize Africa Array
-    Territory* africa[6] = {south_africa_6, north_africa_5, madagascar_4, egypt_3, east_africa_2, congo_1};
-
-    //South America
-    string venezuela_borders[3] = {"Central America", "Peru", "Brazil"};
-    Territory* venezuela_4 = new Territory(4, "Venezuela", 3, venezuela_borders);
-
-    string peru_borders[3] = {"Argentina", "Brazil", "Venezuela"};
-    Territory* peru_3 = new Territory(3, "Peru", 3, peru_borders);
-
-    string brazil_borders[4] = {"North Africa", "Venezuela", "Peru", "Argentina"};
-    Territory* brazil_2 = new Territory(2, "Brazil", 4, brazil_borders);
-
-    string argentina_borders[2] = {"Brazil", "Peru"};
-    Territory* argentina_1 = new Territory(1, "Argentina", 2, argentina_borders);
-    //Initialize South America Array
-    Territory* south_america[4] = {venezuela_4, peru_3, brazil_2, argentina_1};
-
-    //North America
-    string western_united_states_borders[4] = {"Central America", "Eastern United States", "Ontario", "Alberta"};
-    Territory* western_united_states_9 = new Territory(9, "Western United States", 4, western_united_states_borders);
-
-    string quebec_borders[3] = {"Greenland", "Ontario", "Eastern United States"};
-    Territory* quebec_8 = new Territory(8, "Quebec", 3, quebec_borders);
-
-    string ontario_borders[6] = {"Greenland", "Quebec", "Eastern United States", "Western United States", "Alberta", "Northwest Territory"};
-    Territory* ontario_7 = new Territory(7, "Ontario", 6, ontario_borders);
-
-    string northwest_territory_borders[4] = {"Alaska", "Alberta", "Ontario", "Greenland"};
-    Territory* northwest_territory_6 = new Territory(6, "Northwest Territory", 4, northwest_territory_borders);
-
-    string greenland_borders[4] = {"Northwest Territory", "Ontario", "Quebec", "Iceland"};
-    Territory* greenland_5 = new Territory(5, "Greenland", 4, greenland_borders);
-
-    string eastern_united_states_borders[4] = {"Quebec", "Ontario", "Western United States", "Central America"};
-    Territory* eastern_united_states_4 = new Territory(4, "Eastern United States", 4, eastern_united_states_borders);
-
-    string central_america_borders[3] = {"Eastern United States", "Western United States", "Venezuela"};
-    Territory* central_america_3 = new Territory(3, "Central America", 3, central_america_borders);
-
-    string albera_borders[5] = {"Alaska", "Northwest Territory", "Ontario", "Eastern United States", "Western United States"};
-    Territory* alberta_2 = new Territory(2, "Alberta", 5, albera_borders);
-
-    string alaska_borders[3] = {"Northwest Territory", "Alberta", "Kamchatka"};
-    Territory* alaska_1 = new Territory(1, "Alaska", 3, alaska_borders);
-    //Initialize North America Array
-   Territory* north_america[9] = {western_united_states_9, quebec_8, ontario_7, northwest_territory_6, greenland_5, eastern_united_states_4, central_america_3, alberta_2, alaska_1};
-
-    World earth = World(north_america, south_america, europe, africa, asia, australia);
 
 
 	// Free resources and close SDL

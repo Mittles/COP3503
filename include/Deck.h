@@ -21,6 +21,9 @@ class Deck
 
         //shuffles the cards in the deck pseudo-randomly
         vector<Card> deckShuffle(vector<Card> deckOfCards);
+
+        //prints out all the cards in the deck to the terminal
+        void printDeck();
     protected:
     private:
 };

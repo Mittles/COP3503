@@ -6,7 +6,7 @@ Game::Game(vector<Player> players, World earth, Deck playDeck)
     this->players = players;
     this->earth = earth;
     this->playDeck = playDeck;
-    *currentPlayer = players[0];
+    currentPlayer = 1;
 }
 
 void Game::init_game()
@@ -28,38 +28,31 @@ void Game::init_game()
           int r = rand()%42;
           if (earth.getWorld()[r]->getOwner() == 0) {
                 earth.getWorld()[r]->setOwner(i);
+                players[i].addControlledTerritory(earth.getWorld()[r]);
+                cout << players[i].getName() << "added" << earth.getWorld()[r];
           }
        }
     }
 
     //Deal leftover Territories
-    for (int i=0;i<42; i++) {
+    for (unsigned int i=0;i<42; i++) {
 
     }
+
 
 
 }
 
 void Game::nextTurn() //Sets the current turn to the next player, wraps around if necessary
 {
-    int index;
-    for (unsigned int i=0; i<players.size(); i++) { //If something isn't working here check that currentPlayer is dereferencing correctly
-        if (players[i].equals(*currentPlayer)) {
-            index = i;
-        }
-    }
-
-    if (index = players.size()-1) {
-        *currentPlayer = players[0];
+    if (currentPlayer = players.size()-1) {
+        currentPlayer = 0;
     } else {
-        *currentPlayer = players[index+1];
+        currentPlayer++;
     }
-
-
 }
 
 
 Game::~Game()
 {
-    delete(currentPlayer);
 }

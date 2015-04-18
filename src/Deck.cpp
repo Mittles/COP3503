@@ -19,6 +19,12 @@ Deck::Deck()
     deckOfCards = deckShuffle(deckOfCards);
 }
 
+void Deck::printDeck() {
+    for (unsigned int i=0; i<deckOfCards.size(); i++) {
+        cout << deckOfCards[i].getValue() << endl;
+    }
+}
+
 //creates initial deck
 vector<Card> Deck::createDeck(){
     vector<Card> cardArray;

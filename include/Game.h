@@ -20,7 +20,7 @@ class Game
         virtual ~Game();
     protected:
     private:
-        Player *currentPlayer;
+        int currentPlayer;
         vector<Player> players;
         World earth;
         Deck playDeck;
