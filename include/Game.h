@@ -17,6 +17,8 @@ class Game
         Game(vector<Player> players, World earth, Deck playDeck);
         void init_game();
         void nextTurn();
+        void moveTroops(Territory* origin, Territory* destination, int troopNum);
+        void moveAttack(Territory* a, Territory* b);
         virtual ~Game();
     protected:
     private:

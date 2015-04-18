@@ -47,7 +47,6 @@ void Game::init_game()
             players[p].addControlledTerritory(earth.getWorld()[i]);
             earth.getWorld()[i]->setTroops(earth.getWorld()[i]->getTroops()+1); //Add an army to the territory
             cout << "Bonus Territory " << ") " << players[p].getName() << " added " << earth.getWorld()[i]->getName() << "  Troops: " << earth.getWorld()[i]->getTroops() << endl;
-            cout << "FLAG: " << "TERRITORY: " << earth.getWorld()[i]->getOwner() << endl;
             p++;
         }
     }
@@ -63,6 +62,47 @@ void Game::nextTurn() //Sets the current turn to the next player, wraps around i
         currentPlayer = 0;
     } else {
         currentPlayer++;
+    }
+}
+
+void Game::moveTroops(Territory* origin, Territory* destination, int troopNum){
+        //performs exchange of troop numbers
+        origin->setTroops(origin->getTroops() - troopNum);
+        destination->setTroops(destination->getTroops() + troopNum);
+
+        //still needs to update the map/display for the change in troop numbers somehow
+}
+
+void Game::moveAttack(Territory* a, Territory* b) {
+    bool hasAttacked = false;
+    //Check that a is owned by current player
+    if (a->getOwner() != currentPlayer) {
+        cout << "You don't own " << a->getName() << "!" << endl;
+        return;
+    }
+    //Check that b is adjacent to a
+    bool isbordering = false;
+    for (int i=0; i< a->getBorders().size(); i++) {
+        if (a->getBorders()[i] == b->getName()) {
+            isbordering = true;
+        }
+    }
+    if (isbordering == false) {
+        cout << b->getName() << " doesn't border " << a->getName() << endl;
+        return;
+    }
+
+    if (a->getOwner() == b->getOwner()) {
+        if (!hasAttacked) {
+            cout << "Enter number of troops to move(Must leave 1): " << endl;
+            int troops;
+            cin >> troops;
+            if (a->getTroops() - troops < 1) {
+                cout << "Error: Leave at least 1 troop in " << a->getName() << endl;
+            } else {
+                moveTroops(a, b, troops);
+            }
+        }
     }
 }
 
