@@ -921,10 +921,10 @@ int main(int argc, char* args[])
                 else
                 {
                     isClicked == false;
-                    lockButton == false
+                    lockButton == false;
                 }
 
-                // mouse over attack/move
+                // mouse over allocate troops
 
                 if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 301 && y <= 500))
                 {
@@ -937,11 +937,11 @@ int main(int argc, char* args[])
                 else
                 {
                     isClicked == false;
-                    lockButton == false
+                    lockButton == false;
                 }
 
 
-                // mouse over allocate troops
+                // mouse over attack/move troops
 
                 if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 501 && y <= 700))
                 {
@@ -954,12 +954,12 @@ int main(int argc, char* args[])
                 else
                 {
                     isClicked == false;
-                    lockButton == false
+                    lockButton == false;
                 }
 
-                // mouse over end turn button
+                // mouse over redeploy troops
 
-                if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 701 && y <= SCREEN_HEIGHT))
+                if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 701 && y <= 800))
                 {
                         if(isClicked == true && lockButton == false)
                         {
@@ -970,7 +970,23 @@ int main(int argc, char* args[])
                 else
                 {
                     isClicked == false;
-                    lockButton == false
+                    lockButton == false;
+                }
+
+                // mouse over end turn button
+
+                if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 801 && y <= SCREEN_HEIGHT))
+                {
+                        if(isClicked == true && lockButton == false)
+                        {
+// do method
+                            lockButton == true;
+                        }
+                }
+                else
+                {
+                    isClicked == false;
+                    lockButton == false;
                 }
 
 				// Map viewport, map is 1175x600
