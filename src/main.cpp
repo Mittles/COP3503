@@ -633,6 +633,32 @@ SDL_Texture* loadText(std::string text, int size)
     return newTexture;
 }
 
+SDL_Texture* updateColors(Territory* territory_number)
+{
+    switch(territory_number->getOwner()){
+
+        case 0:
+            return loadTexture("images/ownerBoxR.bmp");
+            break;
+
+        case 1:
+            return loadTexture("images/ownerBoxY.bmp");
+            break;
+
+        case 2:
+            return loadTexture("images/ownerBoxG.bmp");
+            break;
+
+        case 3:
+            return loadTexture("images/ownerBoxB.bmp");
+            break;
+
+        default:
+            return loadTexture("images/onwerBoxN.bmp");
+            break;
+    }
+}
+
 int main(int argc, char* args[])
 {
 	// Start up SDL and create window
