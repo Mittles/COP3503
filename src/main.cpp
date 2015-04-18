@@ -654,7 +654,7 @@ SDL_Texture* updateColors(Territory* territory_number)
             break;
 
         default:
-            return loadTexture("images/onwerBoxN.bmp");
+            return loadTexture("images/ownerBoxN.bmp");
             break;
     }
 }
