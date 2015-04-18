@@ -1838,6 +1838,7 @@ int main(int argc, char* args[])
 */
 				// Update screen
 				SDL_RenderPresent(windowRenderer);
+				SDL_Delay(25);
 			}
 		}
 	}

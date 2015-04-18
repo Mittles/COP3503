@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 JOPTS=-j5
 BDIR=$(pwd)
 GNAME=game.run
@@ -18,6 +18,8 @@ g++ -Wall -g -Iinclude/SDL2 -Iinclude -c $BDIR/src/World.cpp -o World.o
 
 g++ -Llib -o $GNAME Attack.o Card.o Deck.o DiceRoll.o Game.o main.o MoveTroops.o Player.o Territory.o World.o -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.:$BDIR/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.:$BDIR/lib 
 
 ./$GNAME
+
+echo "Please run export 'LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.:lib' because SDL is not installed on this system. It is dynamically linked for cross-platform development reasons."  
