@@ -18,7 +18,6 @@ class Territory
         int getOwner();
         string getName();
         vector<string> getBorders();
-    protected:
     private:
         int troops;
         int num;

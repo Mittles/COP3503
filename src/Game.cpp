@@ -26,10 +26,12 @@ void Game::init_game()
     for (unsigned int i=0; i<players.size(); i++) {
        for (unsigned int j=0; j<maxTerritories; j++) {
           int r = rand()%42;
-          if (earth.getWorld()[r]->getOwner() == 0) {
+          if (earth.getWorld()[r]->getOwner() == 5) {
                 earth.getWorld()[r]->setOwner(i);
                 players[i].addControlledTerritory(earth.getWorld()[r]);
-                cout << players[i].getName() << "added" << earth.getWorld()[r];
+                cout << j << ") " << players[i].getName() << " added " << earth.getWorld()[r]->getName() << endl;
+          } else {
+                j--;
           }
        }
     }

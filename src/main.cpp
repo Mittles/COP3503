@@ -820,6 +820,8 @@ int main(int argc, char* args[])
             Game play(players, earth, playDeck);
             playDeck.printDeck();
 
+            play.init_game();
+
 			// While application is running
 			while(!quit)
 			{
