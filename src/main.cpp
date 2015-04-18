@@ -17,8 +17,8 @@ const int SCREEN_HEIGHT = 900;
 
 std::string player1Name = "Doug";
 std::string player2Name = "Rosemond";
-std::string player3Name = "Player 3";
-std::string player4Name = "Player 4";
+std::string player3Name = "Chris";
+std::string player4Name = "Kevin";
 
 // Starts up SDL and creates a window "mainWindow"
 bool init();
@@ -654,7 +654,7 @@ SDL_Texture* updateColors(Territory* territory_number)
             break;
 
         default:
-            return loadTexture("images/onwerBoxN.bmp");
+            return loadTexture("images/ownerBoxN.bmp");
             break;
     }
 }
@@ -834,15 +834,19 @@ int main(int argc, char* args[])
             string alaska_borders[3] = {"Northwest Territory", "Alberta", "Kamchatka"};
             Territory* alaska_1 = new Territory(1, "Alaska", 3, alaska_borders);
             //Initialize North America Array
-           Territory* north_america[9] = {western_united_states_9, quebec_8, ontario_7, northwest_territory_6, greenland_5, eastern_united_states_4, central_america_3, alberta_2, alaska_1};
+            Territory* north_america[9] = {western_united_states_9, quebec_8, ontario_7, northwest_territory_6, greenland_5, eastern_united_states_4, central_america_3, alberta_2, alaska_1};
 
             World earth = World(north_america, south_america, europe, africa, asia, australia);
 
             std::vector<Player> players;
             Player doug = Player(player1Name, 0);
             Player rosemond = Player(player2Name, 1);
+            Player chris = Player(player3Name, 2);
+            Player kevin = Player(player4Name, 3);
             players.push_back(doug);
             players.push_back(rosemond);
+            players.push_back(chris);
+            players.push_back(kevin);
 
             Deck playDeck = Deck();
             Game play(players, earth, playDeck);
@@ -922,6 +926,8 @@ int main(int argc, char* args[])
 				NaBox1ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
 
+                NaBox1 = updateColors(alaska_1);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
 
@@ -929,7 +935,6 @@ int main(int argc, char* args[])
                 {
                         NaBox1ViewPort.w = 33;
                         NaBox1ViewPort.h = 24;
-
 
                         if(isClicked == true)
                         {
@@ -952,6 +957,8 @@ int main(int argc, char* args[])
 				NaBox2ViewPort.w = 22;
 				NaBox2ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
+
+                NaBox2 = updateColors(alberta_2);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
@@ -983,6 +990,8 @@ int main(int argc, char* args[])
 				NaBox3ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &NaBox3ViewPort);
 
+                NaBox3 = updateColors(central_america_3);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox3, NULL, NULL);
 
@@ -1012,6 +1021,8 @@ int main(int argc, char* args[])
 				NaBox4ViewPort.w = 22;
 				NaBox4ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &NaBox4ViewPort);
+
+                NaBox4 = updateColors(eastern_united_states_4);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox4, NULL, NULL);
@@ -1043,6 +1054,8 @@ int main(int argc, char* args[])
 				NaBox5ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &NaBox5ViewPort);
 
+                NaBox5 = updateColors(greenland_5);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox5, NULL, NULL);
 
@@ -1072,6 +1085,8 @@ int main(int argc, char* args[])
 				NaBox6ViewPort.w = 22;
 				NaBox6ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &NaBox6ViewPort);
+
+                NaBox6 = updateColors(northwest_territory_6);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox6, NULL, NULL);
@@ -1103,6 +1118,8 @@ int main(int argc, char* args[])
 				NaBox7ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &NaBox7ViewPort);
 
+                NaBox7 = updateColors(ontario_7);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox7, NULL, NULL);
 
@@ -1132,6 +1149,8 @@ int main(int argc, char* args[])
 				NaBox8ViewPort.w = 22;
 				NaBox8ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &NaBox8ViewPort);
+
+                NaBox8 = updateColors(quebec_8);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox8, NULL, NULL);
@@ -1163,6 +1182,8 @@ int main(int argc, char* args[])
 				NaBox9ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &NaBox9ViewPort);
 
+                NaBox9 = updateColors(western_united_states_9);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox9, NULL, NULL);
 
@@ -1192,6 +1213,8 @@ int main(int argc, char* args[])
 				SaBox1ViewPort.w = 22;
 				SaBox1ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &SaBox1ViewPort);
+
+                SaBox1 = updateColors(argentina_1);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox1, NULL, NULL);
@@ -1223,6 +1246,8 @@ int main(int argc, char* args[])
 				SaBox2ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &SaBox2ViewPort);
 
+                SaBox2 = updateColors(brazil_2);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox2, NULL, NULL);
 
@@ -1252,6 +1277,8 @@ int main(int argc, char* args[])
 				SaBox3ViewPort.w = 22;
 				SaBox3ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &SaBox3ViewPort);
+
+                SaBox3 = updateColors(peru_3);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox3, NULL, NULL);
@@ -1283,6 +1310,8 @@ int main(int argc, char* args[])
 				SaBox4ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &SaBox4ViewPort);
 
+                SaBox4 = updateColors(venezuela_4);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox4, NULL, NULL);
 
@@ -1313,6 +1342,8 @@ int main(int argc, char* args[])
 				EuBox1ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &EuBox1ViewPort);
 
+                EuBox1 = updateColors(great_britain_1);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox1, NULL, NULL);
 
@@ -1342,6 +1373,8 @@ int main(int argc, char* args[])
 				EuBox2ViewPort.w = 22;
 				EuBox2ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &EuBox2ViewPort);
+
+                EuBox2 = updateColors(iceland_2);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox2, NULL, NULL);
@@ -1374,6 +1407,8 @@ int main(int argc, char* args[])
 				EuBox3ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &EuBox3ViewPort);
 
+                EuBox3 = updateColors(northern_europe_3);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox3, NULL, NULL);
 
@@ -1403,6 +1438,8 @@ int main(int argc, char* args[])
 				EuBox4ViewPort.w = 22;
 				EuBox4ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &EuBox4ViewPort);
+
+                EuBox4 = updateColors(scandinavia_4);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox4, NULL, NULL);
@@ -1434,6 +1471,8 @@ int main(int argc, char* args[])
 				EuBox5ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &EuBox5ViewPort);
 
+                EuBox5 = updateColors(southern_europe_5);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox5, NULL, NULL);
 
@@ -1463,6 +1502,8 @@ int main(int argc, char* args[])
 				EuBox6ViewPort.w = 22;
 				EuBox6ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &EuBox6ViewPort);
+
+                EuBox6 = updateColors(ukraine_6);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox6, NULL, NULL);
@@ -1494,6 +1535,8 @@ int main(int argc, char* args[])
 				EuBox7ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &EuBox7ViewPort);
 
+                EuBox7 = updateColors(western_europe_7);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox7, NULL, NULL);
 
@@ -1523,6 +1566,8 @@ int main(int argc, char* args[])
 				AfBox1ViewPort.w = 22;
 				AfBox1ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AfBox1ViewPort);
+
+                AfBox1 = updateColors(congo_1);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox1, NULL, NULL);
@@ -1554,6 +1599,8 @@ int main(int argc, char* args[])
 				AfBox2ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AfBox2ViewPort);
 
+                AfBox2 = updateColors(east_africa_2);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox2, NULL, NULL);
 
@@ -1583,6 +1630,8 @@ int main(int argc, char* args[])
 				AfBox3ViewPort.w = 22;
 				AfBox3ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AfBox3ViewPort);
+
+                AfBox3 = updateColors(egypt_3);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox3, NULL, NULL);
@@ -1614,6 +1663,8 @@ int main(int argc, char* args[])
 				AfBox4ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AfBox4ViewPort);
 
+                AfBox4 = updateColors(madagascar_4);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox4, NULL, NULL);
 
@@ -1643,6 +1694,8 @@ int main(int argc, char* args[])
 				AfBox5ViewPort.w = 22;
 				AfBox5ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AfBox5ViewPort);
+
+                AfBox5 = updateColors(north_africa_5);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox5, NULL, NULL);
@@ -1674,6 +1727,8 @@ int main(int argc, char* args[])
 				AfBox6ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AfBox6ViewPort);
 
+                AfBox6 = updateColors(south_africa_6);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox6, NULL, NULL);
 
@@ -1703,6 +1758,8 @@ int main(int argc, char* args[])
 				AsBox1ViewPort.w = 22;
 				AsBox1ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox1ViewPort);
+
+                AsBox1 = updateColors(afghanistan_1);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox1, NULL, NULL);
@@ -1734,6 +1791,8 @@ int main(int argc, char* args[])
 				AsBox2ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox2ViewPort);
 
+                AsBox2 = updateColors(china_2);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox2, NULL, NULL);
 
@@ -1763,6 +1822,8 @@ int main(int argc, char* args[])
 				AsBox3ViewPort.w = 22;
 				AsBox3ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox3ViewPort);
+
+                AsBox3 = updateColors(india_3);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox3, NULL, NULL);
@@ -1794,6 +1855,8 @@ int main(int argc, char* args[])
 				AsBox4ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox4ViewPort);
 
+                AsBox4 = updateColors(irkutsk_4);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox4, NULL, NULL);
 
@@ -1823,6 +1886,8 @@ int main(int argc, char* args[])
 				AsBox5ViewPort.w = 22;
 				AsBox5ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox5ViewPort);
+
+                AsBox5 = updateColors(japan_5);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox5, NULL, NULL);
@@ -1854,6 +1919,8 @@ int main(int argc, char* args[])
 				AsBox6ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox6ViewPort);
 
+                AsBox6 = updateColors(kamchatka_6);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox6, NULL, NULL);
 
@@ -1883,6 +1950,8 @@ int main(int argc, char* args[])
 				AsBox7ViewPort.w = 22;
 				AsBox7ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox7ViewPort);
+
+                AsBox7 = updateColors(middle_east_7);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox7, NULL, NULL);
@@ -1914,6 +1983,8 @@ int main(int argc, char* args[])
                 AsBox8ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox8ViewPort);
 
+                AsBox8 = updateColors(mongolia_8);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox8, NULL, NULL);
 
@@ -1943,6 +2014,8 @@ int main(int argc, char* args[])
 				AsBox9ViewPort.w = 22;
 				AsBox9ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox9ViewPort);
+
+                AsBox9 = updateColors(siam_9);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox9, NULL, NULL);
@@ -1974,6 +2047,8 @@ int main(int argc, char* args[])
 				AsBox10ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox10ViewPort);
 
+                AsBox10 = updateColors(siberia_10);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox10, NULL, NULL);
 
@@ -2003,6 +2078,8 @@ int main(int argc, char* args[])
 				AsBox11ViewPort.w = 22;
 				AsBox11ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox11ViewPort);
+
+                AsBox11 = updateColors(ural_11);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox11, NULL, NULL);
@@ -2034,6 +2111,8 @@ int main(int argc, char* args[])
 				AsBox12ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &AsBox12ViewPort);
 
+                AsBox12 = updateColors(yakutsk_12);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox12, NULL, NULL);
 
@@ -2063,6 +2142,8 @@ int main(int argc, char* args[])
 				OcBox1ViewPort.w = 22;
 				OcBox1ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &OcBox1ViewPort);
+
+                OcBox1 = updateColors(eastern_australia_1);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox1, NULL, NULL);
@@ -2094,6 +2175,8 @@ int main(int argc, char* args[])
 				OcBox2ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &OcBox2ViewPort);
 
+                OcBox2 = updateColors(indonesia_2);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox2, NULL, NULL);
 
@@ -2124,6 +2207,8 @@ int main(int argc, char* args[])
 				OcBox3ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &OcBox3ViewPort);
 
+                OcBox3 = updateColors(new_guinea_3);
+
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox3, NULL, NULL);
 
@@ -2153,6 +2238,8 @@ int main(int argc, char* args[])
 				OcBox4ViewPort.w = 22;
 				OcBox4ViewPort.h = 16;
 				SDL_RenderSetViewport(windowRenderer, &OcBox4ViewPort);
+
+                OcBox4 = updateColors(western_australia_4);
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox4, NULL, NULL);
