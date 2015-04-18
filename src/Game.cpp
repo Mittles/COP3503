@@ -43,10 +43,11 @@ void Game::init_game()
     unsigned int p=0;
     for (int i=0; i<42; i++) {
         if (earth.getWorld()[i]->getOwner() == 5) {
-            earth.getWorld()[i]->setOwner(i);               //Set owner
+            earth.getWorld()[i]->setOwner(p);               //Set owner
             players[p].addControlledTerritory(earth.getWorld()[i]);
             earth.getWorld()[i]->setTroops(earth.getWorld()[i]->getTroops()+1); //Add an army to the territory
             cout << "Bonus Territory " << ") " << players[p].getName() << " added " << earth.getWorld()[i]->getName() << "  Troops: " << earth.getWorld()[i]->getTroops() << endl;
+            cout << "FLAG: " << "TERRITORY: " << earth.getWorld()[i]->getOwner() << endl;
             p++;
         }
     }
