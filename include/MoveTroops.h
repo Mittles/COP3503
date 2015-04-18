@@ -16,7 +16,7 @@ class MoveTroops
         territory owned by that player, and if the number of troops being moved leaves the origin territory with
         at least one troop left over.
         */
-        bool validMove(Territory origin, Territory destination, int troopNum);
+        //bool validMove(Territory origin, Territory destination, int troopNum);
 
         //performs the troop movement only if the validMove function returns true`
         void moveTroops(Territory origin, Territory destination, int troopNum);
