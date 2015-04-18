@@ -6,6 +6,7 @@
 #include "Territory.h"
 #include "Deck.h"
 #include "Card.h"
+#include "World.h"
 
 using namespace std;
 class Player
@@ -18,9 +19,17 @@ class Player
         bool equals(Player p);
         vector<Territory*> getControlledTerritories();
         void addControlledTerritory(Territory* t);
+        void giveTroops(int troops);
+        void takeTroops(int troops);
+        int getTroops();
+        void setTroopsPerTurn(int troops);
+        int getTroopsPerTurn();
+        int calculateTroopsPerTurn(World earth);
     private:
         string name;
         int ID;
+        int troopsPool;
+        int troopsPerTurn;
         vector<Territory*> controlled_territories;
         vector<Card> hand;
 };
