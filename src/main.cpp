@@ -659,6 +659,8 @@ int main(int argc, char* args[])
 
             int x, y; // mouse pointer position x and y
 
+            bool isClicked = false;
+
             /*
                 INITIALIZING TERRITORIES
                 Allocated by pointers to make it easier to access subfields of each Territory
@@ -822,6 +824,9 @@ int main(int argc, char* args[])
 
             play.init_game();
 
+            std::string terr1 = NULL;
+            std::string terr2 = NULL;
+
 			// While application is running
 			while(!quit)
 			{
@@ -835,6 +840,15 @@ int main(int argc, char* args[])
 					{
 						quit = true;
 					}
+
+                    if(e.type == SDL_MOUSEBUTTONDOWN)
+                    {
+                        // If the left button was pressed
+                        if (e.button.button == SDL_BUTTON_LEFT)
+                        {
+                            isClicked = true;
+                        }
+                    }
 				}
 
 				// Clear screen
@@ -890,9 +904,19 @@ int main(int argc, char* args[])
                         NaBox1ViewPort.w = 33;
                         NaBox1ViewPort.h = 24;
 
+
+                        if(isClicked == true)
+                        {
+// set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // NaBox2
@@ -911,9 +935,18 @@ int main(int argc, char* args[])
                         NaBox2ViewPort.w = 33;
                         NaBox2ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
+                }
+                else
+                {
+                    isClicked = false;
                 }
 
                 // NaBox3
@@ -932,9 +965,18 @@ int main(int argc, char* args[])
                         NaBox3ViewPort.w = 33;
                         NaBox3ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &NaBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox3, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // NaBox4
@@ -953,9 +995,18 @@ int main(int argc, char* args[])
                         NaBox4ViewPort.w = 33;
                         NaBox4ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &NaBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox4, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // NaBox5
@@ -974,9 +1025,18 @@ int main(int argc, char* args[])
                         NaBox5ViewPort.w = 33;
                         NaBox5ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &NaBox5ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox5, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // NaBox6
@@ -995,9 +1055,18 @@ int main(int argc, char* args[])
                         NaBox6ViewPort.w = 33;
                         NaBox6ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &NaBox6ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox6, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // NaBox7
@@ -1016,9 +1085,18 @@ int main(int argc, char* args[])
                         NaBox7ViewPort.w = 33;
                         NaBox7ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &NaBox7ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox7, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // NaBox8
@@ -1037,9 +1115,18 @@ int main(int argc, char* args[])
                         NaBox8ViewPort.w = 33;
                         NaBox8ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &NaBox8ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox8, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // NaBox9
@@ -1058,9 +1145,18 @@ int main(int argc, char* args[])
                         NaBox9ViewPort.w = 33;
                         NaBox9ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &NaBox9ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox9, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // SaBox1
@@ -1079,9 +1175,18 @@ int main(int argc, char* args[])
                         SaBox1ViewPort.w = 33;
                         SaBox1ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &SaBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, SaBox1, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // SaBox2
@@ -1100,9 +1205,18 @@ int main(int argc, char* args[])
                         SaBox2ViewPort.w = 33;
                         SaBox2ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &SaBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, SaBox2, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // SaBox3
@@ -1121,9 +1235,18 @@ int main(int argc, char* args[])
                         SaBox3ViewPort.w = 33;
                         SaBox3ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &SaBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, SaBox3, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // SaBox4
@@ -1142,9 +1265,18 @@ int main(int argc, char* args[])
                         SaBox4ViewPort.w = 33;
                         SaBox4ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &SaBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, SaBox4, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // EuBox1
@@ -1163,9 +1295,18 @@ int main(int argc, char* args[])
                         EuBox1ViewPort.w = 33;
                         EuBox1ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &EuBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox1, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // EuBox2
@@ -1184,13 +1325,23 @@ int main(int argc, char* args[])
                         EuBox2ViewPort.w = 33;
                         EuBox2ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &EuBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox2, NULL, NULL);
                 }
+                else
+                {
+                    isClicked == false;
+                }
 
                 // EuBox3
-				SDL_Rect EuBox3ViewPort;
+				SDL_Rect
+				EuBox3ViewPort;
 				EuBox3ViewPort.x = 610;
 				EuBox3ViewPort.y = 415;
 				EuBox3ViewPort.w = 22;
@@ -1205,9 +1356,18 @@ int main(int argc, char* args[])
                         EuBox3ViewPort.w = 33;
                         EuBox3ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &EuBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox3, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // EuBox4
@@ -1226,9 +1386,18 @@ int main(int argc, char* args[])
                         EuBox4ViewPort.w = 33;
                         EuBox4ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &EuBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox4, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // EuBox5
@@ -1247,9 +1416,18 @@ int main(int argc, char* args[])
                         EuBox5ViewPort.w = 33;
                         EuBox5ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &EuBox5ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox5, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // EuBox6
@@ -1268,9 +1446,18 @@ int main(int argc, char* args[])
                         EuBox6ViewPort.w = 33;
                         EuBox6ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &EuBox6ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox6, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// EuBox7
@@ -1289,9 +1476,18 @@ int main(int argc, char* args[])
                         EuBox7ViewPort.w = 33;
                         EuBox7ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &EuBox7ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox7, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AfBox1
@@ -1310,9 +1506,18 @@ int main(int argc, char* args[])
                         AfBox1ViewPort.w = 33;
                         AfBox1ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AfBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox1, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AfBox2
@@ -1331,9 +1536,18 @@ int main(int argc, char* args[])
                         AfBox2ViewPort.w = 33;
                         AfBox2ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AfBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox2, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AfBox3
@@ -1352,9 +1566,18 @@ int main(int argc, char* args[])
                         AfBox3ViewPort.w = 33;
                         AfBox3ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AfBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox3, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AfBox4
@@ -1373,9 +1596,18 @@ int main(int argc, char* args[])
                         AfBox4ViewPort.w = 33;
                         AfBox4ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AfBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox4, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AfBox5
@@ -1394,9 +1626,18 @@ int main(int argc, char* args[])
                         AfBox5ViewPort.w = 33;
                         AfBox5ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AfBox5ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox5, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // AfBox6
@@ -1415,9 +1656,18 @@ int main(int argc, char* args[])
                         AfBox6ViewPort.w = 33;
                         AfBox6ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AfBox6ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox6, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // AsBox1
@@ -1436,9 +1686,18 @@ int main(int argc, char* args[])
                         AsBox1ViewPort.w = 33;
                         AsBox1ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox1, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AsBox2
@@ -1457,9 +1716,18 @@ int main(int argc, char* args[])
                         AsBox2ViewPort.w = 33;
                         AsBox2ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox2, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AsBox3
@@ -1478,9 +1746,18 @@ int main(int argc, char* args[])
                         AsBox3ViewPort.w = 33;
                         AsBox3ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox3, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AsBox4
@@ -1499,9 +1776,18 @@ int main(int argc, char* args[])
                         AsBox4ViewPort.w = 33;
                         AsBox4ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox4, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AsBox5
@@ -1520,9 +1806,18 @@ int main(int argc, char* args[])
                         AsBox5ViewPort.w = 33;
                         AsBox5ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox5ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox5, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AsBox6
@@ -1541,9 +1836,18 @@ int main(int argc, char* args[])
                         AsBox6ViewPort.w = 33;
                         AsBox6ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox6ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox6, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AsBox7
@@ -1562,9 +1866,18 @@ int main(int argc, char* args[])
                         AsBox7ViewPort.w = 33;
                         AsBox7ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox7ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox7, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AsBox8
@@ -1583,9 +1896,18 @@ int main(int argc, char* args[])
                         AsBox8ViewPort.w = 33;
                         AsBox8ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox8ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox8, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AsBox9
@@ -1604,9 +1926,18 @@ int main(int argc, char* args[])
                         AsBox9ViewPort.w = 33;
                         AsBox9ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox9ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox9, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AsBox10
@@ -1625,9 +1956,18 @@ int main(int argc, char* args[])
                         AsBox10ViewPort.w = 33;
                         AsBox10ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox10ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox10, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AsBox11
@@ -1646,9 +1986,18 @@ int main(int argc, char* args[])
                         AsBox11ViewPort.w = 33;
                         AsBox11ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox11ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox11, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// AsBox12
@@ -1667,9 +2016,18 @@ int main(int argc, char* args[])
                         AsBox12ViewPort.w = 33;
                         AsBox12ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &AsBox12ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox12, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// OcBox1
@@ -1688,9 +2046,18 @@ int main(int argc, char* args[])
                         OcBox1ViewPort.w = 33;
                         OcBox1ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &OcBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, OcBox1, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// OcBox2
@@ -1709,9 +2076,18 @@ int main(int argc, char* args[])
                         OcBox2ViewPort.w = 33;
                         OcBox2ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &OcBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, OcBox2, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
                 // OcBox3
@@ -1730,9 +2106,18 @@ int main(int argc, char* args[])
                         OcBox3ViewPort.w = 33;
                         OcBox3ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &OcBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, OcBox3, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
                 }
 
 				// OcBox4
@@ -1751,12 +2136,22 @@ int main(int argc, char* args[])
                         OcBox4ViewPort.w = 33;
                         OcBox4ViewPort.h = 24;
 
+                        if(isClicked == true)
+                        {
+               // set string
+                        }
+
                         SDL_RenderSetViewport(windowRenderer, &OcBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, OcBox4, NULL, NULL);
                 }
+                else
+                {
+                    isClicked == false;
+                }
 
-                // BEGIN MENU BOXES
+                // BEGIN
+                // MENU BOXES
 				SDL_Rect P1_Active_VPort;
 				P1_Active_VPort.x = 437;
 				P1_Active_VPort.y = 0;
