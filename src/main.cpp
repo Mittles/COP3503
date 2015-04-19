@@ -962,8 +962,6 @@ int main(int argc, char* args[])
 
             bool isClicked = false;
 
-            bool lockButton = false;
-
             /*
                 INITIALIZING TERRITORIES
                 Allocated by pointers to make it easier to access subfields of each Territory
@@ -1140,6 +1138,8 @@ int main(int argc, char* args[])
 			{
 			    SDL_GetMouseState(&x, &y); // get position of mouse at each frame the program is running
 
+                isClicked = false;
+
 				// Handle events on queue
 				while(SDL_PollEvent(&e) != 0)
 				{
@@ -1188,23 +1188,17 @@ int main(int argc, char* args[])
                 // mouse over exchange stars
                 if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 198 && y <= 300))
                 {
-                        if(isClicked == true && lockButton == false)
+                        if(isClicked == true)
                         {
                             play.exchangeStars();
-                            lockButton == true;
                         }
-                }
-                else
-                {
-                    isClicked == false;
-                    lockButton == false;
                 }
 
                 // mouse over allocate troops
 
                 if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 301 && y <= 500))
                 {
-                        if(isClicked == true && lockButton == false)
+                        if(isClicked == true)
                         {
                             if(terr2 == NULL && terr1 != NULL)
                             {
@@ -1218,21 +1212,15 @@ int main(int argc, char* args[])
                                 terr2 = NULL;
                                 terr1 = NULL;
                             }
-                            lockButton == true;
+
                         }
                 }
-                else
-                {
-                    isClicked == false;
-                    lockButton == false;
-                }
-
 
                 // mouse over attack/move troops
 
                 if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 501 && y <= 700))
                 {
-                        if(isClicked == true && lockButton == false)
+                        if(isClicked == true)
                         {
                             if(terr1 == NULL || terr2 == NULL)
                             {
@@ -1246,21 +1234,14 @@ int main(int argc, char* args[])
                                 terr1 = NULL;
                                 terr2 = NULL;
                             }
-
-                            lockButton == true;
                         }
-                }
-                else
-                {
-                    isClicked == false;
-                    lockButton == false;
                 }
 
                 // mouse over redeploy troops
 
                 if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 701 && y <= 800))
                 {
-                        if(isClicked == true && lockButton == false)
+                        if(isClicked == true)
                         {
                             if(terr1 == NULL || terr2 == NULL)
                             {
@@ -1274,30 +1255,17 @@ int main(int argc, char* args[])
                                 terr1 = NULL;
                                 terr2 = NULL;
                             }
-
-                            lockButton == true;
                         }
-                }
-                else
-                {
-                    isClicked == false;
-                    lockButton == false;
                 }
 
                 // mouse over end turn button
 
                 if((x >= SCREEN_WIDTH - 264 && x <= SCREEN_WIDTH) && (y >= 801 && y <= SCREEN_HEIGHT))
                 {
-                        if(isClicked == true && lockButton == false)
+                        if(isClicked == true)
                         {
                             play.nextTurn();
-                            lockButton == true;
                         }
-                }
-                else
-                {
-                    isClicked == false;
-                    lockButton == false;
                 }
 
 				// Map viewport, map is 1175x600
@@ -1310,7 +1278,6 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, mapTexture, NULL, NULL);
-
 
                 // NaBox3
 				SDL_Rect NaBox3ViewPort;
@@ -1350,10 +1317,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, NaBox3, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, NaBox3n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
                 // NaBox4
@@ -1395,12 +1358,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, NaBox4, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, NaBox4n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
-
-
 
                 // NaBox5
 				SDL_Rect NaBox5ViewPort;
@@ -1440,10 +1397,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, NaBox5, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, NaBox5n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
                 // NaBox6
@@ -1485,10 +1438,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, NaBox6, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, NaBox6n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
                 // NaBox7
 				SDL_Rect NaBox7ViewPort;
@@ -1528,10 +1477,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, NaBox7, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, NaBox7n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
                 // NaBox8
@@ -1573,10 +1518,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, NaBox8, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, NaBox8n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
                 // NaBox9
 				SDL_Rect NaBox9ViewPort;
@@ -1616,10 +1557,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, NaBox9, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, NaBox9n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
                 // SaBox1
@@ -1661,10 +1598,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, SaBox1, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, SaBox1n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
                 // SaBox2
 				SDL_Rect SaBox2ViewPort;
@@ -1704,10 +1637,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, SaBox2, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, SaBox2n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
                 // SaBox3
@@ -1749,10 +1678,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, SaBox3, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, SaBox3n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
                 // SaBox4
 				SDL_Rect SaBox4ViewPort;
@@ -1792,10 +1717,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, SaBox4, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, SaBox4n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
                 // EuBox1
@@ -1837,10 +1758,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, EuBox1, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, EuBox1n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
                 // EuBox2
 				SDL_Rect EuBox2ViewPort;
@@ -1880,10 +1797,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, EuBox2, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, EuBox2n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
                 // EuBox3
@@ -1926,10 +1839,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, EuBox3, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, EuBox3n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
                 // EuBox4
 				SDL_Rect EuBox4ViewPort;
@@ -1969,10 +1878,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, EuBox4, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, EuBox4n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
                 // EuBox5
@@ -2014,10 +1919,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, EuBox5, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, EuBox5n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
                 // EuBox6
 				SDL_Rect EuBox6ViewPort;
@@ -2057,10 +1958,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, EuBox6, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, EuBox6n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
 				// EuBox7
@@ -2102,10 +1999,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, EuBox7, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, EuBox7n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
 				// AfBox1
 				SDL_Rect AfBox1ViewPort;
@@ -2145,10 +2038,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, AfBox1, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AfBox1n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
 				// AfBox2
@@ -2190,10 +2079,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, AfBox2, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AfBox2n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
 				// AfBox3
 				SDL_Rect AfBox3ViewPort;
@@ -2233,10 +2118,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, AfBox3, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AfBox3n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
 				// AfBox4
@@ -2278,10 +2159,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, AfBox4, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AfBox4n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
 				// AfBox5
 				SDL_Rect AfBox5ViewPort;
@@ -2321,10 +2198,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, AfBox5, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AfBox5n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
                 // AfBox6
@@ -2366,10 +2239,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, AfBox6, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AfBox6n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
                 // AsBox1
 				SDL_Rect AsBox1ViewPort;
@@ -2409,10 +2278,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, AsBox1, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox1n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
 				// AsBox2
@@ -2454,10 +2319,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, AsBox2, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox2n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
 				// AsBox3
 				SDL_Rect AsBox3ViewPort;
@@ -2497,10 +2358,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, AsBox3, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox3n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
 				// AsBox4
@@ -2542,10 +2399,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, AsBox4, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox4n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
 				// AsBox5
 				SDL_Rect AsBox5ViewPort;
@@ -2585,10 +2438,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, AsBox5, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox5n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
 				// AsBox6
@@ -2630,10 +2479,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, AsBox6, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox6n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
 				// AsBox7
 				SDL_Rect AsBox7ViewPort;
@@ -2673,10 +2518,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, AsBox7, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox7n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
 				// AsBox8
@@ -2718,10 +2559,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, AsBox8, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox8n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
 				// AsBox9
 				SDL_Rect AsBox9ViewPort;
@@ -2761,10 +2598,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, AsBox9, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox9n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
 				// AsBox10
@@ -2806,10 +2639,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, AsBox10, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox10n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
 				// AsBox11
 				SDL_Rect AsBox11ViewPort;
@@ -2849,10 +2678,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, AsBox11, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox11n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
 				// AsBox12
@@ -2894,10 +2719,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, AsBox12, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, AsBox12n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
 				// OcBox1
 				SDL_Rect OcBox1ViewPort;
@@ -2937,10 +2758,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, OcBox1, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, OcBox1n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
 				// OcBox2
@@ -2982,10 +2799,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, OcBox2, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, OcBox2n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
                 // OcBox3
 				SDL_Rect OcBox3ViewPort;
@@ -3025,10 +2838,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, OcBox3, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, OcBox3n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
                 }
 
 				// OcBox4
@@ -3070,10 +2879,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, OcBox4, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, OcBox4n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
                 // NaBox1
 				SDL_Rect NaBox1ViewPort;
@@ -3114,10 +2919,6 @@ int main(int argc, char* args[])
                         SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, NaBox1n, NULL, NULL);
                 }
-                else
-                {
-                    isClicked == false;
-                }
 
                 // NaBox2
 				SDL_Rect NaBox2ViewPort;
@@ -3135,7 +2936,6 @@ int main(int argc, char* args[])
 
 				changeNumTerr(alberta_2, &NaBox2n);
 				SDL_RenderCopy(windowRenderer, NaBox2n, NULL, NULL);
-
 
                 if((x >= 150 && x <= 150 + 22) && (y >= 400 && y <= 400 + 16))
                 {
@@ -3158,10 +2958,6 @@ int main(int argc, char* args[])
 
                         SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
                         SDL_RenderCopy(windowRenderer, NaBox2n, NULL, NULL);
-                }
-                else
-                {
-                    isClicked = false;
                 }
 
                 // BEGIN
@@ -3398,19 +3194,6 @@ int main(int argc, char* args[])
 				D_Die2_VPort.h = 50;
 				SDL_RenderSetViewport(windowRenderer, &D_Die2_VPort);
 				SDL_RenderCopy(windowRenderer, D_Die2, NULL, NULL);
-/*
-                // testing changing box color
-
-				int num = 3;
-
-                if(num == 3) // changes box colors
-                {
-                        AfBox1 = loadTexture("images/ownerBoxG.bmp");
-
-                        SaBox4 = loadTexture("images/ownerBoxY.bmp");
-
-                }
-*/
 
 				// Update screen
 				SDL_RenderPresent(windowRenderer);
@@ -3418,8 +3201,6 @@ int main(int argc, char* args[])
 			}
 		}
 	}
-
-
 
 	// Free resources and close SDL
 	close();
