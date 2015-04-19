@@ -41,6 +41,11 @@ void Game::allocate_Troops(Territory* t) {
         cin >> troopCount;
     }
 
+    if (troopCount <= 0) {
+        cout << "Error: Enter a valid positive value!" << endl;
+        return;
+    }
+
     if (troopCount > players[currentPlayer].getTroops())  {
         cout << "Error: You don't have that many troops to allocate." << endl;
         return;
@@ -245,6 +250,10 @@ void Game::moveAttack(Territory* a, Territory* b) {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
                 cin >> troops;
             }
+            if (troops <= 0) {
+                cout << "Enter a valid positive value." << endl;
+                return;
+            }
             if (a->getTroops() - troops < 1) {
                 cout << "Error: Leave at least 1 troop in " << a->getName() << endl;
             } else {
@@ -315,6 +324,10 @@ void Game::redeploy(Territory* a, Territory* b) {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
                 cin >> troops;
             }
+            if (troops <= 0) {
+                cout << "Enter a valid positive number." << endl;
+                return;
+            }
             if (a->getTroops() - troops < 1) {
                 cout << "Error: Leave at least 1 troop in " << a->getName() << endl;
             } else {
@@ -340,6 +353,7 @@ void Game::exchangeStars() {
    }
 
    cout << "Enter the number of stars to cash out (at least 3)." << endl;
+   cout << "You have " << players[currentPlayer].getStars() << " stars." << endl;
    int stars;
    cin >> stars;
    while (!cin) {
@@ -348,14 +362,23 @@ void Game::exchangeStars() {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
         cin >> stars;
     }
+    if (stars <= 0) {
+        cout << "Enter a valid positive value" << endl;
+        return;
+    }
 
-   if (stars < 3) {
+    if (stars < 3) {
         cout << "You must turn in at least 3 stars." << endl;
         return;
-   }
+    }
 
-   players[currentPlayer].setTroops(players[currentPlayer].getTroops() + stars);
-   cout << "Gave " << stars << " troops to " << players[currentPlayer].getName() << endl;
+    if (players[currentPlayer].getStars() < stars) {
+        cout << "You don't have that many stars!" << endl;
+        return;
+    }
+
+    players[currentPlayer].setTroops(players[currentPlayer].getTroops() + stars);
+    cout << "Gave " << stars << " troops to " << players[currentPlayer].getName() << endl;
 }
 
 
