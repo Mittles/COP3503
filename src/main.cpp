@@ -923,8 +923,8 @@ int main(int argc, char* args[])
             string middle_east_borders[6] = {"Southern Europe", "Egypt", "East Africa", "India", "Afghanistan", "Ukraine"};
             Territory *middle_east_7 = new Territory(7, "Middle East", 6, middle_east_borders);
 
-            string mongolia_borders[5] = {"Japan", "Kamchatka", "Irkutsk", "Siberia", "Ural"};
-            Territory *mongolia_8 = new Territory(8, "Mongolia", 5, mongolia_borders);
+            string mongolia_borders[6] = {"Japan", "Kamchatka", "Irkutsk", "Siberia", "Ural", "China"};
+            Territory *mongolia_8 = new Territory(8, "Mongolia", 6, mongolia_borders);
 
             string siam_borders[3] = {"India", "China", "Indonesia"};
             Territory *siam_9 = new Territory(9, "Siam", 3, siam_borders);
@@ -1107,6 +1107,7 @@ int main(int argc, char* args[])
                 {
                         if(isClicked == true && lockButton == false)
                         {
+                            play.exchangeStars();
                             lockButton == true;
                         }
                 }
@@ -1162,6 +1163,7 @@ int main(int argc, char* args[])
                                 terr1 = NULL;
                                 terr2 = NULL;
                             }
+
                             lockButton == true;
                         }
                 }
@@ -1177,7 +1179,19 @@ int main(int argc, char* args[])
                 {
                         if(isClicked == true && lockButton == false)
                         {
-// do method
+                            if(terr1 == NULL || terr2 == NULL)
+                            {
+                                    std::cout << "One or more territory is NULL, redeploy aborted, territories reset." << std::endl;
+                                    terr1 = NULL;
+                                    terr2 = NULL;
+                            }
+                            else
+                            {
+                                play.redeploy(terr1, terr2);
+                                terr1 = NULL;
+                                terr2 = NULL;
+                            }
+
                             lockButton == true;
                         }
                 }
@@ -1193,7 +1207,7 @@ int main(int argc, char* args[])
                 {
                         if(isClicked == true && lockButton == false)
                         {
-// do method
+                            play.nextTurn();
                             lockButton == true;
                         }
                 }

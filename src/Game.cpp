@@ -7,12 +7,19 @@ Game::Game(vector<Player> players, World earth, Deck playDeck)
     this->earth = earth;
     this->playDeck = playDeck;
     currentPlayer = 0;
+    turnPhase = 0;
+    capturedTerritory = false;
 }
 int Game::getCurrentPlayer(){
     return this->currentPlayer;
 }
 
 void Game::allocate_Troops(Territory* t) {
+    if (turnPhase != 0) {
+        cout << "You can't allocate troops after you move!" << endl;
+        cout << "The turn phase is " << turnPhase << endl;
+        return;
+    }
     if (t->getOwner() != currentPlayer) {
         cout << "Error: You don't own that territory" << endl;
         return;
@@ -23,9 +30,14 @@ void Game::allocate_Troops(Territory* t) {
     }
     cout << players[currentPlayer].getTroops() << " troops to allocate" << endl;
     cout << "Enter number of troops to allocate to " << t->getName() << endl;
-    cout << "Troops in " << t->getName() << ": " << t->getTroops() << endl;
     int troopCount;
     cin >> troopCount;
+    while (!cin) {
+        cout << "Enter a valid input" << endl;;
+        cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+        cin >> troopCount;
+    }
 
     if (troopCount > players[currentPlayer].getTroops())  {
         cout << "Error: You don't have that many troops to allocate." << endl;
@@ -36,6 +48,7 @@ void Game::allocate_Troops(Territory* t) {
         cout << "Troops in " << t->getName() << ": " << t->getTroops() << endl;
     }
 }
+
 void Game::init_game()
 {
     /*
@@ -79,7 +92,7 @@ void Game::init_game()
     }
 
     for (int i=0; i<players.size(); i++) {
-        players[i].giveTroops(50 - 5*players.size());
+        players[i].setTroops(50 - 5*players.size());
     }
 }
 
@@ -90,6 +103,9 @@ void Game::nextTurn() //Sets the current turn to the next player, wraps around i
     } else {
         currentPlayer++;
     }
+
+    turnPhase = 0;
+    capturedTerritory = false;
 }
 
 void Game::moveTroops(Territory* origin, Territory* destination, int troopNum){
@@ -102,13 +118,19 @@ void Game::moveTroops(Territory* origin, Territory* destination, int troopNum){
 
 void Game::attack(Territory* origin, Territory* destination, int aTroops, int dTroops){
         // array to hold the results of the attacker's dice rolls
-        int aRolls[aTroops];
-        for (int i = 0; i <aTroops; i++){
+        int rollsofA;
+        if (aTroops > 3) {
+            rollsofA = 3;
+        } else {
+            rollsofA = aTroops;
+        }
+        int aRolls[rollsofA];
+        for (int i = 0; i <rollsofA; i++){
             aRolls[i] = d.diceRoll(i);
             //needs to update GUI for the results of the dice roll still
         }
         //sort aRolls array so they can be compared to defenders rolls, ascending order
-        sort(aRolls, aRolls+aTroops);
+        sort(aRolls, aRolls+rollsofA);
 
         //array to hold results of defender's rolls
         int dRolls[dTroops];
@@ -121,7 +143,7 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
 
         //to determine results of battle, the highest dice of each player will be compared in order
         int d = dTroops; // helps keep track of the pairs of dice
-        int a = aTroops;
+        int a = rollsofA;
         do {
             if (aRolls[a-1] > dRolls[d-1]){
                 destination->setTroops(destination->getTroops() - 1);
@@ -132,6 +154,7 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
             d--;
             if (destination->getTroops() == 0){
                 destination->setOwner(origin->getOwner());
+                capturedTerritory = true;
                 destination->setTroops(aTroops);
                 origin->setTroops((origin->getTroops()) - aTroops);
             }
@@ -143,10 +166,12 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
 void Game::moveAttack(Territory* a, Territory* b) {
     //a->setOwner(0);
     //b->setOwner(0);
+    if (turnPhase == 0) {
+        turnPhase = 1;
+    }
     std::cout << this->getCurrentPlayer() << endl;
     std::cout << "Terr1: " << a->getName() << ", owner:" << a->getOwner() << "  troops: " << a->getTroops() << endl;
     std::cout << "Terr2: " << b->getName() << ", owner:" << b->getOwner() << "  troops: " << b->getTroops() << endl;
-    bool hasAttacked = false;
     //Check that a is owned by current player
     if (a->getOwner() != currentPlayer) {
         cout << "You don't own " << a->getName() << "!" << endl;
@@ -165,35 +190,126 @@ void Game::moveAttack(Territory* a, Territory* b) {
     }
 
     if (a->getOwner() == b->getOwner()) {
-        if (!hasAttacked) {
+        if (turnPhase == 1) {
             cout << "Enter number of troops to move(Must leave 1): " << endl;
             int troops;
             cin >> troops;
+            while (!cin) {
+                cout << "Enter a valid input" << endl;
+                cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+                cin >> troops;
+            }
             if (a->getTroops() - troops < 1) {
                 cout << "Error: Leave at least 1 troop in " << a->getName() << endl;
             } else {
                 moveTroops(a, b, troops);
             }
+        } else {
+            cout << "You can't move after you attack." << endl;
+            cout << "Turn phase: " << turnPhase << endl;
         }
     } else if (a->getOwner() != b->getOwner()){
-        cout << "Enter number of troops to move(Must leave 1), up to 3 troops: " << endl;
+        cout << "Enter number of troops to attack with(Must leave 1): " << endl;
         int atroops;
         int btroops;
         cin >> atroops;
-        if (atroops >= 1 && atroops <= 3){
-            if (b->getTroops() >1){
-                btroops = 2;
-            } else {
-                btroops = 1;
-            }
-            attack(a, b, atroops, btroops);
+        while (!cin) {
+            cout << "Enter a valid input" << endl;
+            cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+            cin >> atroops;
         }
+        if (atroops > a->getTroops()-1) {
+            cout << "Error: You don't have that many troops" << endl;
+            return;
+        }
+        if (b->getTroops() >1){
+            btroops = 2;
+        } else {
+            btroops = 1;
+        }
+        attack(a, b, atroops, btroops);
+        turnPhase = 2;
+        std::cout << "origin after move: owner- " << a->getOwner()<< " troops- " << a->getTroops() << endl;
+        std::cout << "destination after move:  owner- " << b->getOwner()<< " troops- " << b->getTroops() << endl;
     }
-    std::cout << "origin after move: owner- " << a->getOwner()<< " troops- " << a->getTroops() << endl;
-    std::cout << "destination after move:  owner- " << b->getOwner()<< " troops- " << b->getTroops() << endl;
+
+
+
 
 
 }
+
+void Game::redeploy(Territory* a, Territory* b) {
+    if (a->getOwner() != currentPlayer) {
+        cout << "You don't own " << a->getName() << "!" << endl;
+        return;
+    }
+    //Check that b is adjacent to a
+    bool isbordering = false;
+    for (int i=0; i< a->getBorders().size(); i++) {
+        if (a->getBorders()[i] == b->getName()) {
+            isbordering = true;
+        }
+    }
+    if (isbordering == false) {
+        cout << b->getName() << " doesn't border " << a->getName() << endl;
+        return;
+    }
+
+    if (a->getOwner() == b->getOwner()) {
+            cout << "Enter number of troops to move(Must leave 1): " << endl;
+            int troops;
+            cin >> troops;
+            while (!cin) {
+                cout << "Enter a valid input" << endl;
+                cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+                cin >> troops;
+            }
+            if (a->getTroops() - troops < 1) {
+                cout << "Error: Leave at least 1 troop in " << a->getName() << endl;
+            } else {
+                moveTroops(a, b, troops);
+                turnPhase = 3;
+            }
+    } else if (a->getOwner() != b->getOwner()){
+        cout << "You don't own " << b->getName() << endl;
+    }
+}
+
+void Game::exchangeStars() {
+   if (turnPhase != 0) {
+        cout << "You can't exchange stars after you move or attack!" << endl;
+        cout << "Current Phase: " << turnPhase << endl;
+        return;
+   }
+
+   if (players[currentPlayer].getStars() == 0) {
+        cout << "You don't have any stars." << endl;
+        return;
+   }
+
+   cout << "Enter the number of stars to cash out (at least 3)." << endl;
+   int stars;
+   cin >> stars;
+   while (!cin) {
+        cout << "Enter a valid input" << endl;
+        cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+        cin >> stars;
+    }
+
+   if (stars < 3) {
+        cout << "You must turn in at least 3 stars." << endl;
+        return;
+   }
+
+   players[currentPlayer].setTroops(players[currentPlayer].getTroops() + stars);
+   cout << "Gave " << stars << " troops to " << players[currentPlayer].getName() << endl;
+}
+
 
 
 Game::~Game()

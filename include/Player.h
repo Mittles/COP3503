@@ -19,12 +19,13 @@ class Player
         bool equals(Player p);
         vector<Territory*> getControlledTerritories();
         void addControlledTerritory(Territory* t);
-        void giveTroops(int troops);
+        void setTroops(int troops);
         void takeTroops(int troops);
         int getTroops();
         void setTroopsPerTurn(int troops);
         int getTroopsPerTurn();
         int calculateTroopsPerTurn(World earth);
+        int getStars();
     private:
         string name;
         int ID;

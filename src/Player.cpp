@@ -10,12 +10,24 @@ string Player::getName() {
     return this->name;
 }
 
-void Player::giveTroops(int troops) {
-    this->troopsPool += troops;
+void Player::setTroops(int troops) {
+    this->troopsPool = troops;
 }
 
 void Player::takeTroops(int troops) {
     this->troopsPool -= troops;
+}
+
+int Player::getStars() {
+    if (hand.size() == 0) {
+        return 0;
+    }
+    int sum=0;
+    for (int i=0; i<hand.size(); i++) {
+        sum+= hand[i].getValue();
+    }
+
+    return sum;
 }
 
 void Player::setTroopsPerTurn(int troops) {

@@ -11,6 +11,7 @@
 #include "Attack.h"
 #include <ctime>
 #include <cstdlib>
+#include <limits>
 
 
 class Game
@@ -24,10 +25,14 @@ class Game
         void attack(Territory* origin, Territory* destination, int aTroops, int dTroops);
         void moveAttack(Territory* a, Territory* b);
         void allocate_Troops(Territory* t);
+        void exchangeStars();
+        void redeploy(Territory* a, Territory* b);
         virtual ~Game();
     protected:
     private:
         int currentPlayer;
+        int turnPhase;
+        bool capturedTerritory;
         vector<Player> players;
         World earth;
         Deck playDeck;
