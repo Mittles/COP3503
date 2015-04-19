@@ -94,7 +94,7 @@ void Game::init_game()
     }
 
     for (int i=0; i<players.size(); i++) {
-        players[i].setTroops(500 - 5*players.size());
+        players[i].setTroops(50 - 5*players.size());
     }
 
     cout << "\n" << endl;
@@ -173,6 +173,16 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
         }
         //sort dRolls array for comparison, ascending order
         sort(dRolls, dRolls+dTroops);
+
+        //display results of dice rolls on GUI
+//        for (int i = 0; i < rollsofA; i++){
+//            changeDie(i, aRolls[i]);        //display attacker's rolls
+//        }
+//
+//        for (int i = 0; i < dTroops; i++){
+//            changeDie(i+3, dRolls[i]);      // display defender's rolls
+//        }
+
 
         //to determine results of battle, the highest dice of each player will be compared in order
         int d = dTroops; // helps keep track of the pairs of dice
