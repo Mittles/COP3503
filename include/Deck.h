@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Card.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -21,6 +22,9 @@ class Deck
 
         //shuffles the cards in the deck pseudo-randomly
         vector<Card> deckShuffle(vector<Card> deckOfCards);
+
+        //returns the top card of the deck
+        void deal(vector<Card> vc);
 
         //prints out all the cards in the deck to the terminal
         void printDeck();

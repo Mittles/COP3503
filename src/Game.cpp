@@ -8,7 +8,9 @@ Game::Game(vector<Player> players, World earth, Deck playDeck)
     this->playDeck = playDeck;
     currentPlayer = 0;
     turnPhase = 0;
+    turn = 1;
     capturedTerritory = false;
+    gameOver = false;
 }
 int Game::getCurrentPlayer(){
     return this->currentPlayer;
@@ -92,20 +94,51 @@ void Game::init_game()
     }
 
     for (int i=0; i<players.size(); i++) {
-        players[i].setTroops(50 - 5*players.size());
+        players[i].setTroops(500 - 5*players.size());
     }
+
+    cout << "\n" << endl;
 }
 
 void Game::nextTurn() //Sets the current turn to the next player, wraps around if necessary
 {
-    if (currentPlayer = players.size()-1) {
-        currentPlayer = 0;
+    cout << "Ending " << players[currentPlayer].getName() << "'s turn" << endl;
+    if (capturedTerritory) {
+        int r = rand()%4+1;
+        players[currentPlayer].setStars(r);
+        cout << "Added " << r << " stars to " << players[currentPlayer].getName() << "." << endl;
+    }
+
+    if (players[currentPlayer].getControlledTerritories().size() == 42) {
+        cout << players[currentPlayer].getName() << " wins!!!!!";
+        this->gameOver = true;
+        return;
+    }
+    if (this->currentPlayer == players.size()-1) {
+        this->currentPlayer = 0;
+        turn++;
     } else {
-        currentPlayer++;
+        this->currentPlayer += 1;
+    }
+    if (players[currentPlayer].getControlledTerritories().size() == 0) {  //Checks if the next player has lost
+        cout << "Skipping " << players[currentPlayer].getName() << " because he/she lost" << endl;
+        nextTurn();
     }
 
     turnPhase = 0;
     capturedTerritory = false;
+    cout << "Turn changed to " << players[currentPlayer].getName() << "'s turn" << endl;
+    if (turn == 1) {
+        return;
+    }
+    int drafted = players[currentPlayer].calculateTroopsPerTurn(earth);
+    cout << players[currentPlayer].getName() << " drafts " << drafted << " troops." << endl;
+    players[currentPlayer].setTroops(players[currentPlayer].getTroops() + drafted);
+
+    if (players[currentPlayer].getControlledTerritories().size() == 0) {
+        cout << "Skipping " << players[currentPlayer].getName() << " because you lost" << endl;
+        nextTurn();
+    }
 }
 
 void Game::moveTroops(Territory* origin, Territory* destination, int troopNum){
@@ -149,12 +182,14 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
                 destination->setTroops(destination->getTroops() - 1);
             } else if (dRolls[d-1] >= aRolls[a-1]){
                 origin->setTroops(origin->getTroops() - 1);
+                cout << players[destination->getOwner()].getName() << " won the battle, " << players[currentPlayer].getName() << " lost." << endl;
             }
             a--;
             d--;
             if (destination->getTroops() == 0){
                 destination->setOwner(origin->getOwner());
                 capturedTerritory = true;
+                cout << players[currentPlayer].getName() << " won the battle!" << endl;
                 destination->setTroops(aTroops);
                 origin->setTroops((origin->getTroops()) - aTroops);
             }
@@ -170,8 +205,8 @@ void Game::moveAttack(Territory* a, Territory* b) {
         turnPhase = 1;
     }
     std::cout << this->getCurrentPlayer() << endl;
-    std::cout << "Terr1: " << a->getName() << ", owner:" << a->getOwner() << "  troops: " << a->getTroops() << endl;
-    std::cout << "Terr2: " << b->getName() << ", owner:" << b->getOwner() << "  troops: " << b->getTroops() << endl;
+    std::cout << "Origin: " << a->getName() << ", owner:" << players[a->getOwner()].getName() << "  Troops: " << a->getTroops() << endl;
+    std::cout << "Destination: " << b->getName() << ", owner:" << players[b->getOwner()].getName() << "  Troops: " << b->getTroops() << endl;
     //Check that a is owned by current player
     if (a->getOwner() != currentPlayer) {
         cout << "You don't own " << a->getName() << "!" << endl;
@@ -231,8 +266,10 @@ void Game::moveAttack(Territory* a, Territory* b) {
         }
         attack(a, b, atroops, btroops);
         turnPhase = 2;
-        std::cout << "origin after move: owner- " << a->getOwner()<< " troops- " << a->getTroops() << endl;
-        std::cout << "destination after move:  owner- " << b->getOwner()<< " troops- " << b->getTroops() << endl;
+        //std::cout << "origin after move: owner- " << a->getOwner()<< " troops- " << a->getTroops() << endl;
+        //std::cout << "destination after move:  owner- " << b->getOwner()<< " troops- " << b->getTroops() << endl;
+        cout << "Moved " << atroops << " troops to " << b->getName() << endl;
+        cout << a->getName() << ": " << a->getTroops() << " troops ; " << b->getName() <<": " << b->getTroops() << " troops" << endl;
     }
 
 
@@ -272,6 +309,7 @@ void Game::redeploy(Territory* a, Territory* b) {
                 cout << "Error: Leave at least 1 troop in " << a->getName() << endl;
             } else {
                 moveTroops(a, b, troops);
+                cout << "Moved " << troops << " troops to " << b->getName() << endl;
                 turnPhase = 3;
             }
     } else if (a->getOwner() != b->getOwner()){

@@ -14,6 +14,8 @@ class Card
         void setValue(int v);
         int getOwner();
         int getValue();
+        bool isDrawn();
+        void changeDraw(bool b);
 
         ~Card();
 
@@ -24,6 +26,9 @@ class Card
 
         //indicates how many stars and therefore troops the card is worth
         int cardValue;
+
+        //indicates if the card has been drawn from the deck
+        bool drawn;
 };
 
 #endif // CARD_H

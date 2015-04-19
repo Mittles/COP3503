@@ -12,6 +12,7 @@ using namespace std;
 class Player
 {
     public:
+        Player();
         Player(string name, int ID);
         virtual ~Player();
         string getName();
@@ -25,12 +26,16 @@ class Player
         void setTroopsPerTurn(int troops);
         int getTroopsPerTurn();
         int calculateTroopsPerTurn(World earth);
+        void setStars(int s);
         int getStars();
+//        void addCard(Deck d);
+        vector<Card> getHand();
     private:
         string name;
         int ID;
         int troopsPool;
         int troopsPerTurn;
+        int stars;
         vector<Territory*> controlled_territories;
         vector<Card> hand;
 };

@@ -18,16 +18,12 @@ void Player::takeTroops(int troops) {
     this->troopsPool -= troops;
 }
 
-int Player::getStars() {
-    if (hand.size() == 0) {
-        return 0;
-    }
-    int sum=0;
-    for (int i=0; i<hand.size(); i++) {
-        sum+= hand[i].getValue();
-    }
+void Player::setStars(int s){
+    this->stars = s;
+}
 
-    return sum;
+int Player::getStars() {
+    return this->stars;
 }
 
 void Player::setTroopsPerTurn(int troops) {
@@ -46,7 +42,7 @@ int Player::calculateTroopsPerTurn(World earth) {
         - Get troops for the number of territories you own
         - Continent Bonus
     */
-    int tpt;
+    int tpt = 0;
 
     //Territory Bonus
     if (controlled_territories.size() < 9) {
@@ -134,6 +130,7 @@ int Player::calculateTroopsPerTurn(World earth) {
     if (counter == 9) {
         tpt += 5;
     }
+    return tpt;
 }
 
 int Player::getTroops() {
@@ -150,6 +147,14 @@ bool Player::equals(Player p) {
     } else {
         return false;
     }
+}
+
+//void Player::addCard(Deck d) {
+//    hand.push_back(d.deal());
+//}
+
+vector<Card> Player::getHand(){
+    return this->hand;
 }
 
 vector<Territory*> Player::getControlledTerritories() {

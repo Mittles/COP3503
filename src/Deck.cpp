@@ -1,11 +1,13 @@
 #include "Deck.h"
-#include "Card.h"
-#include <string>
-#include <vector>
-#include <iostream>
-#include <algorithm>
-#include <ctime>
-#include <cstdlib>
+//#include "Card.h"
+//#include <string>
+//#include <vector>
+//#include <iostream>
+//#include <algorithm>
+//#include <ctime>
+//#include <cstdlib>
+//#include "Player.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -43,6 +45,26 @@ vector<Card> Deck::createDeck(){
     }
     return cardArray;
 }
+
+//void Deck::deal(vector<Card> vc) {
+//    for (unsigned int i=0; i<deckOfCards.size(); i++) {
+//        if (!deckOfCards[i].isDrawn()) {
+//            deckOfCards[i].changeDraw(true);
+//            vc.push_back(deckOfCards[i]);
+//        }
+//        else {
+//            cout << "No Cards to draw!" << endl;
+//
+//        }
+//    }
+//
+//    for (unsigned int i=0; i<deckOfCards.size(); i++) {
+//        deckOfCards[i].changeDraw(false);
+//    }
+//
+//    deckShuffle(deckOfCards);
+//    deckOfCards[0].changeDraw(true);
+//}
 
 //pseudo-randomly shuffles the deck
 vector<Card> Deck::deckShuffle(vector<Card> deckOfCards){

@@ -12,6 +12,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <limits>
+#include <algorithm>
 
 
 class Game
@@ -27,12 +28,15 @@ class Game
         void allocate_Troops(Territory* t);
         void exchangeStars();
         void redeploy(Territory* a, Territory* b);
+        bool isGameOver();
         virtual ~Game();
     protected:
     private:
         int currentPlayer;
         int turnPhase;
+        int turn;
         bool capturedTerritory;
+        bool gameOver;
         vector<Player> players;
         World earth;
         Deck playDeck;

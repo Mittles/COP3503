@@ -4,7 +4,7 @@
 using namespace std;
 //default constructor
 Card::Card(){
-    cardOwner= 0;
+    cardOwner= 5;
     cardValue = 0;
 }
 
@@ -22,6 +22,14 @@ int Card::getOwner(){
 
 int Card::getValue(){
     return this->cardValue;
+}
+
+bool Card::isDrawn() {
+    return this->isDrawn();
+}
+
+void Card::changeDraw(bool b) {
+    this->drawn = b;
 }
 
 Card::~Card(){
