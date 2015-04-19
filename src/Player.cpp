@@ -43,7 +43,7 @@ int Player::calculateTroopsPerTurn(World earth) {
         tpt += (controlled_territories.size()/3);
     }
 
-    //Continent Bonus
+    //Continent Bonuses
 
     //Australia Check
     int counter = 0;

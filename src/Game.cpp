@@ -11,6 +11,31 @@ Game::Game(vector<Player> players, World earth, Deck playDeck)
 int Game::getCurrentPlayer(){
     return this->currentPlayer;
 }
+
+void Game::allocate_Troops(Territory* t) {
+    if (t->getOwner() != currentPlayer) {
+        cout << "Error: You don't own that territory" << endl;
+        return;
+    }
+
+    if (players[currentPlayer].getTroops() == 0) {
+        cout << "Error: You don't have any troops!" << endl;
+    }
+    cout << players[currentPlayer].getTroops() << " troops to allocate" << endl;
+    cout << "Enter number of troops to allocate to " << t->getName() << endl;
+    cout << "Troops in " << t->getName() << ": " << t->getTroops() << endl;
+    int troopCount;
+    cin >> troopCount;
+
+    if (troopCount > players[currentPlayer].getTroops())  {
+        cout << "Error: You don't have that many troops to allocate." << endl;
+        return;
+    } else {
+        t->setTroops(t->getTroops() + troopCount);
+        players[currentPlayer].takeTroops(troopCount);
+        cout << "Troops in " << t->getName() << ": " << t->getTroops() << endl;
+    }
+}
 void Game::init_game()
 {
     /*
@@ -105,18 +130,22 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
             }
             a--;
             d--;
+            if (destination->getTroops() == 0){
+                destination->setOwner(origin->getOwner());
+                destination->setTroops(aTroops);
+                origin->setTroops((origin->getTroops()) - aTroops);
+            }
         } while (d != 0);
 
         //still needs a way to update the map/display to show results in troop number changes
 }
 
 void Game::moveAttack(Territory* a, Territory* b) {
-    a->setOwner(0);
-    a->setTroops(4);
-    b->setOwner(0);
+    //a->setOwner(0);
+    //b->setOwner(0);
     std::cout << this->getCurrentPlayer() << endl;
-    std::cout << "Terr1: " << a->getName() << ", owner:" << a->getOwner() << "troops: " << a->getTroops() << endl;
-    std::cout << "Terr2: " << b->getName() << ", owner:" << b->getOwner() << "troops: " << b->getTroops() << endl;
+    std::cout << "Terr1: " << a->getName() << ", owner:" << a->getOwner() << "  troops: " << a->getTroops() << endl;
+    std::cout << "Terr2: " << b->getName() << ", owner:" << b->getOwner() << "  troops: " << b->getTroops() << endl;
     bool hasAttacked = false;
     //Check that a is owned by current player
     if (a->getOwner() != currentPlayer) {
@@ -160,8 +189,9 @@ void Game::moveAttack(Territory* a, Territory* b) {
             attack(a, b, atroops, btroops);
         }
     }
-    std::cout << "origin after move: " << a->getTroops() << endl;
-    std::cout << "destination after move: " << b->getTroops() << endl;
+    std::cout << "origin after move: owner- " << a->getOwner()<< " troops- " << a->getTroops() << endl;
+    std::cout << "destination after move:  owner- " << b->getOwner()<< " troops- " << b->getTroops() << endl;
+
 
 }
 

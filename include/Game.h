@@ -23,6 +23,7 @@ class Game
         void moveTroops(Territory* origin, Territory* destination, int troopNum);
         void attack(Territory* origin, Territory* destination, int aTroops, int dTroops);
         void moveAttack(Territory* a, Territory* b);
+        void allocate_Troops(Territory* t);
         virtual ~Game();
     protected:
     private:

@@ -1107,7 +1107,19 @@ int main(int argc, char* args[])
                 {
                         if(isClicked == true && lockButton == false)
                         {
-// do method
+                            if(terr2 == NULL && terr1 != NULL)
+                            {
+                                play.allocate_Troops(terr1);
+                                terr1 = NULL;
+                            }
+
+                            if(terr2 != NULL)
+                            {
+                                std::cout << "Territory 2 is not null, resetting inputs." << std::endl;
+                                terr2 = NULL;
+                                terr1 = NULL;
+                            }
+
                             lockButton == true;
                         }
                 }
