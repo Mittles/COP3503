@@ -5,6 +5,7 @@ Territory::Territory(int num, string name, int borderNum, string borders_array[]
 	this->name = name;
 	owner = 5;
 	troops = 0;
+    troopsChanged = false;
 
 	for (int i=0; i<borderNum; i++) {
         borders.push_back(borders_array[i]);
@@ -13,6 +14,7 @@ Territory::Territory(int num, string name, int borderNum, string borders_array[]
 
 void Territory::setTroops(int t){
     this->troops = t;
+    troopsChanged = true;
 }
 
 int Territory::getTroops() {

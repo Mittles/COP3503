@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include "World.h"
 #include "Territory.h"
@@ -40,6 +41,9 @@ SDL_Texture* updateColors(Territory* territory_number);
 
 // Change the dice textures
 void changeDie(int dieNum, int value);
+
+//  Update changes in counts
+//void changeNumTerr(Territory* territory_name, SDL_Texture** curr_texture);
 
 // The window that will have textures rendered on it
 SDL_Window* mainWindow = NULL;
@@ -111,6 +115,66 @@ SDL_Texture* OcBox1 = NULL;
 SDL_Texture* OcBox2 = NULL;
 SDL_Texture* OcBox3 = NULL;
 SDL_Texture* OcBox4 = NULL;
+
+// Here are the boxes that lay over for unit count
+
+// NORTH AMERICAN BOXES
+SDL_Texture* NaBox1n = NULL;
+SDL_Texture* NaBox2n = NULL;
+SDL_Texture* NaBox3n = NULL;
+SDL_Texture* NaBox4n = NULL;
+SDL_Texture* NaBox5n = NULL;
+SDL_Texture* NaBox6n = NULL;
+SDL_Texture* NaBox7n = NULL;
+SDL_Texture* NaBox8n = NULL;
+SDL_Texture* NaBox9n = NULL;
+
+// SOUTH AMERICAN BOXES
+SDL_Texture* SaBox1n = NULL;
+SDL_Texture* SaBox2n = NULL;
+SDL_Texture* SaBox3n = NULL;
+SDL_Texture* SaBox4n = NULL;
+
+// EUROPE BOXES
+
+SDL_Texture* EuBox1n = NULL;
+SDL_Texture* EuBox2n = NULL;
+SDL_Texture* EuBox3n = NULL;
+SDL_Texture* EuBox4n = NULL;
+SDL_Texture* EuBox5n = NULL;
+SDL_Texture* EuBox6n = NULL;
+SDL_Texture* EuBox7n = NULL;
+
+// AFRICA BOXES
+
+SDL_Texture* AfBox1n = NULL;
+SDL_Texture* AfBox2n = NULL;
+SDL_Texture* AfBox3n = NULL;
+SDL_Texture* AfBox4n = NULL;
+SDL_Texture* AfBox5n = NULL;
+SDL_Texture* AfBox6n = NULL;
+
+// ASIA BOXES
+
+SDL_Texture* AsBox1n = NULL;
+SDL_Texture* AsBox2n = NULL;
+SDL_Texture* AsBox3n = NULL;
+SDL_Texture* AsBox4n = NULL;
+SDL_Texture* AsBox5n = NULL;
+SDL_Texture* AsBox6n = NULL;
+SDL_Texture* AsBox7n = NULL;
+SDL_Texture* AsBox8n = NULL;
+SDL_Texture* AsBox9n = NULL;
+SDL_Texture* AsBox10n = NULL;
+SDL_Texture* AsBox11n = NULL;
+SDL_Texture* AsBox12n = NULL;
+
+// OCEANIA BOXES
+
+SDL_Texture* OcBox1n = NULL;
+SDL_Texture* OcBox2n = NULL;
+SDL_Texture* OcBox3n = NULL;
+SDL_Texture* OcBox4n = NULL;
 
 // Here we begin the menu boxes
 
@@ -851,6 +915,25 @@ void changeDie(int dieNum, int value)
     }
 }
 
+void changeNumTerr(Territory* territory_name, SDL_Texture** currTexture)
+{
+    stringstream ss;
+
+    // Updates the tiles for each
+    if(territory_name->troopsChanged){
+
+        territory_name->troopsChanged = false;
+        ss << territory_name->getTroops();
+
+        SDL_DestroyTexture(*currTexture);
+
+        *currTexture = loadText(ss.str(), 10);
+
+//        std::cout << "Changed tile texture." << std::endl;
+
+    }
+}
+
 int main(int argc, char* args[])
 {
 	// Start up SDL and create window
@@ -1243,6 +1326,9 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox3, NULL, NULL);
 
+				changeNumTerr(central_america_3, &NaBox3n);
+				SDL_RenderCopy(windowRenderer, NaBox3n, NULL, NULL);
+
                 if((x >= 130 && x <= 130 + 22) && (y >= 555 && y <= 555 + 16))
                 {
                         NaBox3ViewPort.w = 33;
@@ -1263,6 +1349,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &NaBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox3, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, NaBox3n, NULL, NULL);
                 }
                 else
                 {
@@ -1282,6 +1369,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox4, NULL, NULL);
+
+				changeNumTerr(eastern_united_states_4, &NaBox4n);
+				SDL_RenderCopy(windowRenderer, NaBox4n, NULL, NULL);
 
                 if((x >= 190 && x <= 190 + 22) && (y >= 490 && y <= 490 + 16))
                 {
@@ -1303,6 +1393,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &NaBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox4, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, NaBox4n, NULL, NULL);
                 }
                 else
                 {
@@ -1325,6 +1416,9 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox5, NULL, NULL);
 
+				changeNumTerr(greenland_5, &NaBox5n);
+				SDL_RenderCopy(windowRenderer, NaBox5n, NULL, NULL);
+
                 if((x >= 420 && x <= 420 + 22) && (y >= 340 && y <= 340 + 16))
                 {
                         NaBox5ViewPort.w = 33;
@@ -1345,6 +1439,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &NaBox5ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox5, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, NaBox5n, NULL, NULL);
                 }
                 else
                 {
@@ -1364,6 +1459,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox6, NULL, NULL);
+
+				changeNumTerr(northwest_territory_6, &NaBox6n);
+				SDL_RenderCopy(windowRenderer, NaBox6n, NULL, NULL);
 
                 if((x >= 163 && x <= 163 + 22) && (y >= 368 && y <= 368 + 16))
                 {
@@ -1385,6 +1483,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &NaBox6ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox6, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, NaBox6n, NULL, NULL);
                 }
                 else
                 {
@@ -1404,6 +1503,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox7, NULL, NULL);
+
+				changeNumTerr(ontario_7, &NaBox7n);
+				SDL_RenderCopy(windowRenderer, NaBox7n, NULL, NULL);
 
                 if((x >= 230 && x <= 230 + 22) && (y >= 405 && y <= 405 + 16))
                 {
@@ -1425,6 +1527,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &NaBox7ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox7, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, NaBox7n, NULL, NULL);
                 }
                 else
                 {
@@ -1444,6 +1547,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox8, NULL, NULL);
+
+				changeNumTerr(quebec_8, &NaBox8n);
+				SDL_RenderCopy(windowRenderer, NaBox8n, NULL, NULL);
 
                 if((x >= 310 && x <= 310 + 22) && (y >= 405 && y <= 405 + 16))
                 {
@@ -1465,6 +1571,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &NaBox8ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox8, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, NaBox8n, NULL, NULL);
                 }
                 else
                 {
@@ -1484,6 +1591,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox9, NULL, NULL);
+
+				changeNumTerr(western_united_states_9, &NaBox9n);
+				SDL_RenderCopy(windowRenderer, NaBox9n, NULL, NULL);
 
                 if((x >= 130 && x <= 130 + 22) && (y >= 455 && y <= 455 + 16))
                 {
@@ -1505,6 +1615,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &NaBox9ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox9, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, NaBox9n, NULL, NULL);
                 }
                 else
                 {
@@ -1524,6 +1635,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox1, NULL, NULL);
+
+				changeNumTerr(argentina_1, &SaBox1n);
+				SDL_RenderCopy(windowRenderer, SaBox1n, NULL, NULL);
 
                 if((x >= 295 && x <= 295 + 22) && (y >= 790 && y <= 790 + 16))
                 {
@@ -1545,6 +1659,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &SaBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, SaBox1, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, SaBox1n, NULL, NULL);
                 }
                 else
                 {
@@ -1564,6 +1679,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox2, NULL, NULL);
+
+				changeNumTerr(brazil_2, &SaBox2n);
+				SDL_RenderCopy(windowRenderer, SaBox2n, NULL, NULL);
 
                 if((x >= 345 && x <= 345 + 22) && (y >= 695 && y <= 695 + 16))
                 {
@@ -1585,6 +1703,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &SaBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, SaBox2, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, SaBox2n, NULL, NULL);
                 }
                 else
                 {
@@ -1604,6 +1723,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox3, NULL, NULL);
+
+				changeNumTerr(peru_3, &SaBox3n);
+				SDL_RenderCopy(windowRenderer, SaBox3n, NULL, NULL);
 
                 if((x >= 285 && x <= 285 + 22) && (y >= 725 && y <= 725 + 16))
                 {
@@ -1625,6 +1747,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &SaBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, SaBox3, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, SaBox3n, NULL, NULL);
                 }
                 else
                 {
@@ -1644,6 +1767,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, SaBox4, NULL, NULL);
+
+				changeNumTerr(venezuela_4, &SaBox4n);
+				SDL_RenderCopy(windowRenderer, SaBox4n, NULL, NULL);
 
                 if((x >= 275 && x <= 275 + 22) && (y >= 615 && y <= 615 + 16))
                 {
@@ -1665,6 +1791,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &SaBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, SaBox4, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, SaBox4n, NULL, NULL);
                 }
                 else
                 {
@@ -1684,6 +1811,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox1, NULL, NULL);
+
+				changeNumTerr(great_britain_1, &EuBox1n);
+				SDL_RenderCopy(windowRenderer, EuBox1n, NULL, NULL);
 
                 if((x >= 500 && x <= 500 + 22) && (y >= 420 && y <= 420 + 16))
                 {
@@ -1705,6 +1835,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &EuBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox1, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, EuBox1n, NULL, NULL);
                 }
                 else
                 {
@@ -1724,6 +1855,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox2, NULL, NULL);
+
+				changeNumTerr(iceland_2, &EuBox2n);
+				SDL_RenderCopy(windowRenderer, EuBox2n, NULL, NULL);
 
                 if((x >= 480 && x <= 480 + 22) && (y >= 385 && y <= 385 + 16))
                 {
@@ -1745,6 +1879,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &EuBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox2, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, EuBox2n, NULL, NULL);
                 }
                 else
                 {
@@ -1766,6 +1901,9 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox3, NULL, NULL);
 
+				changeNumTerr(northern_europe_3, &EuBox3n);
+				SDL_RenderCopy(windowRenderer, EuBox3n, NULL, NULL);
+
                 if((x >= 610 && x <= 610 + 22) && (y >= 415 && y <= 415 + 16))
                 {
                         EuBox3ViewPort.w = 33;
@@ -1786,6 +1924,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &EuBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox3, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, EuBox3n, NULL, NULL);
                 }
                 else
                 {
@@ -1805,6 +1944,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox4, NULL, NULL);
+
+				changeNumTerr(scandinavia_4, &EuBox4n);
+				SDL_RenderCopy(windowRenderer, EuBox4n, NULL, NULL);
 
                 if((x >= 595 && x <= 595 + 22) && (y >= 385 && y <= 385 + 16))
                 {
@@ -1826,6 +1968,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &EuBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox4, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, EuBox4n, NULL, NULL);
                 }
                 else
                 {
@@ -1845,6 +1988,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox5, NULL, NULL);
+
+				changeNumTerr(southern_europe_5, &EuBox5n);
+				SDL_RenderCopy(windowRenderer, EuBox5n, NULL, NULL);
 
                 if((x >= 640 && x <= 640 + 22) && (y >= 450 && y <= 450 + 16))
                 {
@@ -1866,6 +2012,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &EuBox5ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox5, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, EuBox5n, NULL, NULL);
                 }
                 else
                 {
@@ -1885,6 +2032,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox6, NULL, NULL);
+
+				changeNumTerr(ukraine_6, &EuBox6n);
+				SDL_RenderCopy(windowRenderer, EuBox6n, NULL, NULL);
 
                 if((x >= 690 && x <= 690 + 22) && (y >= 400 && y <= 400 + 16))
                 {
@@ -1906,6 +2056,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &EuBox6ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox6, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, EuBox6n, NULL, NULL);
                 }
                 else
                 {
@@ -1925,6 +2076,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, EuBox7, NULL, NULL);
+
+				changeNumTerr(western_europe_7, &EuBox7n);
+				SDL_RenderCopy(windowRenderer, EuBox7n, NULL, NULL);
 
                 if((x >= 525 && x <= 525 + 22) && (y >= 465 && y <= 465 + 16))
                 {
@@ -1946,6 +2100,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &EuBox7ViewPort);
 
                         SDL_RenderCopy(windowRenderer, EuBox7, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, EuBox7n, NULL, NULL);
                 }
                 else
                 {
@@ -1965,6 +2120,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox1, NULL, NULL);
+
+				changeNumTerr(congo_1, &AfBox1n);
+				SDL_RenderCopy(windowRenderer, AfBox1n, NULL, NULL);
 
                 if((x >= 645 && x <= 645 + 22) && (y >= 645 && y <= 645 + 16))
                 {
@@ -1986,6 +2144,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AfBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox1, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AfBox1n, NULL, NULL);
                 }
                 else
                 {
@@ -2005,6 +2164,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox2, NULL, NULL);
+
+				changeNumTerr(east_africa_2, &AfBox2n);
+				SDL_RenderCopy(windowRenderer, AfBox2n, NULL, NULL);
 
                 if((x >= 675 && x <= 675 + 22) && (y >= 610 && y <= 610 + 16))
                 {
@@ -2026,6 +2188,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AfBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox2, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AfBox2n, NULL, NULL);
                 }
                 else
                 {
@@ -2045,6 +2208,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox3, NULL, NULL);
+
+				changeNumTerr(egypt_3, &AfBox3n);
+				SDL_RenderCopy(windowRenderer, AfBox3n, NULL, NULL);
 
                 if((x >= 650 && x <= 650 + 22) && (y >= 525 && y <= 525 + 16))
                 {
@@ -2066,6 +2232,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AfBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox3, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AfBox3n, NULL, NULL);
                 }
                 else
                 {
@@ -2085,6 +2252,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox4, NULL, NULL);
+
+				changeNumTerr(madagascar_4, &AfBox4n);
+				SDL_RenderCopy(windowRenderer, AfBox4n, NULL, NULL);
 
                 if((x >= 730 && x <= 730 + 22) && (y >= 755 && y <= 755 + 16))
                 {
@@ -2106,6 +2276,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AfBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox4, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AfBox4n, NULL, NULL);
                 }
                 else
                 {
@@ -2125,6 +2296,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox5, NULL, NULL);
+
+				changeNumTerr(north_africa_5, &AfBox5n);
+				SDL_RenderCopy(windowRenderer, AfBox5n, NULL, NULL);
 
                 if((x >= 555 && x <= 555 + 22) && (y >= 565 && y <= 565 + 16))
                 {
@@ -2146,6 +2320,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AfBox5ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox5, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AfBox5n, NULL, NULL);
                 }
                 else
                 {
@@ -2165,6 +2340,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AfBox6, NULL, NULL);
+
+                changeNumTerr(south_africa_6, &AfBox6n);
+				SDL_RenderCopy(windowRenderer, AfBox6n, NULL, NULL);
 
                 if((x >= 650 && x <= 650 + 22) && (y >= 735 && y <= 735 + 16))
                 {
@@ -2186,6 +2364,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AfBox6ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AfBox6, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AfBox6n, NULL, NULL);
                 }
                 else
                 {
@@ -2205,6 +2384,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox1, NULL, NULL);
+
+				changeNumTerr(afghanistan_1, &AsBox1n);
+				SDL_RenderCopy(windowRenderer, AsBox1n, NULL, NULL);
 
                 if((x >= 800 && x <= 800 + 22) && (y >= 443 && y <= 443 + 16))
                 {
@@ -2226,6 +2408,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox1, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox1n, NULL, NULL);
                 }
                 else
                 {
@@ -2245,6 +2428,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox2, NULL, NULL);
+
+				changeNumTerr(china_2, &AsBox2n);
+				SDL_RenderCopy(windowRenderer, AsBox2n, NULL, NULL);
 
                 if((x >= 955 && x <= 955 + 22) && (y >= 495 && y <= 495 + 16))
                 {
@@ -2266,6 +2452,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox2, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox2n, NULL, NULL);
                 }
                 else
                 {
@@ -2285,6 +2472,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox3, NULL, NULL);
+
+				changeNumTerr(india_3, &AsBox3n);
+				SDL_RenderCopy(windowRenderer, AsBox3n, NULL, NULL);
 
                 if((x >= 875 && x <= 875 + 22) && (y >= 540 && y <= 540 + 16))
                 {
@@ -2306,6 +2496,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox3, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox3n, NULL, NULL);
                 }
                 else
                 {
@@ -2325,6 +2516,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox4, NULL, NULL);
+
+				changeNumTerr(irkutsk_4, &AsBox4n);
+				SDL_RenderCopy(windowRenderer, AsBox4n, NULL, NULL);
 
                 if((x >= 915 && x <= 915 + 22) && (y >= 400 && y <= 400 + 16))
                 {
@@ -2346,6 +2540,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox4, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox4n, NULL, NULL);
                 }
                 else
                 {
@@ -2365,6 +2560,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox5, NULL, NULL);
+
+				changeNumTerr(japan_5, &AsBox5n);
+				SDL_RenderCopy(windowRenderer, AsBox5n, NULL, NULL);
 
                 if((x >= 1090 && x <= 1090 + 22) && (y >= 500 && y <= 500 + 16))
                 {
@@ -2386,6 +2584,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox5ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox5, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox5n, NULL, NULL);
                 }
                 else
                 {
@@ -2405,6 +2604,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox6, NULL, NULL);
+
+				changeNumTerr(kamchatka_6, &AsBox6n);
+				SDL_RenderCopy(windowRenderer, AsBox6n, NULL, NULL);
 
                 if((x >= 1075 && x <= 1075 + 22) && (y >= 360 && y <= 360 + 16))
                 {
@@ -2426,6 +2628,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox6ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox6, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox6n, NULL, NULL);
                 }
                 else
                 {
@@ -2445,6 +2648,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox7, NULL, NULL);
+
+				changeNumTerr(middle_east_7, &AsBox7n);
+				SDL_RenderCopy(windowRenderer, AsBox7n, NULL, NULL);
 
                 if((x >= 725 && x <= 725 + 22) && (y >= 495 && y <= 495 + 16))
                 {
@@ -2466,6 +2672,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox7ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox7, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox7n, NULL, NULL);
                 }
                 else
                 {
@@ -2485,6 +2692,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox8, NULL, NULL);
+
+				changeNumTerr(mongolia_8, &AsBox8n);
+				SDL_RenderCopy(windowRenderer, AsBox8n, NULL, NULL);
 
                 if((x >= 965 && x <= 965 + 22) && (y >= 440 && y <= 440 + 16))
                 {
@@ -2506,6 +2716,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox8ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox8, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox8n, NULL, NULL);
                 }
                 else
                 {
@@ -2525,6 +2736,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox9, NULL, NULL);
+
+				changeNumTerr(siam_9, &AsBox9n);
+				SDL_RenderCopy(windowRenderer, AsBox9n, NULL, NULL);
 
                 if((x >= 940 && x <= 940 + 22) && (y >= 560 && y <= 560 + 16))
                 {
@@ -2546,6 +2760,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox9ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox9, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox9n, NULL, NULL);
                 }
                 else
                 {
@@ -2565,6 +2780,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox10, NULL, NULL);
+
+				changeNumTerr(siberia_10, &AsBox10n);
+				SDL_RenderCopy(windowRenderer, AsBox10n, NULL, NULL);
 
                 if((x >= 870 && x <= 870 + 22) && (y >= 360 && y <= 360 + 16))
                 {
@@ -2586,6 +2804,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox10ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox10, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox10n, NULL, NULL);
                 }
                 else
                 {
@@ -2605,6 +2824,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox11, NULL, NULL);
+
+				changeNumTerr(ural_11, &AsBox11n);
+				SDL_RenderCopy(windowRenderer, AsBox11n, NULL, NULL);
 
                 if((x >= 800 && x <= 800 + 22) && (y >= 380 && y <= 380 + 16))
                 {
@@ -2626,6 +2848,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox11ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox11, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox11n, NULL, NULL);
                 }
                 else
                 {
@@ -2645,6 +2868,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, AsBox12, NULL, NULL);
+
+				changeNumTerr(yakutsk_12, &AsBox12n);
+				SDL_RenderCopy(windowRenderer, AsBox12n, NULL, NULL);
 
                 if((x >= 970 && x <= 970 + 22) && (y >= 358 && y <= 358 + 16))
                 {
@@ -2666,6 +2892,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &AsBox12ViewPort);
 
                         SDL_RenderCopy(windowRenderer, AsBox12, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, AsBox12n, NULL, NULL);
                 }
                 else
                 {
@@ -2685,6 +2912,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox1, NULL, NULL);
+
+				changeNumTerr(eastern_australia_1, &OcBox1n);
+				SDL_RenderCopy(windowRenderer, OcBox1n, NULL, NULL);
 
                 if((x >= 1125 && x <= 1125 + 22) && (y >= 780 && y <= 780 + 16))
                 {
@@ -2706,6 +2936,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &OcBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, OcBox1, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, OcBox1n, NULL, NULL);
                 }
                 else
                 {
@@ -2725,6 +2956,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox2, NULL, NULL);
+
+				changeNumTerr(indonesia_2, &OcBox2n);
+				SDL_RenderCopy(windowRenderer, OcBox2n, NULL, NULL);
 
                 if((x >= 1005 && x <= 1005 + 22) && (y >= 665 && y <= 665 + 16))
                 {
@@ -2746,6 +2980,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &OcBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, OcBox2, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, OcBox2n, NULL, NULL);
                 }
                 else
                 {
@@ -2765,6 +3000,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox3, NULL, NULL);
+
+				changeNumTerr(new_guinea_3, &OcBox3n);
+				SDL_RenderCopy(windowRenderer, OcBox3n, NULL, NULL);
 
                 if((x >= 1145 && x <= 1145 + 22) && (y >= 675 && y <= 675 + 16))
                 {
@@ -2786,6 +3024,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &OcBox3ViewPort);
 
                         SDL_RenderCopy(windowRenderer, OcBox3, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, OcBox3n, NULL, NULL);
                 }
                 else
                 {
@@ -2805,6 +3044,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, OcBox4, NULL, NULL);
+
+				changeNumTerr(western_australia_4, &OcBox4n);
+				SDL_RenderCopy(windowRenderer, OcBox4n, NULL, NULL);
 
                 if((x >= 1045 && x <= 1045 + 22) && (y >= 775 && y <= 775 + 16))
                 {
@@ -2826,6 +3068,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &OcBox4ViewPort);
 
                         SDL_RenderCopy(windowRenderer, OcBox4, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, OcBox4n, NULL, NULL);
                 }
                 else
                 {
@@ -2845,6 +3088,9 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
+
+				changeNumTerr(alaska_1, &NaBox1n);
+				SDL_RenderCopy(windowRenderer, NaBox1n, NULL, NULL);
 
 				if((x >= 83 && x <= 83 + 22) && (y >= 353 && y <= 353 + 16)) // if mouse is inside NaBox1, increase the size of NaBox1 to indicate selection
                 {
@@ -2866,6 +3112,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, NaBox1n, NULL, NULL);
                 }
                 else
                 {
@@ -2885,6 +3132,10 @@ int main(int argc, char* args[])
 
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
+
+				changeNumTerr(alberta_2, &NaBox2n);
+				SDL_RenderCopy(windowRenderer, NaBox2n, NULL, NULL);
+
 
                 if((x >= 150 && x <= 150 + 22) && (y >= 400 && y <= 400 + 16))
                 {
@@ -2906,6 +3157,7 @@ int main(int argc, char* args[])
                         SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
 
                         SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
+                        SDL_RenderCopy(windowRenderer, NaBox2n, NULL, NULL);
                 }
                 else
                 {
