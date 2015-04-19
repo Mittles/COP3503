@@ -1,4 +1,4 @@
-all:
+default:
 	tar xf ubuntu-14.04_amd64_lib.tar
 
 	g++ -Wall -g -Iinclude/SDL2 -Iinclude -c src/Attack.cpp -o Attack.o
@@ -14,4 +14,6 @@ all:
 
 	g++ -Llib -Wl,-rpath,lib Attack.o Card.o Deck.o DiceRoll.o Game.o main.o MoveTroops.o Player.o Territory.o World.o -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lpthread -Wl,--no-undefined -lm -ldl -lpthread -lrt -o ConquestOfTheWorld
 
+clean:
+	rm -f *.o *~
 	
