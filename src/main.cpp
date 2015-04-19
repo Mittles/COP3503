@@ -222,10 +222,10 @@ SDL_Texture* D_Die2 = NULL;
 
 // Declarations used to keep track of upper menu elements currently displayed
 // CANNOT BE PULLED FROM THE UI, as it is displayed all via strings
-int p1tc = 0, p1sc = 0, p1tpt = 0;
-int p2tc = 0, p2sc = 0, p2tpt = 0;
-int p3tc = 0, p3sc = 0, p3tpt = 0;
-int p4tc = 0, p4sc = 0, p4tpt = 0;
+
+unsigned int p1tc = 0, p2tc = 0, p3tc = 0, p4tc = 0;
+int p1sc = 0, p2sc = 0, p3sc = 0, p4sc = 0;
+int p1tpt = 0, p2tpt = 0, p3tpt = 0, p4tpt = 0;
 
 bool init()
 {
