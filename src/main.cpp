@@ -1107,19 +1107,6 @@ int main(int argc, char* args[])
                 {
                         if(isClicked == true && lockButton == false)
                         {
-                            if(terr2 == NULL && terr1 != NULL)
-                            {
-                                play.allocate_Troops(terr1);
-                                terr1 = NULL;
-                            }
-
-                            if(terr2 != NULL)
-                            {
-                                std::cout << "Territory 2 is not null, resetting inputs." << std::endl;
-                                terr2 = NULL;
-                                terr1 = NULL;
-                            }
-
                             lockButton == true;
                         }
                 }
@@ -1135,7 +1122,18 @@ int main(int argc, char* args[])
                 {
                         if(isClicked == true && lockButton == false)
                         {
-// do method
+                            if(terr2 == NULL && terr1 != NULL)
+                            {
+                                play.allocate_Troops(terr1);
+                                terr1 = NULL;
+                            }
+
+                            if(terr2 != NULL)
+                            {
+                                std::cout << "Territory 2 is not null, resetting inputs." << std::endl;
+                                terr2 = NULL;
+                                terr1 = NULL;
+                            }
                             lockButton == true;
                         }
                 }
@@ -1152,10 +1150,18 @@ int main(int argc, char* args[])
                 {
                         if(isClicked == true && lockButton == false)
                         {
-                            play.moveAttack(terr1, terr2);
-                            terr1 = NULL;
-                            terr2 = NULL;
-
+                            if(terr1 == NULL || terr2 == NULL)
+                            {
+                                    std::cout << "One or more territory is NULL, move/attack aborted, territories reset." << std::endl;
+                                    terr1 = NULL;
+                                    terr2 = NULL;
+                            }
+                            else
+                            {
+                                play.moveAttack(terr1, terr2);
+                                terr1 = NULL;
+                                terr2 = NULL;
+                            }
                             lockButton == true;
                         }
                 }
