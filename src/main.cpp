@@ -835,6 +835,7 @@ int main(int argc, char* args[])
 
             string alaska_borders[3] = {"Northwest Territory", "Alberta", "Kamchatka"};
             Territory* alaska_1 = new Territory(1, "Alaska", 3, alaska_borders);
+
             //Initialize North America Array
             Territory* north_america[9] = {western_united_states_9, quebec_8, ontario_7, northwest_territory_6, greenland_5, eastern_united_states_4, central_america_3, alberta_2, alaska_1};
 
@@ -947,12 +948,11 @@ int main(int argc, char* args[])
                 {
                         if(isClicked == true && lockButton == false)
                         {
-
-
-
                             play.moveAttack(terr1, terr2);
-                            lockButton == true;
+                            terr1 = NULL;
+                            terr2 = NULL;
 
+                            lockButton == true;
                         }
                 }
                 else
@@ -1004,85 +1004,6 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, mapTexture, NULL, NULL);
 
-                // NaBox1
-				SDL_Rect NaBox1ViewPort;
-				NaBox1ViewPort.x = 83;
-				NaBox1ViewPort.y = 353;
-				NaBox1ViewPort.w = 22;
-				NaBox1ViewPort.h = 16;
-				SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
-
-                SDL_DestroyTexture(NaBox1);
-                NaBox1 = updateColors(alaska_1);
-
-				// Render texture to screen
-				SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
-
-				if((x >= 83 && x <= 83 + 22) && (y >= 353 && y <= 353 + 16)) // if mouse is inside NaBox1, increase the size of NaBox1 to indicate selection
-                {
-                        NaBox1ViewPort.w = 33;
-                        NaBox1ViewPort.h = 24;
-
-                        if(isClicked == true)
-                        {
-                            if(terr1 == NULL)
-                            {
-                                terr1 = alaska_1;
-                            }
-                            else if(terr2 == NULL && terr1 != alaska_1)
-                            {
-                                terr2 = alaska_1;
-                            }
-                        }
-
-                        SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
-
-                        SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
-                }
-
-                // NaBox2
-				SDL_Rect NaBox2ViewPort;
-				NaBox2ViewPort.x = 150;
-				NaBox2ViewPort.y = 400;
-				NaBox2ViewPort.w = 22;
-				NaBox2ViewPort.h = 16;
-				SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
-
-                SDL_DestroyTexture(NaBox2);
-                NaBox2 = updateColors(alberta_2);
-
-				// Render texture to screen
-				SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
-
-                if((x >= 150 && x <= 150 + 22) && (y >= 400 && y <= 400 + 16))
-                {
-                        NaBox2ViewPort.w = 33;
-                        NaBox2ViewPort.h = 24;
-
-                        if(isClicked == true)
-                        {
-                            if(terr1 == NULL)
-                            {
-                                terr1 = alberta_2;
-                            }
-                            else if(terr2 == NULL && terr1 != alberta_2)
-                            {
-                                terr2 = alberta_2;
-                            }
-                        }
-
-                        SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
-
-                        SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
-                }
-                else
-                {
-                    isClicked = false;
-                }
 
                 // NaBox3
 				SDL_Rect NaBox3ViewPort;
@@ -1163,6 +1084,8 @@ int main(int argc, char* args[])
                 {
                     isClicked == false;
                 }
+
+
 
                 // NaBox5
 				SDL_Rect NaBox5ViewPort;
@@ -2683,6 +2606,86 @@ int main(int argc, char* args[])
                 else
                 {
                     isClicked == false;
+                }
+
+                // NaBox1
+				SDL_Rect NaBox1ViewPort;
+				NaBox1ViewPort.x = 83;
+				NaBox1ViewPort.y = 353;
+				NaBox1ViewPort.w = 22;
+				NaBox1ViewPort.h = 16;
+				SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
+
+                SDL_DestroyTexture(NaBox1);
+                NaBox1 = updateColors(alaska_1);
+
+				// Render texture to screen
+				SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
+
+				if((x >= 83 && x <= 83 + 22) && (y >= 353 && y <= 353 + 16)) // if mouse is inside NaBox1, increase the size of NaBox1 to indicate selection
+                {
+                        NaBox1ViewPort.w = 33;
+                        NaBox1ViewPort.h = 24;
+
+                        if(isClicked == true)
+                        {
+                            if(terr1 == NULL)
+                            {
+                                terr1 = alaska_1;
+                            }
+                            else if(terr2 == NULL && terr1 != alaska_1)
+                            {
+                                terr2 = alaska_1;
+                            }
+                        }
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
+                }
+
+                // NaBox2
+				SDL_Rect NaBox2ViewPort;
+				NaBox2ViewPort.x = 150;
+				NaBox2ViewPort.y = 400;
+				NaBox2ViewPort.w = 22;
+				NaBox2ViewPort.h = 16;
+				SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
+
+                SDL_DestroyTexture(NaBox2);
+                NaBox2 = updateColors(alberta_2);
+
+				// Render texture to screen
+				SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
+
+                if((x >= 150 && x <= 150 + 22) && (y >= 400 && y <= 400 + 16))
+                {
+                        NaBox2ViewPort.w = 33;
+                        NaBox2ViewPort.h = 24;
+
+                        if(isClicked == true)
+                        {
+                            if(terr1 == NULL)
+                            {
+                                terr1 = alberta_2;
+                            }
+                            else if(terr2 == NULL && terr1 != alberta_2)
+                            {
+                                terr2 = alberta_2;
+                            }
+                        }
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
+                }
+                else
+                {
+                    isClicked = false;
                 }
 
                 // BEGIN
