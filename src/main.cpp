@@ -42,8 +42,11 @@ SDL_Texture* updateColors(Territory* territory_number);
 // Change the dice textures
 void changeDie(int dieNum, int value);
 
-//  Update changes in counts
-//void changeNumTerr(Territory* territory_name, SDL_Texture** curr_texture);
+//  Update changes in counts of units
+void changeNumTerr(Territory* territory_name, SDL_Texture** currTexture);
+
+// This updates the counts in the upper menus.
+void changeNumTop();
 
 // The window that will have textures rendered on it
 SDL_Window* mainWindow = NULL;
@@ -116,7 +119,7 @@ SDL_Texture* OcBox2 = NULL;
 SDL_Texture* OcBox3 = NULL;
 SDL_Texture* OcBox4 = NULL;
 
-// Here are the boxes that lay over for unit count
+// Here are the boxes that lay over for unit count, denoted with the color texture followed by an n.
 
 // NORTH AMERICAN BOXES
 SDL_Texture* NaBox1n = NULL;
@@ -216,6 +219,13 @@ SDL_Texture* A_Die2 = NULL;
 SDL_Texture* A_Die3 = NULL;
 SDL_Texture* D_Die1 = NULL;
 SDL_Texture* D_Die2 = NULL;
+
+// Declarations used to keep track of upper menu elements currently displayed
+// CANNOT BE PULLED FROM THE UI, as it is displayed all via strings
+int p1tc = 0, p1sc = 0, p1tpt = 0;
+int p2tc = 0, p2sc = 0, p2tpt = 0;
+int p3tc = 0, p3sc = 0, p3tpt = 0;
+int p4tc = 0, p4sc = 0, p4tpt = 0;
 
 bool init()
 {
@@ -934,6 +944,176 @@ void changeNumTerr(Territory* territory_name, SDL_Texture** currTexture)
     }
 }
 
+void changeNumTop(std::vector<Player>* players)
+{
+    Player tempPlayer = players->at(0);
+
+ //   std::cout << (tempPlayer.getControlledTerritories()).size() << std::endl;
+
+    if((tempPlayer.getControlledTerritories()).size() != p1tc)
+    {
+        stringstream ss;
+
+        p1tc = (tempPlayer.getControlledTerritories()).size();
+
+        ss << p1tc;
+
+        SDL_DestroyTexture(P1_TerritoryCount);
+
+        P1_TerritoryCount = loadText(ss.str(),16);
+    }
+
+    if(tempPlayer.getStars() != p1sc)
+    {
+        stringstream ss;
+
+        p1sc = tempPlayer.getStars();
+
+        ss << p1sc;
+
+        SDL_DestroyTexture(P1_StarCount);
+
+        P1_StarCount = loadText(ss.str(),16);
+    }
+
+    if(tempPlayer.getTroopsPerTurn() != p1tpt)
+    {
+        stringstream ss;
+
+        p1tpt = tempPlayer.getTroopsPerTurn();
+
+        ss << p1tpt;
+
+        SDL_DestroyTexture(P1_UnitsPerTurn);
+
+        P1_UnitsPerTurn = loadText(ss.str(),16);
+    }
+
+    tempPlayer = players->at(1);
+
+    if((tempPlayer.getControlledTerritories()).size() != p2tc)
+    {
+        stringstream ss;
+
+        p2tc = (tempPlayer.getControlledTerritories()).size();
+
+        ss << p2tc;
+
+        SDL_DestroyTexture(P2_TerritoryCount);
+
+        P2_TerritoryCount = loadText(ss.str(),16);
+    }
+
+    if(tempPlayer.getStars() != p2sc)
+    {
+        stringstream ss;
+
+        p1sc = tempPlayer.getStars();
+
+        ss << p2sc;
+
+        SDL_DestroyTexture(P2_StarCount);
+
+        P2_StarCount = loadText(ss.str(),16);
+    }
+
+    if(tempPlayer.getTroopsPerTurn() != p2tpt)
+    {
+        stringstream ss;
+
+        p2tpt = tempPlayer.getTroopsPerTurn();
+
+        ss << p2tpt;
+
+        SDL_DestroyTexture(P2_UnitsPerTurn);
+
+        P2_UnitsPerTurn = loadText(ss.str(),16);
+    }
+
+    tempPlayer = players->at(2);
+
+        if((tempPlayer.getControlledTerritories()).size() != p3tc)
+    {
+        stringstream ss;
+
+        p3tc = (tempPlayer.getControlledTerritories()).size();
+
+        ss << p3tc;
+
+        SDL_DestroyTexture(P3_TerritoryCount);
+
+        P3_TerritoryCount = loadText(ss.str(),16);
+    }
+
+    if(tempPlayer.getStars() != p3sc)
+    {
+        stringstream ss;
+
+        p3sc = tempPlayer.getStars();
+
+        ss << p3sc;
+
+        SDL_DestroyTexture(P3_StarCount);
+
+        P3_StarCount = loadText(ss.str(),16);
+    }
+
+    if(tempPlayer.getTroopsPerTurn() != p3tpt)
+    {
+        stringstream ss;
+
+        p3tpt = tempPlayer.getTroopsPerTurn();
+
+        ss << p3tpt;
+
+        SDL_DestroyTexture(P3_UnitsPerTurn);
+
+        P3_UnitsPerTurn = loadText(ss.str(),16);
+    }
+
+    tempPlayer = players->at(3);
+
+    if((tempPlayer.getControlledTerritories()).size() != p4tc)
+    {
+        stringstream ss;
+
+        p4tc = (tempPlayer.getControlledTerritories()).size();
+
+        ss << p4tc;
+
+        SDL_DestroyTexture(P4_TerritoryCount);
+
+        P4_TerritoryCount = loadText(ss.str(),16);
+    }
+
+    if(tempPlayer.getStars() != p4sc)
+    {
+        stringstream ss;
+
+        p4sc = tempPlayer.getStars();
+
+        ss << p4sc;
+
+        SDL_DestroyTexture(P4_StarCount);
+
+        P4_StarCount = loadText(ss.str(),16);
+    }
+
+    if(tempPlayer.getTroopsPerTurn() != p4tpt)
+    {
+        stringstream ss;
+
+        p4tpt = tempPlayer.getTroopsPerTurn();
+
+        ss << p4tpt;
+
+        SDL_DestroyTexture(P4_UnitsPerTurn);
+
+        P4_UnitsPerTurn = loadText(ss.str(),16);
+    }
+
+}
+
 int main(int argc, char* args[])
 {
 	// Start up SDL and create window
@@ -1138,6 +1318,9 @@ int main(int argc, char* args[])
 			// While application is running
 			while(!quit)
 			{
+                // Update top menu
+                changeNumTop(&players);
+
 			    SDL_GetMouseState(&x, &y); // get position of mouse at each frame the program is running
 
 				// Handle events on queue
