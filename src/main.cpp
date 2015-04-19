@@ -1027,6 +1027,7 @@ int main(int argc, char* args[])
 
             string alaska_borders[3] = {"Northwest Territory", "Alberta", "Kamchatka"};
             Territory* alaska_1 = new Territory(1, "Alaska", 3, alaska_borders);
+
             //Initialize North America Array
             Territory* north_america[9] = {western_united_states_9, quebec_8, ontario_7, northwest_territory_6, greenland_5, eastern_united_states_4, central_america_3, alberta_2, alaska_1};
 
@@ -1048,8 +1049,8 @@ int main(int argc, char* args[])
 
             play.init_game();
 
-            std::string terr1 = "";
-            std::string terr2 = "";
+            Territory* terr1 = NULL;
+            Territory* terr2 = NULL;
 
 			// While application is running
 			while(!quit)
@@ -1139,7 +1140,10 @@ int main(int argc, char* args[])
                 {
                         if(isClicked == true && lockButton == false)
                         {
-// do method
+                            play.moveAttack(terr1, terr2);
+                            terr1 = NULL;
+                            terr2 = NULL;
+
                             lockButton == true;
                         }
                 }
@@ -1192,71 +1196,6 @@ int main(int argc, char* args[])
 				// Render texture to screen
 				SDL_RenderCopy(windowRenderer, mapTexture, NULL, NULL);
 
-                // NaBox1
-				SDL_Rect NaBox1ViewPort;
-				NaBox1ViewPort.x = 83;
-				NaBox1ViewPort.y = 353;
-				NaBox1ViewPort.w = 22;
-				NaBox1ViewPort.h = 16;
-				SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
-
-                SDL_DestroyTexture(NaBox1);
-                NaBox1 = updateColors(alaska_1);
-
-				// Render texture to screen
-				SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
-
-				if((x >= 83 && x <= 83 + 22) && (y >= 353 && y <= 353 + 16)) // if mouse is inside NaBox1, increase the size of NaBox1 to indicate selection
-                {
-                        NaBox1ViewPort.w = 33;
-                        NaBox1ViewPort.h = 24;
-
-                        if(isClicked == true)
-                        {
-// set string
-                        }
-
-                        SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
-
-                        SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
-                }
-                else
-                {
-                    isClicked == false;
-                }
-
-                // NaBox2
-				SDL_Rect NaBox2ViewPort;
-				NaBox2ViewPort.x = 150;
-				NaBox2ViewPort.y = 400;
-				NaBox2ViewPort.w = 22;
-				NaBox2ViewPort.h = 16;
-				SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
-
-                SDL_DestroyTexture(NaBox2);
-                NaBox2 = updateColors(alberta_2);
-
-				// Render texture to screen
-				SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
-
-                if((x >= 150 && x <= 150 + 22) && (y >= 400 && y <= 400 + 16))
-                {
-                        NaBox2ViewPort.w = 33;
-                        NaBox2ViewPort.h = 24;
-
-                        if(isClicked == true)
-                        {
-               // set string
-                        }
-
-                        SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
-
-                        SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
-                }
-                else
-                {
-                    isClicked = false;
-                }
 
                 // NaBox3
 				SDL_Rect NaBox3ViewPort;
@@ -1279,7 +1218,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = central_america_3;
+                            }
+                            else if(terr2 == NULL && terr1 != central_america_3)
+                            {
+                                terr2 = central_america_3;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &NaBox3ViewPort);
@@ -1312,7 +1258,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = eastern_united_states_4;
+                            }
+                            else if(terr2 == NULL && terr1 != eastern_united_states_4)
+                            {
+                                terr2 = eastern_united_states_4;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &NaBox4ViewPort);
@@ -1323,6 +1276,8 @@ int main(int argc, char* args[])
                 {
                     isClicked == false;
                 }
+
+
 
                 // NaBox5
 				SDL_Rect NaBox5ViewPort;
@@ -1345,7 +1300,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = greenland_5;
+                            }
+                            else if(terr2 == NULL && terr1 != greenland_5)
+                            {
+                                terr2 = greenland_5;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &NaBox5ViewPort);
@@ -1378,7 +1340,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = northwest_territory_6;
+                            }
+                            else if(terr2 == NULL && terr1 != northwest_territory_6)
+                            {
+                                terr2 = northwest_territory_6;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &NaBox6ViewPort);
@@ -1411,7 +1380,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = ontario_7;
+                            }
+                            else if(terr2 == NULL && terr1 != ontario_7)
+                            {
+                                terr2 = ontario_7;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &NaBox7ViewPort);
@@ -1444,7 +1420,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = quebec_8;
+                            }
+                            else if(terr2 == NULL && terr1 != quebec_8)
+                            {
+                                terr2 = quebec_8;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &NaBox8ViewPort);
@@ -1477,7 +1460,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = western_united_states_9;
+                            }
+                            else if(terr2 == NULL && terr1 != western_united_states_9)
+                            {
+                                terr2 = western_united_states_9;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &NaBox9ViewPort);
@@ -1510,7 +1500,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = argentina_1;
+                            }
+                            else if(terr2 == NULL && terr1 != argentina_1)
+                            {
+                                terr2 = argentina_1;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &SaBox1ViewPort);
@@ -1543,7 +1540,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = brazil_2;
+                            }
+                            else if(terr2 == NULL && terr1 != brazil_2)
+                            {
+                                terr2 = brazil_2;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &SaBox2ViewPort);
@@ -1576,7 +1580,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = peru_3;
+                            }
+                            else if(terr2 == NULL && terr1 != peru_3)
+                            {
+                                terr2 = peru_3;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &SaBox3ViewPort);
@@ -1609,7 +1620,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = venezuela_4;
+                            }
+                            else if(terr2 == NULL && terr1 != venezuela_4)
+                            {
+                                terr2 = venezuela_4;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &SaBox4ViewPort);
@@ -1642,7 +1660,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = great_britain_1;
+                            }
+                            else if(terr2 == NULL && terr1 != great_britain_1)
+                            {
+                                terr2 = great_britain_1;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &EuBox1ViewPort);
@@ -1675,7 +1700,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = iceland_2;
+                            }
+                            else if(terr2 == NULL && terr1 != iceland_2)
+                            {
+                                terr2 = iceland_2;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &EuBox2ViewPort);
@@ -1709,7 +1741,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = northern_europe_3;
+                            }
+                            else if(terr2 == NULL && terr1 != northern_europe_3)
+                            {
+                                terr2 = northern_europe_3;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &EuBox3ViewPort);
@@ -1742,7 +1781,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = scandinavia_4;
+                            }
+                            else if(terr2 == NULL && terr1 != scandinavia_4)
+                            {
+                                terr2 = scandinavia_4;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &EuBox4ViewPort);
@@ -1775,7 +1821,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = southern_europe_5;
+                            }
+                            else if(terr2 == NULL && terr1 != southern_europe_5)
+                            {
+                                terr2 = southern_europe_5;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &EuBox5ViewPort);
@@ -1808,7 +1861,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = ukraine_6;
+                            }
+                            else if(terr2 == NULL && terr1 != ukraine_6)
+                            {
+                                terr2 = ukraine_6;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &EuBox6ViewPort);
@@ -1841,7 +1901,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = western_europe_7;
+                            }
+                            else if(terr2 == NULL && terr1 != western_europe_7)
+                            {
+                                terr2 = western_europe_7;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &EuBox7ViewPort);
@@ -1874,7 +1941,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = congo_1;
+                            }
+                            else if(terr2 == NULL && terr1 != congo_1)
+                            {
+                                terr2 = congo_1;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AfBox1ViewPort);
@@ -1907,7 +1981,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = east_africa_2;
+                            }
+                            else if(terr2 == NULL && terr1 != east_africa_2)
+                            {
+                                terr2 = east_africa_2;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AfBox2ViewPort);
@@ -1940,7 +2021,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = egypt_3;
+                            }
+                            else if(terr2 == NULL && terr1 != egypt_3)
+                            {
+                                terr2 = egypt_3;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AfBox3ViewPort);
@@ -1973,7 +2061,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = madagascar_4;
+                            }
+                            else if(terr2 == NULL && terr1 != madagascar_4)
+                            {
+                                terr2 = madagascar_4;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AfBox4ViewPort);
@@ -2006,7 +2101,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = north_africa_5;
+                            }
+                            else if(terr2 == NULL && terr1 != north_africa_5)
+                            {
+                                terr2 = north_africa_5;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AfBox5ViewPort);
@@ -2039,7 +2141,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = south_africa_6;
+                            }
+                            else if(terr2 == NULL && terr1 != south_africa_6)
+                            {
+                                terr2 = south_africa_6;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AfBox6ViewPort);
@@ -2072,7 +2181,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = afghanistan_1;
+                            }
+                            else if(terr2 == NULL && terr1 != afghanistan_1)
+                            {
+                                terr2 = afghanistan_1;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox1ViewPort);
@@ -2105,7 +2221,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = china_2;
+                            }
+                            else if(terr2 == NULL && terr1 != china_2)
+                            {
+                                terr2 = china_2;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox2ViewPort);
@@ -2138,7 +2261,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = india_3;
+                            }
+                            else if(terr2 == NULL && terr1 != india_3)
+                            {
+                                terr2 = india_3;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox3ViewPort);
@@ -2171,7 +2301,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = irkutsk_4;
+                            }
+                            else if(terr2 == NULL && terr1 != irkutsk_4)
+                            {
+                                terr2 = irkutsk_4;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox4ViewPort);
@@ -2204,7 +2341,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = japan_5;
+                            }
+                            else if(terr2 == NULL && terr1 != japan_5)
+                            {
+                                terr2 = japan_5;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox5ViewPort);
@@ -2237,7 +2381,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = kamchatka_6;
+                            }
+                            else if(terr2 == NULL && terr1 != kamchatka_6)
+                            {
+                                terr2 = kamchatka_6;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox6ViewPort);
@@ -2270,7 +2421,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = middle_east_7;
+                            }
+                            else if(terr2 == NULL && terr1 != middle_east_7)
+                            {
+                                terr2 = middle_east_7;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox7ViewPort);
@@ -2303,7 +2461,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = mongolia_8;
+                            }
+                            else if(terr2 == NULL && terr1 != mongolia_8)
+                            {
+                                terr2 = mongolia_8;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox8ViewPort);
@@ -2336,7 +2501,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = siam_9;
+                            }
+                            else if(terr2 == NULL && terr1 != siam_9)
+                            {
+                                terr2 = siam_9;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox9ViewPort);
@@ -2369,7 +2541,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = siberia_10;
+                            }
+                            else if(terr2 == NULL && terr1 != siberia_10)
+                            {
+                                terr2 = siberia_10;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox10ViewPort);
@@ -2402,7 +2581,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = ural_11;
+                            }
+                            else if(terr2 == NULL && terr1 != ural_11)
+                            {
+                                terr2 = ural_11;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox11ViewPort);
@@ -2435,7 +2621,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = yakutsk_12;
+                            }
+                            else if(terr2 == NULL && terr1 != yakutsk_12)
+                            {
+                                terr2 = yakutsk_12;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &AsBox12ViewPort);
@@ -2468,7 +2661,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = eastern_australia_1;
+                            }
+                            else if(terr2 == NULL && terr1 != eastern_australia_1)
+                            {
+                                terr2 = eastern_australia_1;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &OcBox1ViewPort);
@@ -2501,7 +2701,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = indonesia_2;
+                            }
+                            else if(terr2 == NULL && terr1 != indonesia_2)
+                            {
+                                terr2 = indonesia_2;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &OcBox2ViewPort);
@@ -2534,7 +2741,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = new_guinea_3;
+                            }
+                            else if(terr2 == NULL && terr1 != new_guinea_3)
+                            {
+                                terr2 = new_guinea_3;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &OcBox3ViewPort);
@@ -2567,7 +2781,14 @@ int main(int argc, char* args[])
 
                         if(isClicked == true)
                         {
-               // set string
+                            if(terr1 == NULL)
+                            {
+                                terr1 = western_australia_4;
+                            }
+                            else if(terr2 == NULL && terr1 != western_australia_4)
+                            {
+                                terr2 = western_australia_4;
+                            }
                         }
 
                         SDL_RenderSetViewport(windowRenderer, &OcBox4ViewPort);
@@ -2577,6 +2798,86 @@ int main(int argc, char* args[])
                 else
                 {
                     isClicked == false;
+                }
+
+                // NaBox1
+				SDL_Rect NaBox1ViewPort;
+				NaBox1ViewPort.x = 83;
+				NaBox1ViewPort.y = 353;
+				NaBox1ViewPort.w = 22;
+				NaBox1ViewPort.h = 16;
+				SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
+
+                SDL_DestroyTexture(NaBox1);
+                NaBox1 = updateColors(alaska_1);
+
+				// Render texture to screen
+				SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
+
+				if((x >= 83 && x <= 83 + 22) && (y >= 353 && y <= 353 + 16)) // if mouse is inside NaBox1, increase the size of NaBox1 to indicate selection
+                {
+                        NaBox1ViewPort.w = 33;
+                        NaBox1ViewPort.h = 24;
+
+                        if(isClicked == true)
+                        {
+                            if(terr1 == NULL)
+                            {
+                                terr1 = alaska_1;
+                            }
+                            else if(terr2 == NULL && terr1 != alaska_1)
+                            {
+                                terr2 = alaska_1;
+                            }
+                        }
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox1ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox1, NULL, NULL);
+                }
+                else
+                {
+                    isClicked == false;
+                }
+
+                // NaBox2
+				SDL_Rect NaBox2ViewPort;
+				NaBox2ViewPort.x = 150;
+				NaBox2ViewPort.y = 400;
+				NaBox2ViewPort.w = 22;
+				NaBox2ViewPort.h = 16;
+				SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
+
+                SDL_DestroyTexture(NaBox2);
+                NaBox2 = updateColors(alberta_2);
+
+				// Render texture to screen
+				SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
+
+                if((x >= 150 && x <= 150 + 22) && (y >= 400 && y <= 400 + 16))
+                {
+                        NaBox2ViewPort.w = 33;
+                        NaBox2ViewPort.h = 24;
+
+                        if(isClicked == true)
+                        {
+                            if(terr1 == NULL)
+                            {
+                                terr1 = alberta_2;
+                            }
+                            else if(terr2 == NULL && terr1 != alberta_2)
+                            {
+                                terr2 = alberta_2;
+                            }
+                        }
+
+                        SDL_RenderSetViewport(windowRenderer, &NaBox2ViewPort);
+
+                        SDL_RenderCopy(windowRenderer, NaBox2, NULL, NULL);
+                }
+                else
+                {
+                    isClicked = false;
                 }
 
                 // BEGIN
@@ -2826,6 +3127,7 @@ int main(int argc, char* args[])
 
                 }
 */
+
 				// Update screen
 				SDL_RenderPresent(windowRenderer);
 				SDL_Delay(10);
