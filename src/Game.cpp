@@ -16,8 +16,8 @@ int Game::getCurrentPlayer(){
     return this->currentPlayer;
 }
 
-vector<Player> Game::getPlayers() {
-    return this->players;
+vector<Player>* Game::getPlayers() {
+    return &players;
 }
 
 void Game::allocate_Troops(Territory* t) {

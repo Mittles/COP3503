@@ -20,7 +20,7 @@ class Game
     public:
         Game(vector<Player> players, World earth, Deck playDeck);
         int getCurrentPlayer();
-        vector<Player> getPlayers();
+        vector<Player>* getPlayers();
         void init_game();
         void endGame();
         void nextTurn();
