@@ -26,6 +26,10 @@ void Game::calculatePlayerTPT() {
     }
 }
 
+bool Game::isGameOver() {
+    return this->gameOver;
+}
+
 void Game::allocate_Troops(Territory* t) {
     if (turnPhase != 0) {
         cout << "You can't allocate troops after you move!" << endl;
