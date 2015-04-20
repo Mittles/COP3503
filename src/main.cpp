@@ -40,7 +40,7 @@ SDL_Texture* loadText(std::string text, int size);
 SDL_Texture* updateColors(Territory* territory_number);
 
 // Change the dice textures
-void changeDie(int dieNum, int value);
+//void changeDie(int dieNum, int value);
 
 //  Update changes in counts of units
 void changeNumTerr(Territory* territory_name, SDL_Texture** currTexture);
@@ -740,189 +740,195 @@ SDL_Texture* updateColors(Territory* territory_number)
     }
 }
 
-void changeDie(int dieNum, int value)
+void changeDie(int* diceArray)
 {
-    switch(dieNum){
 
-        case 1:
-            SDL_DestroyTexture(A_Die1);
+    for(int dieNum=1; dieNum<6; dieNum++)
+    {
+        int value = std::abs( diceArray[dieNum-1]);
 
-            switch(value){
+        switch(dieNum){
 
-                case 1:
-                    A_Die1 = loadTexture("images/Die1.bmp");
-                    break;
+            case 1:
+                SDL_DestroyTexture(A_Die1);
 
-                case 2:
-                    A_Die1 = loadTexture("images/Die2.bmp");
-                    break;
+                switch(value){
 
-                case 3:
-                    A_Die1 = loadTexture("images/Die3.bmp");
-                    break;
+                    case 1:
+                        A_Die1 = loadTexture("images/Die1.bmp");
+                        break;
 
-                case 4:
-                    A_Die1 = loadTexture("images/Die4.bmp");
-                    break;
+                    case 2:
+                        A_Die1 = loadTexture("images/Die2.bmp");
+                        break;
 
-                case 5:
-                    A_Die1 = loadTexture("images/Die5.bmp");
-                    break;
+                    case 3:
+                        A_Die1 = loadTexture("images/Die3.bmp");
+                        break;
 
-                case 6:
-                    A_Die1 = loadTexture("images/Die6.bmp");
-                    break;
+                    case 4:
+                        A_Die1 = loadTexture("images/Die4.bmp");
+                        break;
 
-                default:
-                    A_Die1 = loadTexture("images/nullDie.bmp");
-                    break;
-            }
+                    case 5:
+                        A_Die1 = loadTexture("images/Die5.bmp");
+                        break;
 
-            break;
+                    case 6:
+                        A_Die1 = loadTexture("images/Die6.bmp");
+                        break;
 
-        case 2:
-            SDL_DestroyTexture(A_Die2);
+                    default:
+                        A_Die1 = loadTexture("images/nullDie.bmp");
+                        break;
+                }
 
-            switch(value){
+                break;
 
-                case 1:
-                    A_Die2 = loadTexture("images/Die1.bmp");
-                    break;
+            case 2:
+                SDL_DestroyTexture(A_Die2);
 
-                case 2:
-                    A_Die2 = loadTexture("images/Die2.bmp");
-                    break;
+                switch(value){
 
-                case 3:
-                    A_Die2 = loadTexture("images/Die3.bmp");
-                    break;
+                    case 1:
+                        A_Die2 = loadTexture("images/Die1.bmp");
+                        break;
 
-                case 4:
-                    A_Die2 = loadTexture("images/Die4.bmp");
-                    break;
+                    case 2:
+                        A_Die2 = loadTexture("images/Die2.bmp");
+                        break;
 
-                case 5:
-                    A_Die2 = loadTexture("images/Die5.bmp");
-                    break;
+                    case 3:
+                        A_Die2 = loadTexture("images/Die3.bmp");
+                        break;
 
-                case 6:
-                    A_Die2 = loadTexture("images/Die6.bmp");
-                    break;
+                    case 4:
+                        A_Die2 = loadTexture("images/Die4.bmp");
+                        break;
 
-                default:
-                    A_Die2 = loadTexture("images/nullDie.bmp");
-                    break;
-            }
+                    case 5:
+                        A_Die2 = loadTexture("images/Die5.bmp");
+                        break;
 
-            break;
+                    case 6:
+                        A_Die2 = loadTexture("images/Die6.bmp");
+                        break;
 
-        case 3:
-            SDL_DestroyTexture(A_Die3);
+                    default:
+                        A_Die2 = loadTexture("images/nullDie.bmp");
+                        break;
+                }
 
-            switch(value){
+                break;
 
-                case 1:
-                    A_Die3 = loadTexture("images/Die1.bmp");
-                    break;
+            case 3:
+                SDL_DestroyTexture(A_Die3);
 
-                case 2:
-                    A_Die3 = loadTexture("images/Die2.bmp");
-                    break;
+                switch(value){
 
-                case 3:
-                    A_Die3 = loadTexture("images/Die3.bmp");
-                    break;
+                    case 1:
+                        A_Die3 = loadTexture("images/Die1.bmp");
+                        break;
 
-                case 4:
-                    A_Die3 = loadTexture("images/Die4.bmp");
-                    break;
+                    case 2:
+                        A_Die3 = loadTexture("images/Die2.bmp");
+                        break;
 
-                case 5:
-                    A_Die3 = loadTexture("images/Die5.bmp");
-                    break;
+                    case 3:
+                        A_Die3 = loadTexture("images/Die3.bmp");
+                        break;
 
-                case 6:
-                    A_Die3 = loadTexture("images/Die6.bmp");
-                    break;
+                    case 4:
+                        A_Die3 = loadTexture("images/Die4.bmp");
+                        break;
 
-                default:
-                    A_Die3 = loadTexture("images/nullDie.bmp");
-                    break;
-            }
+                    case 5:
+                        A_Die3 = loadTexture("images/Die5.bmp");
+                        break;
 
-            break;
+                    case 6:
+                        A_Die3 = loadTexture("images/Die6.bmp");
+                        break;
 
-        case 4:
-            SDL_DestroyTexture(D_Die1);
+                    default:
+                        A_Die3 = loadTexture("images/nullDie.bmp");
+                        break;
+                }
 
-            switch(value){
+                break;
 
-                case 1:
-                    D_Die1 = loadTexture("images/Die1.bmp");
-                    break;
+            case 4:
+                SDL_DestroyTexture(D_Die1);
 
-                case 2:
-                    D_Die1 = loadTexture("images/Die2.bmp");
-                    break;
+                switch(value){
 
-                case 3:
-                    D_Die1 = loadTexture("images/Die3.bmp");
-                    break;
+                    case 1:
+                        D_Die1 = loadTexture("images/Die1.bmp");
+                        break;
 
-                case 4:
-                    D_Die1 = loadTexture("images/Die4.bmp");
-                    break;
+                    case 2:
+                        D_Die1 = loadTexture("images/Die2.bmp");
+                        break;
 
-                case 5:
-                    D_Die1 = loadTexture("images/Die5.bmp");
-                    break;
+                    case 3:
+                        D_Die1 = loadTexture("images/Die3.bmp");
+                        break;
 
-                case 6:
-                    D_Die1 = loadTexture("images/Die6.bmp");
-                    break;
+                    case 4:
+                        D_Die1 = loadTexture("images/Die4.bmp");
+                        break;
 
-                default:
-                    D_Die1 = loadTexture("images/nullDie.bmp");
-                    break;
-            }
+                    case 5:
+                        D_Die1 = loadTexture("images/Die5.bmp");
+                        break;
 
-            break;
+                    case 6:
+                        D_Die1 = loadTexture("images/Die6.bmp");
+                        break;
 
-        case 5:
-            SDL_DestroyTexture(D_Die2);
+                    default:
+                        D_Die1 = loadTexture("images/nullDie.bmp");
+                        break;
+                }
 
-            switch(value){
+                break;
 
-                case 1:
-                    D_Die2 = loadTexture("images/Die1.bmp");
-                    break;
+            case 5:
+                SDL_DestroyTexture(D_Die2);
 
-                case 2:
-                    D_Die2 = loadTexture("images/Die2.bmp");
-                    break;
+                switch(value){
 
-                case 3:
-                    D_Die2 = loadTexture("images/Die3.bmp");
-                    break;
+                    case 1:
+                        D_Die2 = loadTexture("images/Die1.bmp");
+                        break;
 
-                case 4:
-                    D_Die2 = loadTexture("images/Die4.bmp");
-                    break;
+                    case 2:
+                        D_Die2 = loadTexture("images/Die2.bmp");
+                        break;
 
-                case 5:
-                    D_Die2 = loadTexture("images/Die5.bmp");
-                    break;
+                    case 3:
+                        D_Die2 = loadTexture("images/Die3.bmp");
+                        break;
 
-                case 6:
-                    D_Die2 = loadTexture("images/Die6.bmp");
-                    break;
+                    case 4:
+                        D_Die2 = loadTexture("images/Die4.bmp");
+                        break;
 
-                default:
-                    D_Die2 = loadTexture("images/nullDie.bmp");
-                    break;
-            }
+                    case 5:
+                        D_Die2 = loadTexture("images/Die5.bmp");
+                        break;
 
-            break;
+                    case 6:
+                        D_Die2 = loadTexture("images/Die6.bmp");
+                        break;
+
+                    default:
+                        D_Die2 = loadTexture("images/nullDie.bmp");
+                        break;
+                }
+
+                break;
+        }
     }
 }
 
@@ -1404,6 +1410,7 @@ int main(int argc, char* args[])
                 // Update top menu
                 changeNumTop(play.getPlayers());
                 changeActivePlayer(&play);
+                changeDie(play.getDie());
 
 			    SDL_GetMouseState(&x, &y); // get position of mouse at each frame the program is running
 
