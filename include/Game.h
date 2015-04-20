@@ -22,6 +22,7 @@ class Game
         int getCurrentPlayer();
         vector<Player> getPlayers();
         void init_game();
+        void endGame();
         void nextTurn();
         void moveTroops(Territory* origin, Territory* destination, int troopNum);
         void attack(Territory* origin, Territory* destination, int aTroops, int dTroops);

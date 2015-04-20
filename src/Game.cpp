@@ -112,6 +112,20 @@ void Game::init_game()
         cout << players[i].getName() << " has " << players[i].getControlledTerritories().size() << " territories." << endl;
     }
 }
+void Game::endGame() {
+    cout << players[currentPlayer].getName() << "\n wins on turn " << turn << "!!!!" << endl;
+
+    cout << "Press 1 to exit game." << endl;
+    int choice=0;
+    cin >> choice;
+    while (!cin) {
+        cout << "Enter a valid input" << endl;;
+        cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+        cin >> choice;
+    }
+    this->gameOver = true;
+}
 
 void Game::nextTurn() //Sets the current turn to the next player, wraps around if necessary
 {
@@ -123,8 +137,7 @@ void Game::nextTurn() //Sets the current turn to the next player, wraps around i
     }
 
     if (players[currentPlayer].getControlledTerritories().size() == 42) {
-        cout << players[currentPlayer].getName() << " wins!!!!!";
-        this->gameOver = true;
+        endGame();
         return;
     }
     if (this->currentPlayer == players.size()-1) {
@@ -141,17 +154,19 @@ void Game::nextTurn() //Sets the current turn to the next player, wraps around i
     turnPhase = 0;
     capturedTerritory = false;
     cout << "Turn changed to " << players[currentPlayer].getName() << "'s turn" << endl;
+    //Drafting doesn't occur on the first turn so make sure no troops are drafted
     if (turn == 1) {
         return;
     }
+    //Logic to check if a player has lost
+    if (players[currentPlayer].getControlledTerritories().size() == 0) {
+        cout << "Skipping " << players[currentPlayer].getName() << " because he/she lost" << endl;
+        nextTurn();
+    }
+
     int drafted = players[currentPlayer].calculateTroopsPerTurn(earth);
     cout << players[currentPlayer].getName() << " drafts " << drafted << " troops." << endl;
     players[currentPlayer].setTroops(players[currentPlayer].getTroops() + drafted);
-
-    if (players[currentPlayer].getControlledTerritories().size() == 0) {
-        cout << "Skipping " << players[currentPlayer].getName() << " because you lost" << endl;
-        nextTurn();
-    }
 }
 
 void Game::moveTroops(Territory* origin, Territory* destination, int troopNum){

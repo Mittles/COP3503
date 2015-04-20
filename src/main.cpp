@@ -950,11 +950,11 @@ void changeNumTop(std::vector<Player>* players)
 
  //   std::cout << (tempPlayer.getControlledTerritories()).size() << std::endl;
 
-    if((tempPlayer.getControlledTerritories()).size() != p1tc)
+    if((players->at(0).getControlledTerritories()).size() != p1tc)
     {
         stringstream ss;
 
-        p1tc = (tempPlayer.getControlledTerritories()).size();
+        p1tc = (players->at(0).getControlledTerritories()).size();
 
         ss << p1tc;
 
@@ -963,11 +963,11 @@ void changeNumTop(std::vector<Player>* players)
         P1_TerritoryCount = loadText(ss.str(),16);
     }
 
-    if(tempPlayer.getStars() != p1sc)
+    if(players->at(0).getStars() != p1sc)
     {
         stringstream ss;
 
-        p1sc = tempPlayer.getStars();
+        p1sc = players->at(0).getStars();
 
         ss << p1sc;
 
@@ -976,11 +976,11 @@ void changeNumTop(std::vector<Player>* players)
         P1_StarCount = loadText(ss.str(),16);
     }
 
-    if(tempPlayer.getTroopsPerTurn() != p1tpt)
+    if(players->at(0).getTroopsPerTurn() != p1tpt)
     {
         stringstream ss;
 
-        p1tpt = tempPlayer.getTroopsPerTurn();
+        p1tpt = players->at(0).getTroopsPerTurn();
 
         ss << p1tpt;
 
