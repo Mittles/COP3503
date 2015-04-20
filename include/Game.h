@@ -45,6 +45,7 @@ class Game
         int turn;
         bool capturedTerritory;
         bool gameOver;
+        bool redeployed;
         vector<Player> players;
         World earth;
         Deck playDeck;

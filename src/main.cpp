@@ -16,10 +16,10 @@
 const int SCREEN_WIDTH = 1440;
 const int SCREEN_HEIGHT = 900;
 
-std::string player1Name = "Doug";
-std::string player2Name = "Rosemond";
-std::string player3Name = "Chris";
-std::string player4Name = "Kevin";
+std::string player1Name;
+std::string player2Name;
+std::string player3Name;
+std::string player4Name;
 
 // Starts up SDL and creates a window "mainWindow"
 bool init();
@@ -367,29 +367,29 @@ bool loadMedia()
 
     // TOP MENU BOXES
     P1_ActiveIndicator = loadTexture("images/nullAct.png");
-    P1_InstructBox = loadText("Ready " + player1Name, 16 );
-    P1_Name = loadText(player1Name, 18);
+    //P1_InstructBox = loadText("Ready " + player1Name, 16 );
+    //P1_Name = loadText(player1Name, 18);
     P1_StarCount = loadText("0", 16);
     P1_TerritoryCount = loadText("0", 16);
     P1_UnitsPerTurn = loadText("0", 16);
 
     P2_ActiveIndicator = loadTexture("images/nullAct.png");
-    P2_InstructBox = loadText("Ready " + player2Name, 16 );
-    P2_Name = loadText(player2Name, 18);
+    //P2_InstructBox = loadText("Ready " + player2Name, 16 );
+    //P2_Name = loadText(player2Name, 18);
     P2_StarCount = loadText("0", 16);
     P2_TerritoryCount = loadText("0", 16);
     P2_UnitsPerTurn = loadText("0", 16);
 
     P3_ActiveIndicator = loadTexture("images/nullAct.png");
-    P3_InstructBox = loadText("Ready " + player3Name, 16 );
-    P3_Name = loadText(player3Name, 18);
+    //P3_InstructBox = loadText("Ready " + player3Name, 16 );
+    //P3_Name = loadText(player3Name, 18);
     P3_StarCount = loadText("0", 16);
     P3_TerritoryCount = loadText("0", 16);
     P3_UnitsPerTurn = loadText("0", 16);
 
     P4_ActiveIndicator = loadTexture("images/nullAct.png");
-    P4_InstructBox = loadText("Ready " + player4Name, 16 );
-    P4_Name = loadText(player4Name, 18);
+    //P4_InstructBox = loadText("Ready " + player4Name, 16 );
+    //P4_Name = loadText(player4Name, 18);
     P4_StarCount = loadText("0", 16);
     P4_TerritoryCount = loadText("0", 16);
     P4_UnitsPerTurn = loadText("0", 16);
@@ -1233,7 +1233,42 @@ int main(int argc, char* args[])
             int x, y; // mouse pointer position x and y
 
             bool isClicked = false;
+            /*
+                INITIALIZING PLAYERS
+                Take in string values
+            */
+            cout << "Enter Player 1's Name: " << endl;
+            string temp;
+            cin >> temp;
+            while (temp.length() > 20) {
+                cout << "Choose a nickname, buddy!" << endl;
+                cin >> temp;
+            }
+            player1Name = temp;
 
+            cout << "Enter Player 2's Name: " << endl;
+            cin >> temp;
+            while (temp.length() > 20) {
+                cout << "Choose a nickname, buddy!" << endl;
+                cin >> temp;
+            }
+            player2Name = temp;
+
+            cout << "Enter Player 3's Name: " << endl;
+            cin >> temp;
+            while (temp.length() > 20) {
+                cout << "Choose a nickname, buddy!" << endl;
+                cin >> temp;
+            }
+            player3Name = temp;
+
+            cout << "Enter Player 4's Name: " << endl;
+            cin >> temp;
+            while (temp.length() > 20) {
+                cout << "Choose a nickname, buddy!" << endl;
+                cin >> temp;
+            }
+            player4Name = temp;
             /*
                 INITIALIZING TERRITORIES
                 Allocated by pointers to make it easier to access subfields of each Territory

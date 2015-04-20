@@ -12,6 +12,7 @@ Game::Game(vector<Player> players, World earth, Deck playDeck)
     turn = 1;
     capturedTerritory = false;
     gameOver = false;
+    redeployed = false;
 }
 int Game::getCurrentPlayer(){
     return this->currentPlayer;
@@ -174,22 +175,18 @@ void Game::nextTurn() //Sets the current turn to the next player, wraps around i
     if (players[currentPlayer].getControlledTerritories().size() == 0) {  //Checks if the next player has lost
         cout << "Skipping " << players[currentPlayer].getName() << " because he/she lost" << endl;
         nextTurn();
+        return;
     }
 
     turnPhase = 0;
     capturedTerritory = false;
+    redeployed = false;
     cout << "Turn changed to " << players[currentPlayer].getName() << "'s turn" << endl;
     //Drafting doesn't occur on the first turn so make sure no troops are drafted
     if (turn == 1) {
         return;
     }    //Calculate every Player's troops per turn to display
     //Logic to check if a player has lost
-    if (players[currentPlayer].getControlledTerritories().size() == 0) {
-        cout << "Skipping " << players[currentPlayer].getName() << " because he/she lost" << endl;
-        capturedTerritory = false;
-        nextTurn();
-    }
-
     int drafted = players[currentPlayer].calculateTroopsPerTurn(earth);
     cout << players[currentPlayer].getName() << " drafts " << drafted << " troops." << endl;
     players[currentPlayer].setTroops(players[currentPlayer].getTroops() + drafted);
@@ -284,6 +281,7 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
                 cout << players[loser].getName() << " now only has " << players[loser].getControlledTerritories().size() << " territories." << endl;
                 destination->setTroops(aTroops);
                 origin->setTroops((origin->getTroops()) - aTroops);
+                turnPhase = 2;
             }
         } while (d != 0);
         int tempAr[5] = {0, 0, 0, 0, 0};
@@ -293,11 +291,11 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
         for (int i = 3; i<5; i++){
             tempAr[i]=dRolls[i-3];
         }
-        cout<< "array being passed: ";
-        for (int i = 0; i<5; i++){
-            dieResults[i]=tempAr[i];
-            cout << dieResults[i] << " ";
-        }
+//        cout<< "array being passed: ";
+//        for (int i = 0; i<5; i++){
+//            dieResults[i]=tempAr[i];
+//            cout << dieResults[i] << " ";
+//        }
 
 }
 
@@ -353,7 +351,11 @@ void Game::moveAttack(Territory* a, Territory* b) {
             cout << "You can't move after you attack." << endl;
             cout << "Turn phase: " << turnPhase << endl;
         }
-    } else if (a->getOwner() != b->getOwner()){
+    } else if (a->getOwner() != b->getOwner()){\
+        if (turnPhase == 3) {
+            cout << "You can't attack after you redeploy." << endl;
+            cout << "Turn phase: " << turnPhase << endl;
+        }
         cout << "Enter number of troops to attack with(Must leave 1): " << endl;
         int atroops;
         int btroops;
@@ -411,6 +413,9 @@ void Game::redeploy(Territory* a, Territory* b) {
     }
 
     if (a->getOwner() == b->getOwner()) {
+            if (redeployed) {
+                cout << "You can only redeploy once per turn." << endl;
+            }
             cout << "Enter number of troops to move(Must leave 1): " << endl;
             int troops;
             cin >> troops;
