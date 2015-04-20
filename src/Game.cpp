@@ -285,17 +285,17 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
             }
         } while (d != 0);
         int tempAr[5] = {0, 0, 0, 0, 0};
-        for (int i = 0; i <3; i++){
+        for (int i = 0; i <rollsofA; i++){
             tempAr[i]=aRolls[i];
         }
-        for (int i = 3; i<5; i++){
+        for (int i = 3; i<dt+3; i++){
             tempAr[i]=dRolls[i-3];
         }
-//        cout<< "array being passed: ";
-//        for (int i = 0; i<5; i++){
-//            dieResults[i]=tempAr[i];
-//            cout << dieResults[i] << " ";
-//        }
+        //cout<< "array being passed: ";
+        for (int i = 0; i<5; i++){
+            dieResults[i]=tempAr[i];
+            //cout << dieResults[i] << " ";
+        }
 
 }
 
@@ -435,6 +435,7 @@ void Game::redeploy(Territory* a, Territory* b) {
                 moveTroops(a, b, troops);
                 cout << "Moved " << troops << " troops to " << b->getName() << endl;
                 turnPhase = 3;
+                redeployed = true;
             }
     } else if (a->getOwner() != b->getOwner()){
         cout << "You don't own " << b->getName() << endl;
