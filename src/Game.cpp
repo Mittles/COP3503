@@ -107,7 +107,7 @@ void Game::init_game()
             earth.getWorld()[i]->setOwner(p);               //Set owner
             players[p].addControlledTerritory(earth.getWorld()[i]);
             earth.getWorld()[i]->setTroops(earth.getWorld()[i]->getTroops()+1); //Add an army to the territory
-            cout << "Bonus Territory " << ") " << players[p].getName() << " added " << earth.getWorld()[i]->getName() << "  Troops: " << earth.getWorld()[i]->getTroops() << endl;
+            cout << "Bonus Territory given to "  << players[p].getName() << ", who acquired\n the province of " << earth.getWorld()[i]->getName() << ".  Troops: " << earth.getWorld()[i]->getTroops() << endl;
             p++;
         }
     }
