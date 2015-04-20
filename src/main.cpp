@@ -46,7 +46,7 @@ void changeDie(int dieNum, int value);
 void changeNumTerr(Territory* territory_name, SDL_Texture** currTexture);
 
 // This updates the counts in the upper menus.
-void changeNumTop();
+void changeNumTop(std::vector<Player>* players);
 
 // The window that will have textures rendered on it
 SDL_Window* mainWindow = NULL;
@@ -1317,7 +1317,7 @@ int main(int argc, char* args[])
 			while(!quit)
 			{
                 // Update top menu
-                changeNumTop(&players);
+                changeNumTop(play.getPlayers());
 
 			    SDL_GetMouseState(&x, &y); // get position of mouse at each frame the program is running
 
