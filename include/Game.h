@@ -8,7 +8,6 @@
 #include "World.h"
 #include "Deck.h"
 #include "DiceRoll.h"
-#include "Attack.h"
 #include <ctime>
 #include <cstdlib>
 #include <limits>
@@ -23,6 +22,9 @@ class Game
         vector<Player>* getPlayers();
         void calculatePlayerTPT();
         void init_game();
+        void setDie(int i, int r);
+        int* getDie();
+        void clearDie();
         void endGame();
         void nextTurn();
         void moveTroops(Territory* origin, Territory* destination, int troopNum);
@@ -43,6 +45,7 @@ class Game
         vector<Player> players;
         World earth;
         Deck playDeck;
+        int dieResults[5] = {0, 0, 0, 0, 0};
 };
 
 #endif // GAME_H

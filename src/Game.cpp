@@ -1,6 +1,7 @@
 #include "Game.h"
 
 DiceRoll d;
+
 Game::Game(vector<Player> players, World earth, Deck playDeck)
 {
     this->players = players;
@@ -187,7 +188,7 @@ void Game::moveTroops(Territory* origin, Territory* destination, int troopNum){
 
 void Game::attack(Territory* origin, Territory* destination, int aTroops, int dTroops){
         // array to hold the results of the attacker's dice rolls
-        int rollsofA;
+        int rollsofA = 0;
         if (aTroops > 3) {
             rollsofA = 3;
         } else {
@@ -196,7 +197,6 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
         int aRolls[rollsofA];
         for (int i = 0; i <rollsofA; i++){
             aRolls[i] = d.diceRoll(i);
-            //needs to update GUI for the results of the dice roll still
         }
         //sort aRolls array so they can be compared to defenders rolls, ascending order
         sort(aRolls, aRolls+rollsofA);
@@ -205,25 +205,36 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
         int dRolls[dTroops];
         for (int i = 0; i<dTroops; i++){
             dRolls[i]= d.diceRoll(i+9);
-            //needs to update GUI
         }
         //sort dRolls array for comparison, ascending order
         sort(dRolls, dRolls+dTroops);
 
-        //display results of dice rolls on GUI
-//        for (int i = 0; i < rollsofA; i++){
-//            changeDie(i, aRolls[i]);        //display attacker's rolls
-//        }
-//
-//        for (int i = 0; i < dTroops; i++){
-//            changeDie(i+3, dRolls[i]);      // display defender's rolls
-//        }
+        //make results of rolls retrievable for GUI
+        clearDie();
+        for (int i = 0; i < 5; i++){
+            if (i <=2){
+                setDie(i, aRolls[i]);
+
+            } else {
+                setDie(i, dRolls[i]);
+            }
+        }
 
 
         //to determine results of battle, the highest dice of each player will be compared in order
         int d = dTroops; // helps keep track of the pairs of dice
         int a = rollsofA;
         do {
+            if (aRolls[a-1] > 6 || aRolls[a-1] <= 0){
+                int roll = rand()%6;
+                aRolls[a-1] = roll;
+                setDie(a-1, roll);
+            }
+            if (dRolls[d-1] >6 || dRolls <= 0){
+                int roll = rand()%6;
+                dRolls[d-1] = roll;
+                setDie(d-1, roll);
+            }
             if (aRolls[a-1] > dRolls[d-1]){
                 destination->setTroops(destination->getTroops() - 1);
             } else if (dRolls[d-1] >= aRolls[a-1]){
@@ -246,7 +257,12 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
             }
         } while (d != 0);
 
-        //still needs a way to update the map/display to show results in troop number changes
+        //only needed for testing
+        cout << "Dice Results: ";
+        for (unsigned int i = 0; i<5; i++){
+            cout << dieResults[i] << " " << endl;
+        }
+
 }
 
 void Game::moveAttack(Territory* a, Territory* b) {
@@ -343,7 +359,7 @@ void Game::redeploy(Territory* a, Territory* b) {
     }
     //Check that b is adjacent to a
     bool isbordering = false;
-    for (int i=0; i< a->getBorders().size(); i++) {
+    for (unsigned int i=0; i< a->getBorders().size(); i++) {
         if (a->getBorders()[i] == b->getName()) {
             isbordering = true;
         }
@@ -420,7 +436,19 @@ void Game::exchangeStars() {
     cout << "Gave " << stars << " troops to " << players[currentPlayer].getName() << endl;
 }
 
+void Game::setDie(int i, int r){
+    this->dieResults[i] = r;
+}
 
+int* Game::getDie(){
+    return this->dieResults;
+}
+
+void Game::clearDie(){
+    for(unsigned int i = 0; i < 5; i++){
+        dieResults[1] =0;
+    }
+}
 
 Game::~Game()
 {
