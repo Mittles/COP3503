@@ -1392,7 +1392,6 @@ int main(int argc, char* args[])
 
             Deck playDeck = Deck();
             Game play(players, earth, playDeck);
-            playDeck.printDeck();
 
             play.init_game();
 

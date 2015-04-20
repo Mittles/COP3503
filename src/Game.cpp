@@ -94,7 +94,6 @@ void Game::init_game()
                 if (bonus < 6-players.size()) {                                     //Add an extra army to the first few territories assigned (Number goes down as number of players increases)
                     earth.getWorld()[r]->setTroops(earth.getWorld()[r]->getTroops()+1);
                 }
-                cout << j << ") " << players[i].getName() << " added " << earth.getWorld()[r]->getName() << "  Troops: " << earth.getWorld()[r]->getTroops() << endl;
                 bonus++;
           } else {
                 j--;
@@ -107,7 +106,6 @@ void Game::init_game()
             earth.getWorld()[i]->setOwner(p);               //Set owner
             players[p].addControlledTerritory(earth.getWorld()[i]);
             earth.getWorld()[i]->setTroops(earth.getWorld()[i]->getTroops()+1); //Add an army to the territory
-            cout << "Bonus Territory " << ") " << players[p].getName() << " added " << earth.getWorld()[i]->getName() << "  Troops: " << earth.getWorld()[i]->getTroops() << endl;
             p++;
         }
     }
@@ -116,7 +114,6 @@ void Game::init_game()
         players[i].setTroops(50 - 5*players.size());
     }
 
-    cout << "\n" << endl;
     calculatePlayerTPT();
 }
 void Game::endGame() {
@@ -139,7 +136,7 @@ void Game::nextTurn() //Sets the current turn to the next player, wraps around i
     cout << "Ending " << players[currentPlayer].getName() << "'s turn" << endl;
     if (capturedTerritory) {
         int r = rand()%4+1;
-        players[currentPlayer].setStars(r);
+        players[currentPlayer].setStars(players[currentPlayer].getStars() + r);
         cout << "Added " << r << " stars to " << players[currentPlayer].getName() << "." << endl;
     }
 
@@ -167,7 +164,7 @@ void Game::nextTurn() //Sets the current turn to the next player, wraps around i
     //Drafting doesn't occur on the first turn so make sure no troops are drafted
     if (turn == 1) {
         return;
-    }
+    }    //Calculate every Player's troops per turn to display
     //Logic to check if a player has lost
     if (players[currentPlayer].getControlledTerritories().size() == 0) {
         cout << "Skipping " << players[currentPlayer].getName() << " because he/she lost" << endl;
