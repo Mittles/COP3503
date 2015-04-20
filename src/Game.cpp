@@ -16,6 +16,10 @@ int Game::getCurrentPlayer(){
     return this->currentPlayer;
 }
 
+vector<Player> Game::getPlayers() {
+    return this->players;
+}
+
 void Game::allocate_Troops(Territory* t) {
     if (turnPhase != 0) {
         cout << "You can't allocate troops after you move!" << endl;
