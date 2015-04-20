@@ -94,7 +94,7 @@ void Game::init_game()
                 if (bonus < 6-players.size()) {                                     //Add an extra army to the first few territories assigned (Number goes down as number of players increases)
                     earth.getWorld()[r]->setTroops(earth.getWorld()[r]->getTroops()+1);
                 }
-                cout << j << ") " << players[i].getName() << " added " << earth.getWorld()[r]->getName() << "  Troops: " << earth.getWorld()[r]->getTroops() << endl;
+                cout << "Player " << players[i].getName() << " acquired the province of " << earth.getWorld()[r]->getName() << ". Troops: " << earth.getWorld()[r]->getTroops() << endl;
                 bonus++;
           } else {
                 j--;
