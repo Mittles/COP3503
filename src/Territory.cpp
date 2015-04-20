@@ -33,7 +33,7 @@ vector<string> Territory::getBorders() {
     return this->borders;
 }
 
-int Territory::getOwner(){
+unsigned int Territory::getOwner(){
     return this->owner;
 }
 

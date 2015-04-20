@@ -151,10 +151,6 @@ bool Player::equals(Player p) {
     }
 }
 
-//void Player::addCard(Deck d) {
-//    hand.push_back(d.deal());
-//}
-
 vector<Card> Player::getHand(){
     return this->hand;
 }
@@ -168,7 +164,7 @@ void Player::addControlledTerritory(Territory* t) {
 }
 
 void Player::removeControlledTerritory(Territory* t) {
-    for (int i=0; i<controlled_territories.size(); i++) {
+    for (unsigned int i=0; i<controlled_territories.size(); i++) {
         if (controlled_territories[i]->getName() == t->getName()) {
             controlled_territories.erase(controlled_territories.begin()+i);
         }

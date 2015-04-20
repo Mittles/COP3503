@@ -946,7 +946,6 @@ void changeNumTerr(Territory* territory_name, SDL_Texture** currTexture)
 
         *currTexture = loadText(ss.str(), 10);
 
-//        std::cout << "Changed tile texture." << std::endl;
 
     }
 }
@@ -3531,3 +3530,4 @@ int main(int argc, char* args[])
 
     return 0;
 }
+//3533 Lines. Nice.
