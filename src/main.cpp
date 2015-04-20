@@ -226,6 +226,7 @@ SDL_Texture* D_Die2 = NULL;
 unsigned int p1tc = 0, p2tc = 0, p3tc = 0, p4tc = 0;
 int p1sc = 0, p2sc = 0, p3sc = 0, p4sc = 0;
 int p1tpt = 0, p2tpt = 0, p3tpt = 0, p4tpt = 0;
+int currPlayer = -1;
 
 bool init()
 {
@@ -1114,6 +1115,91 @@ void changeNumTop(std::vector<Player>* players)
 
 }
 
+void changeActivePlayer(Game* play)
+{
+    if(play->getCurrentPlayer() != currPlayer )
+    {
+        SDL_DestroyTexture(P1_ActiveIndicator);
+        SDL_DestroyTexture(P1_InstructBox);
+        SDL_DestroyTexture(P2_ActiveIndicator);
+        SDL_DestroyTexture(P2_InstructBox);
+        SDL_DestroyTexture(P3_ActiveIndicator);
+        SDL_DestroyTexture(P3_InstructBox);
+        SDL_DestroyTexture(P4_ActiveIndicator);
+        SDL_DestroyTexture(P4_ActiveIndicator);
+
+        switch(play->getCurrentPlayer())
+        {
+            case 0:
+                P1_ActiveIndicator = loadTexture("images/attackAct.png");
+                P1_InstructBox = loadText("It is your turn.", 16);
+
+                P2_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P2_InstructBox = loadText("You are defending.", 16);
+
+                P3_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P3_InstructBox = loadText("You are defending.", 16);
+
+                P4_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P4_InstructBox = loadText("You are defending.", 16);
+
+                currPlayer = 0;
+                break;
+
+            case 1:
+                P1_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P1_InstructBox = loadText("You are defending.", 16);
+
+                P2_ActiveIndicator = loadTexture("images/attackAct.png");
+                P2_InstructBox = loadText("It is your turn.", 16);
+
+                P3_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P3_InstructBox = loadText("You are defending.", 16);
+
+                P4_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P4_InstructBox = loadText("You are defending.", 16);
+
+                currPlayer = 1;
+                break;
+
+            case 2:
+                P1_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P1_InstructBox = loadText("You are defending.", 16);
+
+                P2_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P2_InstructBox = loadText("You are defending.", 16);
+
+                P3_ActiveIndicator = loadTexture("images/attackAct.png");
+                P3_InstructBox = loadText("It is your turn.", 16);
+
+                P4_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P4_InstructBox = loadText("You are defending.", 16);
+
+                currPlayer = 2;
+                break;
+
+            case 3:
+                P1_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P1_InstructBox = loadText("You are defending.", 16);
+
+                P2_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P2_InstructBox = loadText("You are defending.", 16);
+
+                P3_ActiveIndicator = loadTexture("images/defenseAct.png");
+                P3_InstructBox = loadText("You are defending.", 16);
+
+                P4_ActiveIndicator = loadTexture("images/attackAct.png");
+                P4_InstructBox = loadText("It is your turn.", 16);
+
+                currPlayer = 3;
+                break;
+
+            default:
+                break;
+        }
+    }
+}
+
 int main(int argc, char* args[])
 {
 	// Start up SDL and create window
@@ -1313,10 +1399,11 @@ int main(int argc, char* args[])
             Territory* terr2 = NULL;
 
 			// While application is running
-			while(!quit)
+			while(!quit && !play.isGameOver())
 			{
                 // Update top menu
                 changeNumTop(play.getPlayers());
+                changeActivePlayer(&play);
 
 			    SDL_GetMouseState(&x, &y); // get position of mouse at each frame the program is running
 
