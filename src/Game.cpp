@@ -94,6 +94,10 @@ void Game::init_game()
                 if (bonus < 6-players.size()) {                                     //Add an extra army to the first few territories assigned (Number goes down as number of players increases)
                     earth.getWorld()[r]->setTroops(earth.getWorld()[r]->getTroops()+1);
                 }
+<<<<<<< HEAD
+=======
+                cout << "Player " << players[i].getName() << " acquired the province of " << earth.getWorld()[r]->getName() << ". Troops: " << earth.getWorld()[r]->getTroops() << endl;
+>>>>>>> fa0a96b8d3f7a82d037613b68ba0bb05d142ef93
                 bonus++;
           } else {
                 j--;
@@ -106,6 +110,10 @@ void Game::init_game()
             earth.getWorld()[i]->setOwner(p);               //Set owner
             players[p].addControlledTerritory(earth.getWorld()[i]);
             earth.getWorld()[i]->setTroops(earth.getWorld()[i]->getTroops()+1); //Add an army to the territory
+<<<<<<< HEAD
+=======
+            cout << "Bonus Territory given to "  << players[p].getName() << ", who acquired\n the province of " << earth.getWorld()[i]->getName() << ".  Troops: " << earth.getWorld()[i]->getTroops() << endl;
+>>>>>>> fa0a96b8d3f7a82d037613b68ba0bb05d142ef93
             p++;
         }
     }
