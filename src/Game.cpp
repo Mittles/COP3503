@@ -107,6 +107,10 @@ void Game::init_game()
     }
 
     cout << "\n" << endl;
+
+    for (int i=0; i<players.size(); i++) {
+        cout << players[i].getName() << " has " << players[i].getControlledTerritories().size() << " territories." << endl;
+    }
 }
 
 void Game::nextTurn() //Sets the current turn to the next player, wraps around if necessary
@@ -206,10 +210,14 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
             a--;
             d--;
             if (destination->getTroops() == 0){
+                int loser = destination->getOwner();
                 destination->setOwner(origin->getOwner());
                 players[destination->getOwner()].addControlledTerritory(destination);
+                players[loser].removeControlledTerritory(destination);
                 capturedTerritory = true;
                 cout << players[currentPlayer].getName() << " won the battle!" << endl;
+                cout << players[currentPlayer].getName() << " now has " << players[currentPlayer].getControlledTerritories().size() << " territories." << endl;
+                cout << players[loser].getName() << " now only has " << players[loser].getControlledTerritories().size() << " territories." << endl;
                 destination->setTroops(aTroops);
                 origin->setTroops((origin->getTroops()) - aTroops);
             }
