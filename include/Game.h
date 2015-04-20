@@ -20,6 +20,7 @@ class Game
     public:
         Game(vector<Player> players, World earth, Deck playDeck);
         int getCurrentPlayer();
+        vector<string> getNames();
         vector<Player>* getPlayers();
         void calculatePlayerTPT();
         void init_game();
@@ -38,6 +39,7 @@ class Game
         virtual ~Game();
     protected:
     private:
+        vector<string> names;
         int currentPlayer;
         int turnPhase;
         int turn;

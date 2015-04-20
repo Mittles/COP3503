@@ -17,6 +17,19 @@ int Game::getCurrentPlayer(){
     return this->currentPlayer;
 }
 
+vector<string> Game::getNames(){
+    for (int i =0; i < 4; i++){
+        cout << "Enter Player " << i+1 << "'s name: " << endl;
+        string input = "";
+        cin >> input;
+        while (input.length() >20){
+            cout << "Choose a nickname, buddy!" << endl;
+            cin >> input;
+        }
+        this->names.push_back(input);
+     }
+}
+
 vector<Player>* Game::getPlayers() {
     return &players;
 }
@@ -289,8 +302,10 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
 }
 
 void Game::moveAttack(Territory* a, Territory* b) {
-    //a->setOwner(0);
-    //b->setOwner(0);
+    if (turn==1){
+        cout << "You may not attack or move in the Allocation Turn."<< endl;
+        return;
+    }
     if (turnPhase == 0) {
         turnPhase = 1;
     }
