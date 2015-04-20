@@ -116,6 +116,10 @@ void Game::init_game()
     }
 
     calculatePlayerTPT();
+    cout << "Instructions: \n-Select a territory box then 'Allocate Troops' to assign troops\n-Select 2 territories then 'Attack/Move' to attack or move."  << endl;
+    cout << "-You can't move or allocate troops after you attack.\n-To redeploy after you attack select 2 adjacent territories you own and select 'Redeploy Troops'" << endl;
+    cout << "-If you capture a territory in your turn you will be rewarded stars. \n-Select 'Exchange Stars' to exchange stars for additional troops!" << endl;
+    cout << "-Conquer the entire world to win, good luck!" << endl;
 }
 void Game::endGame() {
     cout << players[currentPlayer].getName() << "\n wins on turn " << turn << "!!!!" << endl;
@@ -344,6 +348,9 @@ void Game::moveAttack(Territory* a, Territory* b) {
             cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
             cin >> atroops;
+        }
+        if (atroops == a->getTroops()) {
+            cout << "Error: You must leave at least 1 troop behind" << endl;
         }
         if (atroops > a->getTroops()-1) {
             cout << "Error: You don't have that many troops" << endl;
