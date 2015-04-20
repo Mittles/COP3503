@@ -114,7 +114,6 @@ void Game::init_game()
         players[i].setTroops(50 - 5*players.size());
     }
 
-    cout << "\n" << endl;
     calculatePlayerTPT();
 }
 void Game::endGame() {
