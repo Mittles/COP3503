@@ -1439,6 +1439,19 @@ int main(int argc, char* args[])
             Territory* terr1 = NULL;
             Territory* terr2 = NULL;
 
+            //set name in game
+            P1_InstructBox = loadText("Ready " + player1Name, 16 );
+            P1_Name = loadText(player1Name, 18);
+
+            P2_InstructBox = loadText("Ready " + player2Name, 16 );
+            P2_Name = loadText(player2Name, 18);
+
+            P3_InstructBox = loadText("Ready " + player3Name, 16 );
+            P3_Name = loadText(player3Name, 18);
+
+            P4_InstructBox = loadText("Ready " + player4Name, 16 );
+            P4_Name = loadText(player4Name, 18);
+
 			// While application is running
 			while(!quit && !play.isGameOver())
 			{
