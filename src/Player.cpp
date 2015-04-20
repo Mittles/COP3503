@@ -5,6 +5,7 @@ Player::Player(string name, int ID)
     this->name = name;
     this->ID = ID;
     stars = 0;
+    troopsPerTurn = 0;
 }
 
 string Player::getName() {

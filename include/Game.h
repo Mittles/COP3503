@@ -21,6 +21,7 @@ class Game
         Game(vector<Player> players, World earth, Deck playDeck);
         int getCurrentPlayer();
         vector<Player>* getPlayers();
+        void calculatePlayerTPT();
         void init_game();
         void endGame();
         void nextTurn();

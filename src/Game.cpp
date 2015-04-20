@@ -19,6 +19,12 @@ int Game::getCurrentPlayer(){
 vector<Player>* Game::getPlayers() {
     return &players;
 }
+//Calculate every Player's troops per turn to display
+void Game::calculatePlayerTPT() {
+    for (int i=0; i<players.size(); i++) {
+        players[i].setTroopsPerTurn(players[i].calculateTroopsPerTurn(earth));
+    }
+}
 
 void Game::allocate_Troops(Territory* t) {
     if (turnPhase != 0) {
@@ -107,10 +113,7 @@ void Game::init_game()
     }
 
     cout << "\n" << endl;
-
-    for (int i=0; i<players.size(); i++) {
-        cout << players[i].getName() << " has " << players[i].getControlledTerritories().size() << " territories." << endl;
-    }
+    calculatePlayerTPT();
 }
 void Game::endGame() {
     cout << players[currentPlayer].getName() << "\n wins on turn " << turn << "!!!!" << endl;
@@ -135,6 +138,9 @@ void Game::nextTurn() //Sets the current turn to the next player, wraps around i
         players[currentPlayer].setStars(r);
         cout << "Added " << r << " stars to " << players[currentPlayer].getName() << "." << endl;
     }
+
+    calculatePlayerTPT();
+
     //Check if a player has won, ends the
     if (players[currentPlayer].getControlledTerritories().size() == 42) {
         endGame();
@@ -315,14 +321,13 @@ void Game::moveAttack(Territory* a, Territory* b) {
         turnPhase = 2;
         //std::cout << "origin after move: owner- " << a->getOwner()<< " troops- " << a->getTroops() << endl;
         //std::cout << "destination after move:  owner- " << b->getOwner()<< " troops- " << b->getTroops() << endl;
-        cout << "Moved " << atroops << " troops to " << b->getName() << endl;
         cout << a->getName() << ": " << a->getTroops() << " troops ; " << b->getName() <<": " << b->getTroops() << " troops" << endl;
     }
 
 
 
 
-
+    calculatePlayerTPT();
 }
 
 void Game::redeploy(Territory* a, Territory* b) {
