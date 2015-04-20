@@ -168,6 +168,7 @@ void Game::nextTurn() //Sets the current turn to the next player, wraps around i
     //Logic to check if a player has lost
     if (players[currentPlayer].getControlledTerritories().size() == 0) {
         cout << "Skipping " << players[currentPlayer].getName() << " because he/she lost" << endl;
+        capturedTerritory = false;
         nextTurn();
     }
 
@@ -311,6 +312,10 @@ void Game::moveAttack(Territory* a, Territory* b) {
         }
         if (atroops > a->getTroops()-1) {
             cout << "Error: You don't have that many troops" << endl;
+            return;
+        }
+        if (atroops <= 0) {
+            cout << "Enter a valid positive number greater than 0!" << endl;
             return;
         }
         if (b->getTroops() >1){
