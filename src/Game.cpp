@@ -135,7 +135,7 @@ void Game::nextTurn() //Sets the current turn to the next player, wraps around i
         players[currentPlayer].setStars(r);
         cout << "Added " << r << " stars to " << players[currentPlayer].getName() << "." << endl;
     }
-
+    //Check if a player has won, ends the
     if (players[currentPlayer].getControlledTerritories().size() == 42) {
         endGame();
         return;
