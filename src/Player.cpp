@@ -166,6 +166,14 @@ void Player::addControlledTerritory(Territory* t) {
     controlled_territories.push_back(t);
 }
 
+void Player::removeControlledTerritory(Territory* t) {
+    for (int i=0; i<controlled_territories.size(); i++) {
+        if (controlled_territories[i]->getName() == t->getName()) {
+            controlled_territories.erase(controlled_territories.begin()+i);
+        }
+    }
+}
+
 Player::~Player()
 {
 

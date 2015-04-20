@@ -20,6 +20,7 @@ class Player
         bool equals(Player p);
         vector<Territory*> getControlledTerritories();
         void addControlledTerritory(Territory* t);
+        void removeControlledTerritory(Territory* t);
         void setTroops(int troops);
         void takeTroops(int troops);
         int getTroops();

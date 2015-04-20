@@ -203,6 +203,7 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
             d--;
             if (destination->getTroops() == 0){
                 destination->setOwner(origin->getOwner());
+                players[destination->getOwner()].addControlledTerritory(destination);
                 capturedTerritory = true;
                 cout << players[currentPlayer].getName() << " won the battle!" << endl;
                 destination->setTroops(aTroops);
