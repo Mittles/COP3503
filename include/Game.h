@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <limits>
 #include <algorithm>
+#include <iterator>
 
 
 class Game

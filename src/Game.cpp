@@ -186,26 +186,49 @@ void Game::moveTroops(Territory* origin, Territory* destination, int troopNum){
         //still needs to update the map/display for the change in troop numbers somehow
 }
 
+void Game::setDie(int i, int r){
+    this->dieResults[i] = r;
+}
+
+int* Game::getDie(){
+    return this->dieResults;
+}
+
+void Game::clearDie(){
+    for(unsigned int i = 0; i < 5; i++){
+        dieResults[1] =0;
+    }
+}
+
 void Game::attack(Territory* origin, Territory* destination, int aTroops, int dTroops){
+
         // array to hold the results of the attacker's dice rolls
-        int rollsofA = 0;
+        int rollsofA;
         if (aTroops > 3) {
             rollsofA = 3;
         } else {
             rollsofA = aTroops;
         }
         int aRolls[rollsofA];
+        cout << "Attackers: " ;
         for (int i = 0; i <rollsofA; i++){
             aRolls[i] = d.diceRoll(i);
+            cout << aRolls[i] << " ";
+            //needs to update GUI for the results of the dice roll still
         }
         //sort aRolls array so they can be compared to defenders rolls, ascending order
         sort(aRolls, aRolls+rollsofA);
 
         //array to hold results of defender's rolls
-        int dRolls[dTroops];
-        for (int i = 0; i<dTroops; i++){
-            dRolls[i]= d.diceRoll(i+9);
+        int dt = dTroops;
+        int dRolls[dt];
+        cout << "\n" << "defenders: ";
+        for (int i = 0; i<dt; i++){
+            dRolls[i]= d.diceRoll(i+4);
+            cout << dRolls[i] << " ";
+            //needs to update GUI
         }
+        cout << endl;
         //sort dRolls array for comparison, ascending order
         sort(dRolls, dRolls+dTroops);
 
@@ -225,16 +248,6 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
         int d = dTroops; // helps keep track of the pairs of dice
         int a = rollsofA;
         do {
-            if (aRolls[a-1] > 6 || aRolls[a-1] <= 0){
-                int roll = rand()%6;
-                aRolls[a-1] = roll;
-                setDie(a-1, roll);
-            }
-            if (dRolls[d-1] >6 || dRolls <= 0){
-                int roll = rand()%6;
-                dRolls[d-1] = roll;
-                setDie(d-1, roll);
-            }
             if (aRolls[a-1] > dRolls[d-1]){
                 destination->setTroops(destination->getTroops() - 1);
             } else if (dRolls[d-1] >= aRolls[a-1]){
@@ -256,11 +269,17 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
                 origin->setTroops((origin->getTroops()) - aTroops);
             }
         } while (d != 0);
-
-        //only needed for testing
-        cout << "Dice Results: ";
-        for (unsigned int i = 0; i<5; i++){
-            cout << dieResults[i] << " " << endl;
+        int tempAr[5] = {0, 0, 0, 0, 0};
+        for (int i = 0; i <3; i++){
+            tempAr[i]=aRolls[i];
+        }
+        for (int i = 3; i<5; i++){
+            tempAr[i]=dRolls[i-3];
+        }
+        cout<< "array being passed: ";
+        for (int i = 0; i<5; i++){
+            dieResults[i]=tempAr[i];
+            cout << dieResults[i] << " ";
         }
 
 }
@@ -436,19 +455,7 @@ void Game::exchangeStars() {
     cout << "Gave " << stars << " troops to " << players[currentPlayer].getName() << endl;
 }
 
-void Game::setDie(int i, int r){
-    this->dieResults[i] = r;
-}
 
-int* Game::getDie(){
-    return this->dieResults;
-}
-
-void Game::clearDie(){
-    for(unsigned int i = 0; i < 5; i++){
-        dieResults[1] =0;
-    }
-}
 
 Game::~Game()
 {
