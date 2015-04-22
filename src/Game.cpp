@@ -218,7 +218,10 @@ void Game::attack(Territory* origin, Territory* destination, int aTroops, int dT
         }
         //sort aRolls array so they can be compared to defenders rolls, ascending order
         sort(aRolls, aRolls+rollsofA);
-
+        //Checks if the attacker only attacks with 1 dice
+        if (rollsofA < dTroops) {
+            dTroops = rollsofA;
+        }
         //array to hold results of defender's rolls
         int dt = dTroops;
         int dRolls[dt];
